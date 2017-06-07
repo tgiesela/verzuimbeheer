@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<arquillian xmlns="http://jboss.org/schema/arquillian"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://jboss.org/schema/arquillian
+        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+	<engine>
+    	<property name="deploymentExportPath">target/deployment</property>
+	</engine>   
+	<!-- 
+		To run arquillian from Eclipse, add the following parameter
+		in the Run/Debug configuration of Eclipse:
+		
+			-Darquillian.launch=glassfish-embedded
+			-Dglassfish.embedded.tmpdir=c:/temp/gf
+		
+		The latter will cause the temporary files being created in another flder
+		than the default user folder (AppData\Local\)
+		
+		Also make sure that the folder in which arquillian.xml is located is
+		part of the src path of the project 
+	 --> 
+	<container qualifier="glassfish-embedded" default="true">
+        <configuration>
+ 			<property name="bindHttpPort">8181</property>
+            <property name="resourcesXml">src/main/test/resourcesglassfishembedded/glassfish-resources.xml</property>
+<!-- 
+			<property name="instanceRoot">glassfish/domains/domain1</property>
+			<property name="installRoot">glassfish</property>
+-->
+			<property name="configurationXml">src/main/test/resourcesglassfishembedded/domain.xml</property>
+        </configuration>
+    </container>
+    <container qualifier="jbossas" >
+        <configuration>
+			<property name="jbossHome">
+				${jboss.managed.home}
+			</property>
+        </configuration>
+    </container>
+
+</arquillian>

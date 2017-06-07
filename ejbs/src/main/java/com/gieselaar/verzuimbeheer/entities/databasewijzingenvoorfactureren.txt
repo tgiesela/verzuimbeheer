@@ -1,0 +1,39 @@
+ALTER TABLE `verzuim`.`WERKGEVER` 
+ADD COLUMN `BTWnummer` VARCHAR(45) NULL AFTER `updatedby`,
+ADD COLUMN `Debiteurnummer` INT NULL AFTER `BTWnummer`,
+ADD COLUMN `Factureren` INT DEFAULT 0 AFTER `Debiteurnummer`,
+ADD COLUMN `Detailsecretariaat` INT DEFAULT 0 AFTER `Factureren`,
+
+CREATE TABLE `TARIEF` (
+  	`id` int(11) NOT NULL AUTO_INCREMENT,
+  	`werkgeverId` int(11) NOT NULL,
+  	`ingangsdatum` date NOT NULL,
+  	`einddatum` date DEFAULT NULL,
+	`UurtariefNormaal` decimal(18, 2) NOT NULL,
+	`KmTarief` decimal(18, 2) NOT NULL,
+	`UurtariefWeekend` decimal(18, 2) NOT NULL,
+	`Secretariaatskosten` decimal(18, 2) NOT NULL,
+	`Aansluitkosten` decimal(18, 2) NOT NULL,
+	`DatumAansluitkosten` date NULL,
+	`OmschrijvingFactuur` varchar(50) NULL,
+	`Abonnement` decimal(18, 2) NOT NULL,
+	`SociaalbezoekTarief` decimal(18, 2) NOT NULL,
+	`StandaardHuisbezoekTarief` decimal(18, 2) NOT NULL,
+	`HuisbezoekTarief` decimal(18, 2) NOT NULL,
+	`SpoedbezoekTarief` decimal(18, 2) NOT NULL,
+	`SpoedbezoekZelfdedagTarief` decimal(18, 2) NOT NULL,
+	`HuisbezoekZaterdagTarief` decimal(18, 2) NOT NULL,
+	`TelefonischeControleTarief` decimal(18, 2) NOT NULL,
+	`AbonnementPeriode` int(11) NULL,
+	`MaandbedragSecretariaat` decimal(18, 2) NOT NULL,
+	`AansluitkostenPeriode` int NOT NULL,
+    `Vasttariefhuisbezoeken` int(11) DEFAULT NULL,
+  	`version` bigint(20) NOT NULL DEFAULT '0',
+  	`creationts` datetime DEFAULT NULL,
+  	`updatets` datetime DEFAULT NULL,
+  	`createdby` int(11) DEFAULT NULL,
+  	`updatedby` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=366 DEFAULT CHARSET=latin1;
+
+/* Bovenstaande is reeds aangebracht.*/

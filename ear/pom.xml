@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>root.project</groupId>
+   <artifactId>ear</artifactId>
+   <packaging>ear</packaging>
+   <name>ear assembly</name>
+   <parent>
+      <groupId>root</groupId>
+      <artifactId>project</artifactId>
+      <version>1.1</version>
+   </parent>
+  <properties>  
+        <org.richfaces.bom.version>4.2.3.Final</org.richfaces.bom.version>  
+  </properties>  
+ 
+  <dependencyManagement>  
+  	<dependencies>  
+       <dependency>  
+           <groupId>org.richfaces</groupId>  
+           <artifactId>richfaces-bom</artifactId>  
+           <version>${org.richfaces.bom.version}</version>  
+           <scope>import</scope>  
+           <type>pom</type>  
+       </dependency>
+       <dependency>
+       	<groupId>root.project</groupId>
+       	<artifactId>JasperReports</artifactId>
+       	<version>1.1</version>
+       </dependency>
+  	</dependencies>  
+ </dependencyManagement> 
+ 
+ <dependencies>
+  
+
+      <dependency>
+         <groupId>root.project</groupId>
+         <artifactId>ejbs</artifactId>
+         <type>ejb</type>
+      </dependency>
+      <dependency>
+      	<groupId>root.project</groupId>
+      	<artifactId>ejbClient</artifactId>
+      </dependency>
+      <dependency>
+      	<groupId>verzuimweb</groupId>
+      	<artifactId>verzuimweb</artifactId>
+      	<type>war</type>
+      </dependency>
+      <dependency>
+      	<groupId>root.project</groupId>
+      	<artifactId>JasperReports</artifactId>
+      </dependency>
+ </dependencies>
+   <build>
+      <plugins>
+         <plugin>
+            <artifactId>maven-ear-plugin</artifactId>
+            <version>2.9</version>
+            <configuration>
+               <version>6</version>
+               <archive>
+                  <manifest>
+                     <addClasspath>true</addClasspath>
+                  </manifest>
+               </archive>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+</project>

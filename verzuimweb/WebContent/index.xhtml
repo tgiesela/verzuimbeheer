@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<h:body>
+	<h:outputStylesheet name="css/verzuim.css" />
+   <h:outputStylesheet>
+        .cols {
+        vertical-align: top;
+        }
+        .ui-panelgrid tr, .ui-panelgrid td {
+    		border: none !important;
+		}
+    </h:outputStylesheet>
+	<f:view>
+
+		<f:loadBundle basename="com.gieselaar.verzuimbeheer.verzuimweb.messages" var="msg"/>
+		<h:form id="loginForm" enctype="multipart/form-data" prependId="false">
+	    <div class="header">
+		  	<ui:insert name="header" >
+			  <ui:include src="templates/commonHeader.xhtml" />
+			</ui:insert>
+	    </div>
+		<p:growl id="messages" showDetail="true" />
+		<p:layout style="min-width:400px;min-height:200px;">
+	 
+		    <p:layoutUnit position="center">
+		    	<center>
+				<p:panelGrid id="loginGrid" 
+							  border="0" 
+							  columns="2">
+					<h:outputText value="#{msg.name}"></h:outputText>
+					<p:inputText id="username" 
+								 label="username" 
+								 value="#{loginClass.username}" 
+								 required="true" 
+								 maxlength="16">
+					</p:inputText>
+					<h:outputText value="#{msg.password }"></h:outputText>
+					<p:password id="Password" 
+								label="password"
+								autocomplete="off" 
+								value="#{loginClass.password}" 
+								maxlength="20">
+					</p:password>
+					<p:panelGrid layout="block">
+						<h:message  for="authenticate" 
+									style="color: red;" id="authenticate" />
+					</p:panelGrid>
+					<p:commandButton id="btnLogin" 
+									 value="Aanmelden" 
+									 action="#{loginClass.authenticate}"
+									 update="messages">
+					</p:commandButton>
+					<h:message for="btnLogin" style="color: blue;" />
+					<h:message for="username" style="color: red" />
+				</p:panelGrid>
+				<p:outputLabel value="" />
+				<p:commandLink value="wachtwoord vergeten?" 
+							   action="#{loginClass.requestNewPassword()}"
+							   ajax="false">
+				</p:commandLink>
+			</center>
+		    </p:layoutUnit>
+		</p:layout>
+		<h:messages globalOnly="true" ></h:messages>
+	    <div id="footer">
+	    	<ui:insert name="footer" >
+	    	  <ui:include src="templates/commonFooter.xhtml" />
+	    	</ui:insert>
+    	</div>
+		</h:form>
+	</f:view>
+
+</h:body> 
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"> 
+<h:head>
+	<title>Werknemer overzicht</title>
+</h:head>
+		
+<body>
+
+		<h:outputStylesheet name="css/verzuim.css" />
+	    <h:outputStylesheet>
+	        .ui-panelgrid tr, .ui-panelgrid td {
+	    		border: none !important;
+			}
+			.alignTop {
+				vertical-align: top;
+			}
+	    </h:outputStylesheet>
+ 		<h:form id="form">
+			<style  type="text/css">
+		        .indienst 	{background-color: white;}
+	    	    .uitdienst 	{background-color: gray;}
+	        	.ziek 		{background-color: orange;} 	
+			</style>
+		    <div class="header">
+			  	<ui:insert name="header" >
+				  <ui:include src="templates/commonHeader.xhtml" />
+				</ui:insert>
+		    </div>
+	
+			<p:growl id="message" showDetail="true"/>
+		    <p:panelGrid columns="2" columnClasses="alignTop,alignTop">
+				<ui:include src="templates/mainMenu.xhtml"/>
+				<p:panelGrid columns="2" >
+						<p:selectOneMenu value = "#{werknemerClass.werkgever}" style="width: 363px;" required="true" immediate="true" >
+							<f:selectItems value = "#{werknemerClass.werkgevers}" />
+							<p:ajax update="form" />
+						</p:selectOneMenu>
+						<h:outputLabel style="display: block;min-width: 150px"/>
+	
+						<h:panelGroup>
+							<h:outputLabel  value="Zoekcriteria:"></h:outputLabel>
+							<h:inputText  value="#{werknemerClass.zoekString}"></h:inputText>
+							<p:commandButton value="Zoeken" action="#{werknemerClass.zoekWerknemers }" ajax="false"></p:commandButton>
+						</h:panelGroup>
+						<h:outputLabel style="display: block;min-width: 150px"/>
+	
+						<p:dataTable id="werknemers" 
+									rows="15" 
+									paginator="true"
+									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									paginatorPosition="bottom"
+									rowsPerPageTemplate="5,10,15"
+									selection="#{werknemerClass.selectedWerknemer}"
+									selectionMode="single"
+									value="#{werknemerClass.werknemers}" 
+									sortMode="single" 
+									var="werknemer"
+									widgetVar="werknemerTable"
+									rowKey="#{werknemer.id}"
+									rowStyleClass="#{werknemer.actief ? (werknemer.hasOpenVerzuim() ? 'ziek' : 'indienst') : 'uitdienst'}">
+						<p:ajax event="rowSelect" update="btnDetails btnVerzuimen" listener="#{werknemerClass.rowSelected}" />
+						<p:column width="60" id="BSN" sortable="true" sortIconDescending="dataTableDescIcon">
+							<f:facet name="header"><h:outputText value="BSN"/></f:facet>
+							<h:outputText value="#{werknemer.burgerservicenummer}"/>
+						</p:column>
+						<p:column width="60" id="Indienst">
+							<f:facet name="header"><h:outputText  value="In dienst"></h:outputText></f:facet>
+							<h:outputText value="#{werknemer.startdatumcontract}"><f:convertDateTime type="date" pattern="dd-MM-yyyy"/></h:outputText>
+						</p:column>
+						<p:column width="60" headerText="Actief">
+							<f:facet name="header">
+								<p:selectOneButton onchange="submit()" value="#{werknemerClass.uitDienstTonen}">
+				                    <f:converter converterId="javax.faces.Boolean" />
+				                    <f:selectItem itemLabel="Alle" itemValue="true" />
+				                    <f:selectItem itemLabel="Actief" itemValue="false" />
+	                			</p:selectOneButton>
+				            </f:facet>
+							<h:outputText value="#{werknemer.einddatumcontract}"><f:convertDateTime type="date" pattern="dd-MM-yyyy"/></h:outputText>
+						</p:column>
+						<p:column width="200" id="Achternaam">
+							<f:facet name="header"><h:outputText  value="Achternaam"></h:outputText></f:facet>
+							<h:outputText value="#{werknemer.voorvoegsel} #{werknemer.achternaam}, #{werknemer.voorletters}"></h:outputText>
+						</p:column>
+						<p:column width="60" id="Geboortedatum" >
+							<f:facet name="header"><h:outputText  value="Geb. Datum"></h:outputText></f:facet>
+							<h:outputText value="#{werknemer.geboortedatum}"><f:convertDateTime type="date" pattern="dd-MM-yyyy"/></h:outputText>
+						</p:column>
+						<p:column width="40" id="Geslacht" >
+							<f:facet name="header"><h:outputText  value="M/V"></h:outputText></f:facet>
+							<h:outputText value="#{werknemer.geslacht}"></h:outputText>
+						</p:column>
+						<p:column width="40" id="PersNr" >
+							<f:facet name="header"><h:outputText  value="Pers. Nr"></h:outputText></f:facet>
+							<h:outputText  value="#{werknemer.laatsteDienstverband.personeelsnummer}"></h:outputText>
+						</p:column>
+						<f:facet name="footer">
+							<h:panelGroup style="display:block; text-align:center">
+							<p:commandButton id="btnNieuw" 
+											 value="Nieuw..." 
+											 action="#{werknemerClass.nieuweWerknemer}"
+											 ajax="false"
+											 update="messages">
+							</p:commandButton>
+							<p:commandButton id="btnDetails" 
+											 value="Details..." 
+											 action="#{werknemerClass.editWerknemer}"
+											 disabled="#{!werknemerClass.rowSelected}"
+											 ajax="false"
+											 update="messages">
+							</p:commandButton>
+							<p:commandButton id="btnVerzuimen" 
+											 value="Verzuimen..." 
+											 action="#{werknemerClass.verzuimenWerknemer}"
+											 disabled="#{!werknemerClass.rowSelected}"
+											 ajax="false"
+											 update="messages">
+							</p:commandButton>
+							</h:panelGroup>
+			       		</f:facet>
+					</p:dataTable>
+					
+						<h:outputLabel style="display: block;min-width: 150px"/>
+					
+					</p:panelGrid>
+			</p:panelGrid>
+		    <div id="footer">
+		    	<ui:insert name="footer" >
+		    	  <ui:include src="templates/commonFooter.xhtml" />
+		    	</ui:insert>
+	    	</div>
+		</h:form>
+</body>
+</html>

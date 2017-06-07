@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+	<title>Werknemer verzuimen</title>
+</h:head> 
+
+<body>
+	   	<h:outputStylesheet name="css/verzuim.css" />
+	   <h:outputStylesheet>
+	        .ui-panelgrid tr, .ui-panelgrid td {
+	    		border: none !important;
+			}
+	        .alignTop {
+				vertical-align: top;
+			}
+			
+	    </h:outputStylesheet>		<h:form id="form">
+		<style  type="text/css">
+	        .openverzuim 		{background-color: orange;}
+	        .afgeslotenverzuim 	{background-color: white;}
+		</style>
+		    <div class="header">
+			  	<ui:insert name="header" >
+				  <ui:include src="templates/commonHeader.xhtml" />
+				</ui:insert>
+		    </div>
+
+			<p:growl id="message" showDetail="true"/>
+			<p:panelGrid columns="2" columnClasses="alignTop,alignTop">
+				<ui:include src="templates/mainMenu.xhtml"/>
+				<p:panelGrid columns="2">
+					<p:panel header="Persoonsgegevens" style="width:550px;">
+						<p:panelGrid frame="none" id="persoonsgegevensGrid" rowClasses="oddRow, evenRow" border="0" columns="4">
+							<h:outputLabel for="bsn"  >BSN</h:outputLabel>
+							<h:outputText  id="bsn" label="bsn" value="#{verzuimClass.werknemer.burgerservicenummer}" size="10"></h:outputText>
+							<h:outputLabel ></h:outputLabel>
+							<h:outputLabel ></h:outputLabel>
+							<h:outputLabel for="achternaam" >Achternaam</h:outputLabel>
+							<h:outputText  id="achternaam"  value="#{verzuimClass.werknemer.achternaam}" required = "true" size="30"></h:outputText>
+							<h:outputLabel for="voorvoegsel" >Voorvoegsel</h:outputLabel>
+							<h:outputText  id="voorvoegsel" value="#{verzuimClass.werknemer.voorvoegsel}" required = "false" size="10"></h:outputText>
+							<h:outputLabel for="voornaam"  >Voornaam</h:outputLabel>
+							<h:outputText  id="voornaam" value="#{verzuimClass.werknemer.voornaam}" required = "false" size="30"></h:outputText>
+							<h:outputLabel for="voorletters"  >Voorletters</h:outputLabel>
+							<h:outputText  id="voorletters" value="#{verzuimClass.werknemer.voorletters}" required = "false" size="6"></h:outputText>
+							<h:outputLabel for="geboortedatum"  >Geb. datum</h:outputLabel>
+							<p:calendar  disabled="true" id="geboortedatum" value="#{verzuimClass.werknemer.geboortedatum}" pattern="dd-MM-yyyy" ></p:calendar>
+							<h:outputLabel for="geslacht"  >Geslacht</h:outputLabel>
+							<p:selectOneMenu id="geslacht" value = "#{verzuimClass.werknemer.geslacht}" style="width: 107px; background-image:none" disabled="true" converter="geslachtConverter">
+								<f:selectItems value = "#{enumClass.geslachtenEnum}" />
+							</p:selectOneMenu>
+							<h:outputLabel for="burgerlijkestaat"  >Burgerlijke staat</h:outputLabel>
+							<p:selectOneMenu id="burgerlijkestaat" value = "#{verzuimClass.werknemer.burgerlijkestaat}" style="width: 180px; background-image:none" disabled="true"  >
+								<f:selectItems value = "#{enumClass.burgelijkestatenEnum}" />
+							</p:selectOneMenu>
+						</p:panelGrid>
+					</p:panel>
+					<h:outputText></h:outputText>
+
+					<p:dataTable id="verzuimen" 
+								 rows="15" 
+								 paginator="true"
+								 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								 paginatorPosition="bottom"
+								 rowsPerPageTemplate="5,10,15"
+								 selection="#{verzuimClass.selectedVerzuim}"
+								 selectionMode="single"
+								 value="#{verzuimClass.verzuimen}" 
+								 var="verzuim" 
+								 sortMode="single" 
+								 rowStyleClass="#{(verzuim.verzuim.einddatumverzuim eq null) ? 'openverzuim' : 'afgeslotenverzuim'}"
+								 style="width:800px"
+								 rowKey="#{verzuim.verzuim.id}">
+						<p:ajax event="rowSelect" update="btnDetails" listener="#{verzuimClass.rowSelected}" />
+						<f:facet name="header">
+							<h:outputText value="Verzuimen"/>
+						</f:facet>
+						<p:column width="150" id="Cascode" sortable="true">
+							<f:facet name="header">
+								<h:outputText value="CAScode"/>
+							</f:facet>
+							<h:outputText value="#{verzuim.cascodeOmschrijving}"/>
+						</p:column>
+						<p:column width="20" id="Type">
+							<f:facet name="header"><h:outputText  value="Type"></h:outputText></f:facet>
+							<h:outputText value="#{verzuim.verzuim.verzuimtype}" converter="verzuimTypeConverter"></h:outputText>
+						</p:column>
+						<p:column width="30" id="Aanvang">
+							<f:facet name="header"><h:outputText  value="Aanvang"></h:outputText></f:facet>
+							<h:outputText value="#{verzuim.verzuim.startdatumverzuim}"><f:convertDateTime  type="date" pattern="dd-MM-yyyy"/></h:outputText>
+						</p:column>
+						<p:column width="20" id="Vangnet">
+							<f:facet name="header"><h:outputText value="Vangnet"></h:outputText></f:facet>
+							<h:outputText value="#{verzuim.verzuim.vangnettype}" converter="vangnetTypeConverter"></h:outputText>
+						</p:column>
+						<p:column width="30" id="Herstel" >
+							<f:facet name="header"><h:outputText  value="Herstel"></h:outputText></f:facet>
+							<h:outputText value="#{verzuim.verzuim.einddatumverzuim}"><f:convertDateTime type="date" pattern="dd-MM-yyyy"/></h:outputText>
+						</p:column>
+						<p:column width="20" id="Herstelpercentage">
+							<f:facet name="header"><h:outputText  value="%Herstel"></h:outputText></f:facet>
+							<h:outputText value="#{verzuim.verzuim.herstelpercentage}"></h:outputText>
+						</p:column>
+						<p:column width="30" id="Ketenverzuim" >
+							<f:facet name="header"><h:outputText  value="Ketenverzuim"></h:outputText></f:facet>
+							<h:outputText  value="#{(verzuim.verzuim.ketenverzuim == true)?'Ja':'Nee'}"></h:outputText>
+						</p:column>
+						<f:facet name="footer">
+							<h:panelGroup style="display:block; text-align:center">
+							<p:commandButton id="btnNieuw" 
+											 value="Nieuw verzuim" 
+											 action="#{verzuimClass.nieuwVerzuim}"
+											 disabled="#{verzuimClass.hasOpenVerzuim()}"
+											 ajax="false"
+											 update="messages">
+							</p:commandButton>
+							<p:commandButton id="btnDetails" 
+											 value="Details" 
+											 action="#{verzuimClass.edit()}"
+											 ajax="false"
+											 disabled="#{!verzuimClass.rowSelected}"
+											 update="messages">
+							</p:commandButton>
+							</h:panelGroup>
+			       		</f:facet>
+					</p:dataTable>
+					<h:outputText></h:outputText>
+				</p:panelGrid>
+			</p:panelGrid>
+		    <div id="footer">
+		    	<ui:insert name="footer" >
+		    	  <ui:include src="templates/commonFooter.xhtml" />
+		    	</ui:insert>
+	    	</div>
+		</h:form>
+</body> 
+</html>

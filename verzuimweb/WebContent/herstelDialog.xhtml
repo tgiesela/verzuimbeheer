@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<title>Verzuim herstel</title>
+</h:head> 
+<body>
+   <h:outputStylesheet name="css/verzuim.css" />
+   <h:outputStylesheet>
+        .ui-panelgrid tr, .ui-panelgrid td {
+    		border: none !important;
+		}
+    </h:outputStylesheet>
+   	<h:form>
+	<p:growl id="herstelmessages" showDetail="true"/>
+	 	<p:panelGrid columns="2">
+	 		<p:panel header="Verzuimherstel gegevens">
+	 			<h:panelGrid id="verzuimherstelgegevens"
+	 						 columns="2">
+	 	        	<h:outputLabel>Hersteldatum</h:outputLabel>
+	 	            <p:calendar id="Herstel_hersteldatum"
+	 	            			value="#{verzuimherstelDetailClass.verzuimherstel.datumHerstel}"
+	 	             			pattern="dd-MM-yyyy"
+	 	             			enableManualInput="true"
+	 	             			required="true"></p:calendar>
+	 	            <h:outputLabel  for="Herstel_meldingsdatum">Meldingsdatum</h:outputLabel>
+	 	            <p:calendar  id="Herstel_meldingsdatum"
+	 	             			 value="#{verzuimherstelDetailClass.verzuimherstel.meldingsdatum}"
+	 	             			 pattern="dd-MM-yyyy"
+	 	             			 disabled="true"></p:calendar>
+	 	            <h:outputLabel  for="Herstel_meldingswijze">Meldingswijze</h:outputLabel>
+	 				<p:selectOneMenu id="Herstel_meldingswijze" 
+	 							     value="#{verzuimherstelDetailClass.verzuimherstel.meldingswijze}"
+	 							     disabled="true">
+	 					<f:selectItems value = "#{enumClass.meldingswijzeEnum}" />
+	 				</p:selectOneMenu>
+	 	            <h:outputLabel for="Herstel_herstelpercentage">Herstel percentage</h:outputLabel>
+	 	            <p:inputText  id="Herstel_herstelpercentage" 
+	 	             			  value="#{verzuimherstelDetailClass.verzuimherstel.percentageHerstel}"
+	 	             			  required="true"/>
+	 	            <h:outputLabel for="Herstel_herstelpercentageat">Herstel percentage AT</h:outputLabel>
+	 	            <p:inputText id="Herstel_herstelpercentageat"
+	 	             			 value="#{verzuimherstelDetailClass.verzuimherstel.percentageHerstelAT}"
+	 	             			 required="true"/>
+	 	            <h:outputLabel for="Herstel_opmerkingen">Opmerkingen</h:outputLabel>
+	 	            <p:inputTextarea id="Herstel_opmerkingen" 
+	 	             				 value="#{verzuimherstelDetailClass.verzuimherstel.opmerkingen}" />
+	 				<f:facet name="footer">
+	 	            	<h:panelGroup style="display:block; text-align:center">
+	 						<p:commandButton actionListener="#{verzuimherstelDetailClass.saveHerstel}" 
+	 										 id="btnOpslaanHerstel" 
+	 										 value="Opslaan">
+	 						</p:commandButton>
+	 	            	</h:panelGroup>
+	 	    		</f:facet>
+	 			</h:panelGrid>
+	 		</p:panel>
+	 	</p:panelGrid>
+	</h:form>
+</body> 
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-04-16T19:57:04 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VerzuimHistorieGrafiek" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f7463e5b-31d9-4ca5-aafd-aa7d7cccf49a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="percentage" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[percentage]]></fieldDescription>
+	</field>
+	<field name="startdate" class="java.util.Date">
+		<fieldDescription><![CDATA[startdate]]></fieldDescription>
+	</field>
+	<summary>
+		<band height="240">
+			<timeSeriesChart>
+				<chart evaluationTime="Report" theme="default">
+					<reportElement x="9" y="0" width="531" height="240" uuid="c3588b60-ab60-4caf-8dc3-c53c35010d83"/>
+					<chartTitle>
+						<font fontName="Arial" size="8"/>
+					</chartTitle>
+					<chartSubtitle>
+						<font fontName="Arial" size="8"/>
+					</chartSubtitle>
+					<chartLegend>
+						<font fontName="Arial" size="8"/>
+					</chartLegend>
+				</chart>
+				<timeSeriesDataset timePeriod="Week">
+					<timeSeries>
+						<seriesExpression><![CDATA["Verloop verzuimen"]]></seriesExpression>
+						<timePeriodExpression><![CDATA[$F{startdate}]]></timePeriodExpression>
+						<valueExpression><![CDATA[$F{percentage}]]></valueExpression>
+					</timeSeries>
+				</timeSeriesDataset>
+				<timeSeriesPlot isShowLines="true">
+					<plot>
+						<seriesColor seriesOrder="0" color="#530CB1"/>
+					</plot>
+					<timeAxisFormat>
+						<axisFormat tickLabelMask="MM-yy">
+							<labelFont>
+								<font fontName="Arial"/>
+							</labelFont>
+							<tickLabelFont>
+								<font fontName="Arial" size="8"/>
+							</tickLabelFont>
+						</axisFormat>
+					</timeAxisFormat>
+					<valueAxisFormat>
+						<axisFormat>
+							<labelFont>
+								<font fontName="Arial" size="8"/>
+							</labelFont>
+							<tickLabelFont>
+								<font fontName="Arial"/>
+							</tickLabelFont>
+						</axisFormat>
+					</valueAxisFormat>
+					<rangeAxisMinValueExpression><![CDATA[0]]></rangeAxisMinValueExpression>
+					<rangeAxisMaxValueExpression><![CDATA[100]]></rangeAxisMaxValueExpression>
+				</timeSeriesPlot>
+			</timeSeriesChart>
+		</band>
+	</summary>
+</jasperReport>

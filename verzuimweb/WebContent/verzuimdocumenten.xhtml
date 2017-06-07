@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"> 
+<h:head>
+	<title>Werknemer overzicht</title>
+</h:head>
+		
+<body>
+	   <h:outputStylesheet name="css/verzuim.css" />
+	   <h:outputStylesheet>
+	        .ui-panelgrid tr, .ui-panelgrid td {
+	    		border: none !important;
+			}
+			.alignTop {
+				vertical-align: top;
+			}
+	    </h:outputStylesheet>		
+		<h:form id="form">
+		    <div class="header">
+			  	<ui:insert name="header" >
+				  <ui:include src="templates/commonHeader.xhtml" />
+				</ui:insert>
+		    </div>
+	
+			<p:growl id="message" showDetail="true"/>
+		    <p:panelGrid columns="2" columnClasses="alignTop,alignTop">
+				<ui:include src="templates/mainMenu.xhtml"/>
+				<p:panelGrid columns="2" >
+						<p:dataTable id="verzuimdocumenten" 
+									rows="15" 
+									paginator="true"
+									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									paginatorPosition="bottom"
+									rowsPerPageTemplate="5,10,15"
+									selection="#{verzuimDocumentClass.selectedDocument}"
+									selectionMode="single"
+									value="#{verzuimDocumentClass.documenten}" 
+									sortMode="single" 
+									var="verzuimdocument"
+									widgetVar="werknemerTable"
+									rowKey="#{verzuimdocument.id}"
+									style="width:600px">
+						<p:ajax event="rowSelect" update="btnOpen" listener="#{verzuimDocumentClass.rowSelected}" />
+						<p:column width="30" id="Datum">
+							<f:facet name="header"><h:outputText  value="Datum"></h:outputText></f:facet>
+							<h:outputText value="#{verzuimdocument.aanmaakdatum}"><f:convertDateTime type="date" pattern="dd-MM-yyyy"/></h:outputText>
+						</p:column>
+						<p:column width="100" id="Document" >
+							<f:facet name="header"><h:outputText  value="Documentnaam"></h:outputText></f:facet>
+							<h:outputText value="#{verzuimdocument.documentnaam}"></h:outputText>
+						</p:column>
+						<p:column width="100" id="Omschrijving">
+							<f:facet name="header"><h:outputText  value="Omschrijving"></h:outputText></f:facet>
+							<h:outputText value="#{verzuimdocument.omschrijving}"></h:outputText>
+						</p:column>
+						<f:facet name="footer">
+							<h:panelGroup style="display:block; text-align:center">
+							<p:commandButton id="btnOpen" 
+											 value="Open..." 
+											 ajax="false" 
+											 onclick="PrimeFaces.monitorDownload(start, stop);"
+										     disabled="#{!verzuimDocumentClass.rowSelected}"	  
+											 icon="ui-icon-arrowthick-1-s"
+											 update="messages">
+								<p:fileDownload value="#{verzuimDocumentClass.document}"></p:fileDownload>
+							</p:commandButton>
+							</h:panelGroup>
+			       		</f:facet>
+					</p:dataTable>
+					
+						<h:outputLabel style="display: block;min-width: 150px"/>
+					
+					</p:panelGrid>
+			</p:panelGrid>
+		    <div id="footer">
+		    	<ui:insert name="footer" >
+		    	  <ui:include src="templates/commonFooter.xhtml" />
+		    	</ui:insert>
+	    	</div>
+<script type="text/javascript">
+function start() {
+    PF('statusDialog').show();
+}
+ 
+function stop() {
+    PF('statusDialog').hide();
+}
+</script>
+		</h:form>
+</body>
+</html>

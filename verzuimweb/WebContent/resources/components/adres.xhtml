@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:composite="http://java.sun.com/jsf/composite">
+ 
+    <composite:interface>
+ 
+    	<composite:attribute name="soortadresLabel" />
+    	<composite:attribute name="straatLabel" />
+    	<composite:attribute name="straatValue" />
+    	<composite:attribute name="huisnummerLabel" />
+    	<composite:attribute name="huisnummerValue" />
+    	<composite:attribute name="huisnummertoevoegingLabel" />
+    	<composite:attribute name="huisnummertoevoegingValue" />
+    	<composite:attribute name="postcodeLabel" />
+    	<composite:attribute name="postcodeValue" />
+    	<composite:attribute name="plaatsLabel" />
+    	<composite:attribute name="plaatsValue" />
+    	<composite:attribute name="landLabel" />
+    	<composite:attribute name="landValue" />
+    	<composite:attribute name="adres" type="com.gieselaar.verzuimbeheer.services.AdresInfo" required="true"/>
+ 
+    </composite:interface>
+ 
+    <composite:implementation>
+ 
+		<h:message for="adresPanel" style="color:red;" />
+ 
+		<p:panelGrid frame="none" columns="4" id="adresPanel" >
+			<h:outputLabel for="straat" >Straat</h:outputLabel>
+			<p:inputText id="straat" value="#{cc.attrs.adres.straat}" size="30"></p:inputText>
+			<h:panelGroup>
+				<h:outputLabel for="huisnr" >Huisnr</h:outputLabel>
+				<p:inputText id="huisnr" value="#{cc.attrs.adres.huisnummer}" size="4"></p:inputText>
+				<h:outputLabel for="huisnrtoev" >Toev.</h:outputLabel>
+				<p:inputText  id="huisnrtoev" value="#{cc.attrs.adres.huisnummertoevoeging}" size="4"></p:inputText>
+			</h:panelGroup>
+			<h:outputLabel></h:outputLabel>
+			<h:outputLabel for="postcode" >Postcode</h:outputLabel>
+			<p:inputText id="postcode" value="#{cc.attrs.adres.postcode}" size="7"></p:inputText>
+			<h:panelGroup>
+			<h:outputLabel for="plaats" >Plaats</h:outputLabel>
+			<p:inputText id="plaats" value="#{cc.attrs.adres.plaats}" size="30"></p:inputText>
+			</h:panelGroup>
+			<h:outputLabel></h:outputLabel>
+			<h:outputLabel for="land" >Land</h:outputLabel>
+			<p:inputText id="land" value="#{cc.attrs.adres.land}" size="30"></p:inputText>
+			
+		</p:panelGrid>
+  
+    </composite:implementation>
+ 
+</html>

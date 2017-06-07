@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body>
+<h:outputStylesheet name="css/verzuim.css" />
+<ui:composition template="templates/commonLayout.xhtml" name="header" >
+ 	<ui:define name="content">
+ 	<f:view>
+
+		<h:form id="form">
+	    <p:panel>
+	        <f:facet name="header">
+	        </f:facet>
+	        <center>
+			<p:outputLabel value="#{loginClass.logoffReason()}"></p:outputLabel>
+			<br/>
+			<p:outputLabel value="U bent nu afgemeld " ></p:outputLabel>
+			<br/>
+			<p:commandButton action="index.xhtml?faces-redirect=true" value="Aanmelden" />
+			</center> 
+		</p:panel>
+		</h:form>
+	</f:view>
+	</ui:define>
+</ui:composition>
+</body> 
+</html>

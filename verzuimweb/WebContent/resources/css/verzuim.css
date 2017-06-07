@@ -1,0 +1,50 @@
+@CHARSET "ISO-8859-1";
+BODY{
+	font-family: verdana;
+	font-size: small;
+	height:100%;
+}
+
+HTML{
+	height:100%;
+}
+
+a {	
+	color: blue;
+}
+
+a:visited{
+	color: purple;
+}
+a:active{
+	color: red;
+}
+a:hover { 
+	color: red; 
+	background: white; 
+}
+ul {
+	list-style-type: none;
+}
+
+.indienst 	{background-color: white;}
+.uitdienst 	{background-color: gray;}
+.ziek 		{background-color: orange;} 	
+.leftCol 	{background-color: red;}
+
+.ui-selectonemenu-items-wrapper {
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 11px;
+}
+.ui-panelgrid-cell tr, .ui-panelgrid-cell td {
+	border: none;
+}
+.ui-widget-content tr, .ui-widget-content td {
+	border: none;
+}
+.ui-widget-content tr, .ui-widget-content td {
+	border: none;
+}
+.alignTop 	{vertical-align: top;}
+.cols		{vertical-align: top;}
+

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-04-13T15:53:33 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VerzuimoverzichtWgrGrafiek" pageWidth="300" pageHeight="300" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2a0a4731-aa7d-4ef8-8179-6d49c1a36e02">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="holdingid" class="java.lang.Integer"/>
+	<parameter name="gemFTEMannen" class="java.math.BigDecimal"/>
+	<parameter name="gemFTEVrouwen" class="java.math.BigDecimal"/>
+	<parameter name="Grafiek_datasource" class="java.util.ArrayList"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="afdelingid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[afdelingid]]></fieldDescription>
+	</field>
+	<field name="werkgeverid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[werkgeverid]]></fieldDescription>
+	</field>
+	<field name="holdingid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[holdingid]]></fieldDescription>
+	</field>
+	<field name="startdatumverzuim" class="java.util.Date">
+		<fieldDescription><![CDATA[startdatumverzuim]]></fieldDescription>
+	</field>
+	<field name="einddatumverzuim" class="java.util.Date">
+		<fieldDescription><![CDATA[einddatumverzuim]]></fieldDescription>
+	</field>
+	<field name="verzuimherstelduurinperiode" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimherstelduurinperiode]]></fieldDescription>
+	</field>
+	<field name="verzuimpercentage" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimpercentage]]></fieldDescription>
+	</field>
+	<field name="verzuimherstelduurnettoinperiode" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimherstelduurnettoinperiode]]></fieldDescription>
+	</field>
+	<field name="startperiode" class="java.util.Date">
+		<fieldDescription><![CDATA[startperiode]]></fieldDescription>
+	</field>
+	<field name="eindperiode" class="java.util.Date">
+		<fieldDescription><![CDATA[eindperiode]]></fieldDescription>
+	</field>
+	<field name="werknemerid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[werknemerid]]></fieldDescription>
+	</field>
+	<sortField name="holdingid"/>
+	<sortField name="startperiode"/>
+	<variable name="gemFTETotaal" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$P{gemFTEMannen}.add($P{gemFTEVrouwen})]]></variableExpression>
+	</variable>
+	<variable name="dageninperiode" class="java.lang.Double">
+		<variableExpression><![CDATA[new Double(DAYS($F{startperiode},$F{eindperiode})+1)]]></variableExpression>
+	</variable>
+	<variable name="totaalwerkdagenafdeling" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{gemFTETotaal}.multiply( new BigDecimal($V{dageninperiode}) ).doubleValue()]]></variableExpression>
+	</variable>
+	<variable name="verzuimpercentage" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[IF($V{totaalwerkdagenafdeling}!=0,$F{verzuimherstelduurnettoinperiode}.doubleValue() * 100/ $V{totaalwerkdagenafdeling},new Double(0))]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimpercentage" class="java.lang.Double" resetType="Group" resetGroup="Startperiode" calculation="Sum">
+		<variableExpression><![CDATA[$V{verzuimpercentage}]]></variableExpression>
+	</variable>
+	<filterExpression><![CDATA[$F{holdingid}.equals($P{holdingid})]]></filterExpression>
+	<group name="Holding">
+		<groupExpression><![CDATA[$F{holdingid}]]></groupExpression>
+		<groupFooter>
+			<band height="219">
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<timeSeriesChart>
+					<chart evaluationTime="Group" evaluationGroup="Holding">
+						<reportElement x="0" y="0" width="300" height="212" uuid="2289731f-e0f9-4888-9446-092c15c0c546"/>
+						<chartTitle>
+							<font fontName="Arial"/>
+						</chartTitle>
+						<chartSubtitle>
+							<font fontName="Arial"/>
+						</chartSubtitle>
+						<chartLegend>
+							<font fontName="Arial"/>
+						</chartLegend>
+					</chart>
+					<timeSeriesDataset timePeriod="Week">
+						<dataset resetType="Group" resetGroup="Holding" incrementType="Group" incrementGroup="Startperiode"/>
+						<timeSeries>
+							<seriesExpression><![CDATA["Verloop verzuim"]]></seriesExpression>
+							<timePeriodExpression><![CDATA[$F{startperiode}]]></timePeriodExpression>
+							<valueExpression><![CDATA[$V{RTverzuimpercentage}]]></valueExpression>
+						</timeSeries>
+					</timeSeriesDataset>
+					<timeSeriesPlot>
+						<plot>
+							<seriesColor seriesOrder="0" color="#435CCC"/>
+						</plot>
+						<timeAxisLabelExpression><![CDATA["periode"]]></timeAxisLabelExpression>
+						<timeAxisFormat>
+							<axisFormat>
+								<labelFont>
+									<font fontName="Arial"/>
+								</labelFont>
+								<tickLabelFont>
+									<font fontName="Arial"/>
+								</tickLabelFont>
+							</axisFormat>
+						</timeAxisFormat>
+						<valueAxisLabelExpression><![CDATA["%"]]></valueAxisLabelExpression>
+						<valueAxisFormat>
+							<axisFormat>
+								<labelFont>
+									<font fontName="Arial"/>
+								</labelFont>
+								<tickLabelFont>
+									<font fontName="Arial"/>
+								</tickLabelFont>
+							</axisFormat>
+						</valueAxisFormat>
+						<rangeAxisMinValueExpression><![CDATA[0]]></rangeAxisMinValueExpression>
+						<rangeAxisMaxValueExpression><![CDATA[30]]></rangeAxisMaxValueExpression>
+					</timeSeriesPlot>
+				</timeSeriesChart>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Startperiode">
+		<groupExpression><![CDATA[$F{startperiode}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+</jasperReport>

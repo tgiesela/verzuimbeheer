@@ -1,0 +1,1254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.2.final using JasperReports Library version 6.2.2  -->
+<!-- 2017-06-06T21:52:27 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BTWOverzicht" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4a11b97b-c028-4432-a566-5e8994334190">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="factuurAdapter"/>
+	<parameter name="Footer_datasource" class="java.util.ArrayList"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:/Temp/verzuim_1.1/verzuimbeheer/JasperReports/"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="aansluitkosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[aansluitkosten]]></fieldDescription>
+	</field>
+	<field name="abonnementskosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[abonnementskosten]]></fieldDescription>
+	</field>
+	<field name="btwpercentagehoog" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[btwpercentagehoog]]></fieldDescription>
+	</field>
+	<field name="btwpercentagelaag" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[btwpercentagelaag]]></fieldDescription>
+	</field>
+	<field name="gesommeerd" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[gesommeerd]]></fieldDescription>
+	</field>
+	<field name="holdingid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[holdingid]]></fieldDescription>
+	</field>
+	<field name="jaar" class="java.lang.Integer">
+		<fieldDescription><![CDATA[jaar]]></fieldDescription>
+	</field>
+	<field name="maand" class="java.lang.Integer">
+		<fieldDescription><![CDATA[maand]]></fieldDescription>
+	</field>
+	<field name="maandbedragsecretariaat" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[maandbedragsecretariaat]]></fieldDescription>
+	</field>
+	<field name="somcasemanagementkosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somcasemanagementkosten]]></fieldDescription>
+	</field>
+	<field name="somitembedrag" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somitembedrag]]></fieldDescription>
+	</field>
+	<field name="somitembtwbedraghoog" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somitembtwbedraghoog]]></fieldDescription>
+	</field>
+	<field name="somitembtwbedraglaag" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somitembtwbedraglaag]]></fieldDescription>
+	</field>
+	<field name="somkilometerkosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somkilometerkosten]]></fieldDescription>
+	</field>
+	<field name="somoverigekostenbezoek" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somoverigekostenbezoek]]></fieldDescription>
+	</field>
+	<field name="somoverigekostensecretariaat" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somoverigekostensecretariaat]]></fieldDescription>
+	</field>
+	<field name="somsecretariaatskosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somsecretariaatskosten]]></fieldDescription>
+	</field>
+	<field name="somuurkosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somuurkosten]]></fieldDescription>
+	</field>
+	<field name="somvastekosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somvastekosten]]></fieldDescription>
+	</field>
+	<field name="totaalBtwHoog" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[totaalBtwHoog]]></fieldDescription>
+	</field>
+	<field name="totaalBtwLaag" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[totaalBtwLaag]]></fieldDescription>
+	</field>
+	<field name="totaalExBtw" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[totaalExBtw]]></fieldDescription>
+	</field>
+	<field name="totaalInclBtw" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[totaalInclBtw]]></fieldDescription>
+	</field>
+	<field name="werkgever" class="com.gieselaar.verzuimbeheer.services.WerkgeverInfo">
+		<fieldDescription><![CDATA[werkgever]]></fieldDescription>
+	</field>
+	<field name="somGeenomzetBTWHoog" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somGeenomzetBTWHoog]]></fieldDescription>
+	</field>
+	<field name="somGeenomzetBTWLaag" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somGeenomzetBTWLaag]]></fieldDescription>
+	</field>
+	<field name="somGeenomzetOnbelast" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somGeenomzetOnbelast]]></fieldDescription>
+	</field>
+	<field name="somOmzetBTWHoog" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somOmzetBTWHoog]]></fieldDescription>
+	</field>
+	<field name="somOmzetBTWLaag" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somOmzetBTWLaag]]></fieldDescription>
+	</field>
+	<field name="somOmzetOnbelast" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[somOmzetOnbelast]]></fieldDescription>
+	</field>
+	<field name="factuurnr" class="java.lang.Integer">
+		<fieldDescription><![CDATA[factuurnr]]></fieldDescription>
+	</field>
+	<sortField name="jaar"/>
+	<sortField name="Kwartaal" type="Variable"/>
+	<sortField name="maand"/>
+	<sortField name="werkgevernaam" type="Variable"/>
+	<variable name="Kwartaal" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{maand}<=3?1:($F{maand}<=6?2:($F{maand}<=9?3:4))]]></variableExpression>
+	</variable>
+	<variable name="werkgevernaam" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{werkgever}.getNaam()]]></variableExpression>
+	</variable>
+	<variable name="totaalExBtwKwartaal" class="java.math.BigDecimal" resetType="Group" resetGroup="Kwartaal" calculation="Sum">
+		<variableExpression><![CDATA[$F{totaalExBtw}]]></variableExpression>
+	</variable>
+	<variable name="totaalExBtwMaand" class="java.math.BigDecimal" resetType="Group" resetGroup="Maand" calculation="Sum">
+		<variableExpression><![CDATA[$F{totaalExBtw}]]></variableExpression>
+	</variable>
+	<variable name="totaalExBtwJaar" class="java.math.BigDecimal" resetType="Group" resetGroup="Jaar" calculation="Sum">
+		<variableExpression><![CDATA[$F{totaalExBtw}]]></variableExpression>
+	</variable>
+	<variable name="OmzetBTWHoog" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{somOmzetBTWHoog}.add($F{totaalExBtw}.subtract($F{somitembedrag}))]]></variableExpression>
+	</variable>
+	<variable name="somOmzetOnbelastMaand" class="java.math.BigDecimal" resetType="Group" resetGroup="Maand" calculation="Sum">
+		<variableExpression><![CDATA[$F{somOmzetOnbelast}]]></variableExpression>
+	</variable>
+	<variable name="somOmzetOnbelastKwartaal" class="java.math.BigDecimal" resetType="Group" resetGroup="Kwartaal" calculation="Sum">
+		<variableExpression><![CDATA[$F{somOmzetOnbelast}]]></variableExpression>
+	</variable>
+	<variable name="somOmzetOnbelastJaar" class="java.math.BigDecimal" resetType="Group" resetGroup="Jaar" calculation="Sum">
+		<variableExpression><![CDATA[$F{somOmzetOnbelast}]]></variableExpression>
+	</variable>
+	<variable name="somOmzetBTWLaagMaand" class="java.math.BigDecimal" resetType="Group" resetGroup="Maand" calculation="Sum">
+		<variableExpression><![CDATA[$F{somOmzetBTWLaag}]]></variableExpression>
+	</variable>
+	<variable name="somOmzetBTWLaagKwartaal" class="java.math.BigDecimal" resetType="Group" resetGroup="Kwartaal" calculation="Sum">
+		<variableExpression><![CDATA[$F{somOmzetBTWLaag}]]></variableExpression>
+	</variable>
+	<variable name="somOmzetBTWLaagJaar" class="java.math.BigDecimal" resetType="Group" resetGroup="Jaar" calculation="Sum">
+		<variableExpression><![CDATA[$F{somOmzetBTWLaag}]]></variableExpression>
+	</variable>
+	<variable name="somGeenomzetOnbelastMaand" class="java.math.BigDecimal" resetType="Group" resetGroup="Maand" calculation="Sum">
+		<variableExpression><![CDATA[$F{somGeenomzetOnbelast}]]></variableExpression>
+	</variable>
+	<variable name="somGeenomzetOnbelastKwartaal" class="java.math.BigDecimal" resetType="Group" resetGroup="Kwartaal" calculation="Sum">
+		<variableExpression><![CDATA[$F{somGeenomzetOnbelast}]]></variableExpression>
+	</variable>
+	<variable name="somGeenomzetOnbelastJaar" class="java.math.BigDecimal" resetType="Group" resetGroup="Jaar" calculation="Sum">
+		<variableExpression><![CDATA[$F{somGeenomzetOnbelast}]]></variableExpression>
+	</variable>
+	<variable name="somGeenomzetBTWLaagMaand" class="java.math.BigDecimal" resetType="Group" resetGroup="Maand" calculation="Sum">
+		<variableExpression><![CDATA[$F{somGeenomzetBTWLaag}]]></variableExpression>
+	</variable>
+	<variable name="somGeenomzetBTWLaagKwartaal" class="java.math.BigDecimal" resetType="Group" resetGroup="Kwartaal" calculation="Sum">
+		<variableExpression><![CDATA[$F{somGeenomzetBTWLaag}]]></variableExpression>
+	</variable>
+	<variable name="somGeenomzetBTWLaagJaar" class="java.math.BigDecimal" resetType="Group" resetGroup="Jaar" calculation="Sum">
+		<variableExpression><![CDATA[$F{somGeenomzetBTWLaag}]]></variableExpression>
+	</variable>
+	<variable name="somGeenomzetBTWHoogMaand" class="java.math.BigDecimal" resetType="Group" resetGroup="Maand" calculation="Sum">
+		<variableExpression><![CDATA[$F{somGeenomzetBTWHoog}]]></variableExpression>
+	</variable>
+	<variable name="somGeenomzetBTWHoogKwartaal" class="java.math.BigDecimal" resetType="Group" resetGroup="Kwartaal" calculation="Sum">
+		<variableExpression><![CDATA[$F{somGeenomzetBTWHoog}]]></variableExpression>
+	</variable>
+	<variable name="somGeenomzetBTWHoogJaar" class="java.math.BigDecimal" resetType="Group" resetGroup="Jaar" calculation="Sum">
+		<variableExpression><![CDATA[$F{somGeenomzetBTWHoog}]]></variableExpression>
+	</variable>
+	<variable name="somOmzetBTWHoogMaand" class="java.math.BigDecimal" resetType="Group" resetGroup="Maand" calculation="Sum">
+		<variableExpression><![CDATA[$V{OmzetBTWHoog}]]></variableExpression>
+	</variable>
+	<variable name="somOmzetBTWHoogKwartaal" class="java.math.BigDecimal" resetType="Group" resetGroup="Kwartaal" calculation="Sum">
+		<variableExpression><![CDATA[$V{OmzetBTWHoog}]]></variableExpression>
+	</variable>
+	<variable name="somOmzetBTWHoogJaar" class="java.math.BigDecimal" resetType="Group" resetGroup="Jaar" calculation="Sum">
+		<variableExpression><![CDATA[$V{OmzetBTWHoog}]]></variableExpression>
+	</variable>
+	<group name="Jaar">
+		<groupExpression><![CDATA[$F{jaar}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="18">
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="170" y="0" width="57" height="13" uuid="dea05680-9d2b-4357-b807-918c36bc4bb8">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totaalExBtwJaar}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="100" height="13" uuid="6f2f4ed6-5838-43de-a6be-4403aed66874">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Totaal Jaar " + $F{jaar}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="280" y="0" width="50" height="13" uuid="135c9390-e6d3-4286-bf81-13f306619ee8">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetOnbelastJaar}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="330" y="0" width="50" height="13" uuid="30d3401f-d94f-4c7d-bfd1-4f0c3c1a7210">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitx" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWLaagJaar}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="430" y="0" width="50" height="13" uuid="e43a345a-3ebf-409e-9330-14c1fd8751f6">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWHoogJaar}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="540" y="0" width="50" height="13" uuid="c9958560-1897-4ed5-a99f-44f2cfcc9c5b">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetOnbelastJaar}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="590" y="0" width="50" height="13" uuid="ec4d46db-b472-4e82-819a-9a6eeffd1edb">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWLaagJaar}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="690" y="0" width="50" height="13" uuid="924d9fb5-7088-486e-b44f-75373516a8dd">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWHoogJaar}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="740" y="0" width="50" height="13" uuid="e98b0862-7138-44f1-9d9d-2bd95fcffa88">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWHoogJaar}.multiply($F{btwpercentagehoog}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="640" y="0" width="50" height="13" uuid="306ee0aa-defa-4c80-980e-4d38a54e7f65">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWLaagJaar}.multiply($F{btwpercentagelaag}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="480" y="0" width="50" height="13" uuid="f40357f0-7c7b-4f9d-8605-a84db73ee708">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWHoogJaar}.multiply($F{btwpercentagehoog}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="380" y="0" width="50" height="13" uuid="5287ecce-fb2d-4506-8228-2a59767f15d1">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitx" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWLaagJaar}.multiply($F{btwpercentagelaag}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Kwartaal">
+		<groupExpression><![CDATA[$V{Kwartaal}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="18">
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField>
+					<reportElement x="0" y="0" width="100" height="13" uuid="d9b412bc-6787-47fe-8860-f586db5323e3">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Totaal Q" + ($F{maand}<=3?1:($F{maand}<=6?2:($F{maand}<=9?3:4)))]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="170" y="0" width="57" height="13" uuid="52fcfbaa-d044-45ed-ad47-11ef67438d49">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totaalExBtwKwartaal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="280" y="0" width="50" height="13" uuid="081a22c3-fdd0-474d-9bdd-29e4766c6c39">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetOnbelastKwartaal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="330" y="0" width="50" height="13" uuid="0ac4300e-2aee-40bd-8dbd-17c39cdb4064">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWLaagKwartaal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="430" y="0" width="50" height="13" uuid="4edaf2bf-5e2c-43ff-adcd-a4b67291fc22">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWHoogKwartaal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="540" y="0" width="50" height="13" uuid="9f106f9f-b0d8-4eea-94bd-3931dccd1c2e">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetOnbelastKwartaal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="590" y="0" width="50" height="13" uuid="195e30b7-2c36-4af1-83ec-5c4b249534c6">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWLaagKwartaal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="690" y="0" width="50" height="13" uuid="ff3c1799-99cf-4ebe-acdd-8fbc17c9e80c">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWHoogKwartaal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="740" y="0" width="50" height="13" uuid="1ac92fe5-0f58-45af-b58e-72026b798528">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWHoogKwartaal}.multiply($F{btwpercentagehoog}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="640" y="0" width="50" height="13" uuid="2bc450e5-9b44-4b0e-a75d-90de153c0246">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWLaagKwartaal}.multiply($F{btwpercentagelaag}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="480" y="0" width="50" height="13" uuid="b1ee0033-bcbe-4990-8bc1-3b1aec183d49">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWHoogKwartaal}.multiply($F{btwpercentagehoog}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="380" y="0" width="50" height="13" uuid="ffd2a8a6-aa94-44a9-8bb9-ba1d6d92b79b">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWLaagKwartaal}.multiply($F{btwpercentagelaag}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Maand" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{maand}]]></groupExpression>
+		<groupHeader>
+			<band height="31">
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField pattern="">
+					<reportElement x="330" y="13" width="50" height="13" uuid="f8d6f76b-0a78-445f-a46b-0e790fd0112c">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unity" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{btwpercentagelaag}+"%"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="740" y="13" width="50" height="13" uuid="f1c1fc52-124f-4d49-beef-87fc75bd3ac7">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="local_mesure_unitx" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BTW]]></text>
+				</staticText>
+				<textField pattern="">
+					<reportElement x="80" y="0" width="100" height="13" uuid="727e5493-6a43-45a5-a3a7-f22f194cfb5a">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[DATEFORMAT(new SimpleDateFormat("MM-yyyy").parse($F{maand}+"-"+$F{jaar}),"MMM yyyy")]]></textFieldExpression>
+				</textField>
+				<textField pattern="">
+					<reportElement x="590" y="13" width="50" height="13" uuid="88dde5c1-9a3c-4d23-9cc1-c085226427e5">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unity" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{btwpercentagelaag}+"%"]]></textFieldExpression>
+				</textField>
+				<textField pattern="">
+					<reportElement x="690" y="13" width="50" height="13" uuid="ecd0282a-76c6-4f70-905a-6746d57a4d03">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unity" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{btwpercentagehoog}+"%"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="180" y="0" width="47" height="26" uuid="34e1eb4f-1010-4828-965b-155fc6fdb1db">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unity" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Factuur bedrag]]></text>
+				</staticText>
+				<textField pattern="">
+					<reportElement x="430" y="13" width="50" height="13" uuid="c86d451c-4a9f-4bb3-9154-36bfe413cc09">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unity" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="local_mesure_unitx" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{btwpercentagehoog}+"%"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="280" y="13" width="50" height="13" uuid="847c0348-0b93-4930-9493-657823bf190d">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[onbelast]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="480" y="13" width="50" height="13" uuid="8f3f1a45-90ca-4e42-b170-8d5865db1f7b">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="local_mesure_unitx" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BTW]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="540" y="13" width="50" height="13" uuid="4444917e-6319-4338-ae8b-5c651f2efe7f">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitx" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<box>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[onbelast]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="380" y="13" width="50" height="13" uuid="da001971-2eba-4643-ac99-8d687b3f2445">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="local_mesure_unitx" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BTW]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="0" width="71" height="13" uuid="ae347651-729a-4e42-8456-f1ef3f8163c4">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Werkgever]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="540" y="0" width="250" height="13" uuid="311e5155-6039-4ac4-a073-cd5163c3ae52">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitx" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Doorlopende posten]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="640" y="13" width="50" height="13" uuid="169b41c3-a03f-407b-8b62-21180ed824d5">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="local_mesure_unitx" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BTW]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="280" y="0" width="250" height="13" uuid="63e412f8-051b-43bf-ab3a-47bfee41fbae">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitx" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Omzet]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="230" y="0" width="40" height="26" uuid="a41d6edf-d3e7-4391-a621-7ebb5daa0db3">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unity" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Factuur Nummer]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="18">
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField>
+					<reportElement x="0" y="0" width="100" height="13" uuid="ebe41b82-8c35-4a78-9f69-6c4e4d578820">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Totaal " + DATEFORMAT(new SimpleDateFormat("MM-yyyy").parse($F{maand}+"-"+$F{jaar}),"MMM yyyy")]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="170" y="0" width="57" height="13" uuid="1cb1692d-2575-4fba-af6e-0b1b56ec4e22">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totaalExBtwMaand}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="280" y="0" width="50" height="13" uuid="0ab551af-d260-4766-936e-5d2d5366fdca">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetOnbelastMaand}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="330" y="0" width="50" height="13" uuid="1ac1c0f4-257c-4d48-833e-d1afc3c598ef">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWLaagMaand}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="430" y="0" width="50" height="13" uuid="9ab1cd6d-bc66-4bed-9d74-b240df3a8a1e">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWHoogMaand}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="540" y="0" width="50" height="13" uuid="1d41d171-6b1f-4bb1-870a-abd0f71b0cdc">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetOnbelastMaand}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="590" y="0" width="50" height="13" uuid="95be36a2-736f-4833-bd9b-d48788f8d408">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWLaagMaand}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="690" y="0" width="50" height="13" uuid="f5fad24f-0a32-496d-b5a4-fd29fa54caba">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWHoogMaand}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="740" y="0" width="50" height="13" uuid="6d6da162-19e8-4eaa-b2e7-f75a4eb6cab6">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWHoogMaand}.multiply($F{btwpercentagehoog}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="640" y="0" width="50" height="13" uuid="498d7cc0-afc8-409c-bbf9-87e8e4cdae02">
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somGeenomzetBTWLaagMaand}.multiply($F{btwpercentagelaag}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="480" y="0" width="50" height="13" uuid="43f66591-8a0b-430a-ba79-0e15a40aad44">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWHoogMaand}.multiply($F{btwpercentagehoog}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="380" y="0" width="50" height="13" uuid="2e52b779-73ca-411d-b6b0-0379ddfc8923">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somOmzetBTWLaagMaand}.multiply($F{btwpercentagelaag}.divide(new BigDecimal(100)))]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="701" y="4" width="100" height="70" uuid="34e4ffed-0831-4a09-85d0-c51b48515f7b"/>
+				<imageExpression><![CDATA["logo_de_vos.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="300" y="32" width="190" height="28" uuid="331ff8c1-1823-4a25-9790-b1890e001cb7"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Overzicht BTW en omzet]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField pattern="">
+				<reportElement x="0" y="0" width="170" height="13" uuid="780eb0b9-fdbf-4a6f-aa9f-2aaf569261ab">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkgever}.getNaam()]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="180" y="0" width="47" height="13" uuid="7a069292-922f-4276-9a18-40e1eac030b4">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totaalExBtw}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="280" y="0" width="50" height="13" uuid="2806eab2-d4c9-43b2-bb4f-12da432feaa8">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{somOmzetOnbelast}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="430" y="0" width="50" height="13" uuid="9ebc295a-bc92-42ad-a25c-0074447d6388">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{OmzetBTWHoog}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="540" y="0" width="50" height="13" uuid="000fc893-4532-4aea-817e-461e16e9e0ee">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{somGeenomzetOnbelast}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="590" y="0" width="50" height="13" uuid="c97e8864-aae6-4630-bb9e-615ce850286d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{somGeenomzetBTWLaag}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="690" y="0" width="50" height="13" uuid="deb3a29c-abcb-4890-9865-164b4ceddddf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{somGeenomzetBTWHoog}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="330" y="0" width="50" height="13" uuid="cd4476ef-0eb8-44cb-ad02-0fdcb8edd822">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{somOmzetBTWLaag}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="740" y="0" width="50" height="13" uuid="3bc9d58f-e1f6-4868-a96c-8cd1be63b7c9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+				</reportElement>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{somGeenomzetBTWHoog}.multiply($F{btwpercentagehoog}.divide(new BigDecimal(100)))]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="640" y="0" width="50" height="13" uuid="dc9deca0-7c72-4211-821f-9d21981a0582">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+				</reportElement>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{somGeenomzetBTWLaag}.multiply($F{btwpercentagelaag}.divide(new BigDecimal(100)))]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="480" y="0" width="50" height="13" uuid="c005a4dd-a025-47fb-b375-795c4f616373">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{OmzetBTWHoog}.multiply($F{btwpercentagehoog}.divide(new BigDecimal(100)))]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="380" y="0" width="50" height="13" uuid="cc8b9cd8-81e2-4b4f-9880-637b424852df">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{somOmzetBTWLaag}.multiply($F{btwpercentagelaag}.divide(new BigDecimal(100)))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="0" width="43" height="13" uuid="08202ff2-e2f4-4f21-84c3-2d8f186523b3">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{factuurnr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="64" splitType="Stretch">
+			<subreport>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="60" uuid="8b8eddf7-a809-4ce9-bce0-3aa599dc70eb">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{Footer_datasource})]]></dataSourceExpression>
+				<subreportExpression><![CDATA["Footer.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

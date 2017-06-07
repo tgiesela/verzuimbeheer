@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions" 
+	  xmlns:components="http://java.sun.com/jsf/composite/components">
+<h:head>
+	<title>Persoonlijke gegevens</title>
+</h:head>
+<h:body>
+	<h:outputStylesheet name="css/verzuim.css" />
+   <h:outputStylesheet>
+        .cols {
+        vertical-align: top;
+        }
+        .ui-panelgrid tr, .ui-panelgrid td {
+    		border: none !important;
+		}
+    </h:outputStylesheet>
+	<h:form id = "form">
+	    <div class="header">
+		  	<ui:insert name="header" >
+			  <ui:include src="templates/commonHeader.xhtml" />
+			</ui:insert>
+	    </div>
+		<p:growl id="messages" showDetail="true" />
+		<p:panelGrid columns="2" columnClasses="cols,cols">
+			<ui:include src="templates/mainMenu.xhtml"/>
+
+			<p:panelGrid columns="3" layout="grid">
+				<p:outputLabel style="display: block;min-width: 150px"/>
+				<p:panel header="Persoonlijke gegevens" style="width:550px;">
+					<p:panelGrid frame="none" id="persoonsgegevensGrid" columns="2" >
+						<p:outputLabel for="achternaam" value="Achternaam"></p:outputLabel>
+						<p:inputText id="achternaam" label="achternaam" value="#{gebruikerClass.achternaam}" required = "false" size="30"></p:inputText>
+						<p:outputLabel for="tussenvoegsel" value="Tussenvoegsel" ></p:outputLabel>
+						<p:inputText id="tussenvoegsel" label="tussenvoegsel" value="#{gebruikerClass.tussenvoegsel}" required = "false" size="10"></p:inputText>
+						<p:outputLabel for="voornaam" value="Voornaam"></p:outputLabel>
+						<p:inputText id="voornaam" label="voornaam" value="#{gebruikerClass.voornaam}" required = "false" size="30"></p:inputText>
+						<p:outputLabel for="emailadres" value="Emailadres" ></p:outputLabel>
+						<p:inputText id="emailadres" label="Email adres" value="#{gebruikerClass.emailadres}" required = "false" size="50"></p:inputText>
+						<p:outputLabel for="gebruikersnaam" value="Gebruikersnaam" ></p:outputLabel>
+						<p:inputText id="gebruikersnaam" label="gebruikersnaam" value="#{gebruikerClass.gebruikersnaam}" required = "true" size="20"></p:inputText>
+					</p:panelGrid>
+	 				<f:facet name="footer">
+		            	<h:panelGroup style="display:block; text-align:center">
+							<p:commandButton id="btnOpslaan" 
+											 value="Opslaan"
+											 action="#{gebruikerClass.opslaan}"
+										 	 update="messages">
+							</p:commandButton>
+		            	</h:panelGroup>
+	        		</f:facet>
+				</p:panel>
+			
+			</p:panelGrid>
+		</p:panelGrid>
+	    <div id="footer">
+	    	<ui:insert name="footer" >
+	    	  <ui:include src="templates/commonFooter.xhtml" />
+	    	</ui:insert>
+    	</div>
+	</h:form>
+</h:body>
+</html>

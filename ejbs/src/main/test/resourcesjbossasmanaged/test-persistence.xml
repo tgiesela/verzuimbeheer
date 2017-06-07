@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="ejbs">
+		<jta-data-source>jdbc/verzuim</jta-data-source>
+		<class>com.gieselaar.verzuimbeheer.entities.Activiteit</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Adres</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Afdeling</class>
+		<class>com.gieselaar.verzuimbeheer.entities.AfdelingHasWerknemer</class>
+		<class>com.gieselaar.verzuimbeheer.entities.AfdelingHasWerknemerPK</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Applicatiefunctie</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Arbodienst</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Bedrijfsarts</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Bedrijfsgegevens</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Cascode</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Cascodegroep</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Contactpersoon</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Dienstverband</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Documenttemplate</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Gebruiker</class>
+		<class>com.gieselaar.verzuimbeheer.entities.GebruikerRol</class>
+		<class>com.gieselaar.verzuimbeheer.entities.GebruikerWerkgever</class>
+		<class>com.gieselaar.verzuimbeheer.entities.GebruikerRolPK</class>
+		<class>com.gieselaar.verzuimbeheer.entities.GebruikerWerkgeverPK</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Holding</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Pakket</class>
+		<class>com.gieselaar.verzuimbeheer.entities.PakketHasActiviteit</class>
+		<class>com.gieselaar.verzuimbeheer.entities.PakketHasActiviteitPK</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Rol</class>
+		<class>com.gieselaar.verzuimbeheer.entities.RolApplicatiefunctie</class>
+		<class>com.gieselaar.verzuimbeheer.entities.RolApplicatiefunctiePK</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Todo</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Uitvoeringsinstituut</class>
+		<class>com.gieselaar.verzuimbeheer.entities.VActueelverzuim</class>
+		<class>com.gieselaar.verzuimbeheer.entities.VActueelVerzuimPK</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Verzuim</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Verzuimactiviteit</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Verzuimdocument</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Verzuimherstel</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Verzuimmedischekaart</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Werkgever</class>
+		<class>com.gieselaar.verzuimbeheer.entities.WerkgeverHasPakket</class>
+		<class>com.gieselaar.verzuimbeheer.entities.WerkgeverHasPakketPK</class>
+		<class>com.gieselaar.verzuimbeheer.entities.WerkgeverHasWerknemerPK</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Werknemer</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Wiapercentage</class>
+		<class>com.gieselaar.verzuimbeheer.entities.WiawerknemerPK</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Oe</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Oeniveau</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Oereport</class>
+		<class>com.gieselaar.verzuimbeheer.entitiesutils.EntityBaseId</class>
+		<class>com.gieselaar.verzuimbeheer.entities.WerknemerFast</class>
+		<class>com.gieselaar.verzuimbeheer.entities.TodoFast</class>
+		<class>com.gieselaar.verzuimbeheer.entities.WerknemerAantallen</class>
+		<class>com.gieselaar.verzuimbeheer.entities.WerknemerAantallenPK</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Tarief</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Btw</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Werkzaamheden</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Factuurcategorie</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Factuuritem</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Factuurkop</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Factuurregelbezoek</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Factuurregelitem</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Factuurregelsecretariaat</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Factuur</class>
+		<class>com.gieselaar.verzuimbeheer.entities.FactuurTotaal</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Factuurbetaling</class>
+		<class>com.gieselaar.verzuimbeheer.entities.WerknemerVerzuim</class>
+		<class>com.gieselaar.verzuimbeheer.entities.WerknemerVerzuimPK</class>
+		<class>com.gieselaar.verzuimbeheer.entities.Settings</class>
+		<properties>
+			<!-- <property name="eclipselink.logging.level" value="FINE"/>  -->
+			<property name="eclipselink.logging.level" value="OFF"/>
+		</properties>
+	</persistence-unit>
+</persistence>

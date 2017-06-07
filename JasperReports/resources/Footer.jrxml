@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Footer" pageWidth="595" pageHeight="100" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Key" uuid="c832591a-4a50-4e29-b6db-4f1f4971fc45">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="factuurAdapter"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="bankrekening" class="java.lang.String">
+		<fieldDescription><![CDATA[bankrekening]]></fieldDescription>
+	</field>
+	<field name="btwnummer" class="java.lang.String">
+		<fieldDescription><![CDATA[btwnummer]]></fieldDescription>
+	</field>
+	<field name="emailadres" class="java.lang.String">
+		<fieldDescription><![CDATA[emailadres]]></fieldDescription>
+	</field>
+	<field name="fax" class="java.lang.String">
+		<fieldDescription><![CDATA[fax]]></fieldDescription>
+	</field>
+	<field name="kvknr" class="java.lang.String">
+		<fieldDescription><![CDATA[kvknr]]></fieldDescription>
+	</field>
+	<field name="naam" class="java.lang.String">
+		<fieldDescription><![CDATA[naam]]></fieldDescription>
+	</field>
+	<field name="telefoonnummer" class="java.lang.String">
+		<fieldDescription><![CDATA[telefoonnummer]]></fieldDescription>
+	</field>
+	<field name="mobiel" class="java.lang.String">
+		<fieldDescription><![CDATA[mobiel]]></fieldDescription>
+	</field>
+	<field name="postAdres" class="com.gieselaar.verzuimbeheer.services.AdresInfo">
+		<fieldDescription><![CDATA[postAdres]]></fieldDescription>
+	</field>
+	<field name="vestigingsAdres" class="com.gieselaar.verzuimbeheer.services.AdresInfo">
+		<fieldDescription><![CDATA[vestigingsAdres]]></fieldDescription>
+	</field>
+	<variable name="Adres" class="com.gieselaar.verzuimbeheer.services.AdresInfo">
+		<variableExpression><![CDATA[IF(($F{postAdres}==null),$F{vestigingsAdres},$F{postAdres})]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="60" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="10" y="10" width="148" height="15" uuid="c3f49cac-28c0-48f6-9cbe-635241389540">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{naam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="170" y="10" width="30" height="15" uuid="e1e18b50-697e-4955-a742-8433fb78e24b"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Tel:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="10" width="100" height="15" uuid="46216738-1c7a-4307-8f72-438abb1d5775">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefoonnummer}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="10" width="70" height="15" uuid="ae85eebb-273b-432c-9458-3c940c9821b7"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[KvK inschr nr:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="380" y="10" width="150" height="15" uuid="56edfffc-d507-4718-8bfc-f283332afeee">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kvknr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="170" y="21" width="30" height="15" uuid="7b98c43d-b0be-483c-95c2-9ade4b9b9a9e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Mob:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="21" width="100" height="15" uuid="6a932ab0-afca-4ce6-9791-33f211d8ba22">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mobiel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="21" width="100" height="15" uuid="0ae58e41-4e21-4428-9ee1-981336da5be4">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankrekening}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="21" width="70" height="15" uuid="7ef5d23c-0cc2-4404-a172-ec3aea5395ae">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[bankrekening]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="32" width="30" height="15" uuid="762ec504-2d01-4033-aca6-05c2cf153cb6"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Fax:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="32" width="100" height="15" uuid="8b10f33d-0568-41b9-88bc-637774f04f91">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fax}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="32" width="100" height="15" uuid="9b06c139-7c46-4903-92d0-75220aeccf12">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{btwnummer}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="32" width="70" height="15" uuid="66c7de5e-bd64-4c17-a458-62f920d7c3cc">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[btwnummer]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="21" width="148" height="15" uuid="bbb9db22-5d2d-45e6-bf4b-b817185c543b">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Adres}.getStraat()+" " + $V{Adres}.getHuisnummer()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="32" width="40" height="15" uuid="ce54c8af-b998-4b32-a50d-16dabba2cf1e">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Adres}.getPostcode()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="32" width="98" height="15" uuid="4f497229-b1da-4260-9923-aa8b8681e6ed">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Adres}.getPlaats()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="5" width="593" height="1" uuid="14ca07c5-0b5b-4811-af95-1c7409648f2d"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

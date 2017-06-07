@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<h:outputStylesheet name="verzuim.css" library="css" />
+	<title>Wachtwoord vergeten</title>
+</h:head>
+<body>
+<h:outputStylesheet name="css/verzuim.css" />
+<f:view>
+	<ui:insert name="header" >
+	  <ui:include src="templates/commonHeader.xhtml" />
+	</ui:insert>
+	<h:form id="wachtwoordVergeten">
+		<p:growl id="messages" detail="true"/>
+		<div id="centered" style="width:40%;">
+			<p>Na het invullen van uw email adres drukt up op verzenden. U ontvangt dan na enkele minuten een email met daarin uw nieuwe wachtwoord.
+			Dit nieuwe wachtwoord kunt wijzigen nadat u zich opnieuw hebt aangemeld.</p>
+			<p:outputLabel  styleClass="textlabel" value="Email adres"></p:outputLabel>
+		<p:inputText  styleClass="textfield" 
+					  id="emailadres" 
+					  label="Email" 
+					  value="#{loginClass.emailadres}" 
+					  required = "true">
+		</p:inputText>
+		<br/>
+		<br/>
+		<p:commandButton styleClass="commandButton" 
+						 id="btnVerzenden" 
+						 value="Verzenden" 
+						 action="#{loginClass.newPassword}">
+		</p:commandButton>
+		</div>
+	</h:form>
+   	<ui:insert name="footer" >
+   	  <ui:include src="templates/commonFooter.xhtml" />
+   	</ui:insert>
+</f:view>
+</body>
+</html>

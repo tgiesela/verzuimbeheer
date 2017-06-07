@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:components="http://java.sun.com/jsf/composite/components"
+	  xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+		 
+    <h:head>
+		<title>Werknemer gegevens</title>
+    </h:head>
+ 
+<h:body>
+   	<h:outputStylesheet name="css/verzuim.css" />
+   <h:outputStylesheet>
+        .cols {
+        vertical-align: top;
+        }
+        .ui-panelgrid tr, .ui-panelgrid td {
+    		border: none !important;
+		}
+		.alignTop {
+			vertical-align: top;
+		}
+    </h:outputStylesheet>
+	<h:form id="form">
+	    <div class="header">
+		  	<ui:insert name="header" >
+			  <ui:include src="templates/commonHeader.xhtml" />
+			</ui:insert>
+	    </div>
+		<p:growl id="messages" showDetail="true" />
+		<p:panelGrid columns="2" columnClasses="alignTop,alignTop">
+			<ui:include src="templates/mainMenu.xhtml"/>
+		
+			<p:panelGrid styleclass="werknemerGrid" columns="3" layout="grid">
+				<p:outputLabel style="display: block;min-width: 150px"/>
+				<p:panel header="Persoonsgegevens" style="width:600px;">
+					<p:panelGrid frame="none" id="persoonsgegevensGrid"  columns="4">
+						<p:outputLabel for="bsn"  >BSN</p:outputLabel>
+						<p:inputText  id="bsn" label="bsn" value="#{werknemerDetailClass.werknemer.burgerservicenummer}" requiredMessage="Burgerservicenummer ontbreekt" size="10"></p:inputText>
+						<p:outputLabel ></p:outputLabel>
+						<p:outputLabel ></p:outputLabel>
+						<p:outputLabel for="achternaam" >Achternaam</p:outputLabel>
+						<p:inputText  id="achternaam"  value="#{werknemerDetailClass.werknemer.achternaam}"  requiredMessage="Achternaam ontbreekt" size="30"></p:inputText>
+						<p:outputLabel for="voorvoegsel" >Voorvoegsel</p:outputLabel>
+						<p:inputText  id="voorvoegsel" value="#{werknemerDetailClass.werknemer.voorvoegsel}" required = "false" size="10"></p:inputText>
+						<p:outputLabel for="voornaam"  >Voornaam</p:outputLabel>
+						<p:inputText  id="voornaam" value="#{werknemerDetailClass.werknemer.voornaam}" required = "false" size="30"></p:inputText>
+						<p:outputLabel for="voorletters"  >Voorletters</p:outputLabel>
+						<p:inputText  id="voorletters" value="#{werknemerDetailClass.werknemer.voorletters}" required = "false" size="6"></p:inputText>
+						<p:outputLabel for="geboortedatum"  >Geb. datum</p:outputLabel>
+						<p:calendar id="geboortedatum" value="#{werknemerDetailClass.werknemer.geboortedatum}" pattern="dd-MM-yyyy" enableManualInput="true" requiredMessage="Geboortedatum ontbreekt" ></p:calendar>
+						<p:outputLabel for="geslacht"  >Geslacht</p:outputLabel>
+						<p:selectOneMenu id="geslacht" 
+										 value = "#{werknemerDetailClass.werknemer.geslacht}" 
+										 style="width: 107px;" 
+							 			 converter="geslachtConverter" >
+							<f:selectItems value = "#{enumClass.geslachtenEnum}" />
+						</p:selectOneMenu>
+						<p:outputLabel for="burgerlijkestaat"  >Burgerlijke staat</p:outputLabel>
+						<p:selectOneMenu id="burgerlijkestaat" value = "#{werknemerDetailClass.werknemer.burgerlijkestaat}" style="width: 180px; " >
+							<f:selectItems value = "#{enumClass.burgelijkestatenEnum}" />
+						</p:selectOneMenu>
+						<p:outputLabel for="telefoonwerk"  >Telefoon werk</p:outputLabel>
+						<p:inputText  id="telefoonwerk" value="#{werknemerDetailClass.werknemer.telefoon}" size="12"></p:inputText>
+						<p:outputLabel for="telefoonprive"  >Telefoon privé</p:outputLabel>
+						<p:inputText  id="telefoonprive" value="#{werknemerDetailClass.werknemer.telefoonPrive}" size="12"></p:inputText>
+						<p:outputLabel for="mobiel"  >Telefoon mobiel</p:outputLabel>
+						<p:inputText  id="mobiel" value="#{werknemerDetailClass.werknemer.mobiel}" size="12"></p:inputText>
+						<p:outputLabel for="email"  >Email adres</p:outputLabel>
+						<p:inputText  id="email" value="#{werknemerDetailClass.werknemer.email}" size="30"></p:inputText>
+						<p:outputLabel  >Wiapercentage</p:outputLabel>
+						<p:selectOneMenu id="wiapercentage" value = "#{werknemerDetailClass.selectedWiapercentage}" style="width: 180px;" onchange="submit()" immediate="true">
+							<f:selectItems value = "#{enumClass.wiapercentagesEnum}" />
+						</p:selectOneMenu>
+					</p:panelGrid>
+				</p:panel>
+				<p:outputLabel style="display: block;min-width: 150px"/>
+				
+				<p:outputLabel value="" />
+				<p:panel header="Woonadres" style="width:600px;">
+		   			<components:adres adres="#{werknemerDetailClass.werknemer.adres}"
+				 				      soortadresLabel="Woonadres">
+		    		</components:adres>
+	    		</p:panel>
+				<p:outputLabel value=""/>
+	
+				<p:outputLabel value=""/>
+	    		<p:panel header="Dienstverband" style="width:600px;">
+					<p:panelGrid id="dienstverbandGrid" columns="4" layout="grid">
+						<p:outputLabel for="werkweek" >Werkweek</p:outputLabel>
+						<p:inputText  id="werkweek" value="#{werknemerDetailClass.dienstverband.werkweek}" requiredMessage="Werkweek niet ingevuld" size="5"></p:inputText>
+						<p:outputLabel for="functie" >Functie</p:outputLabel>
+						<p:inputText  id="functie" value="#{werknemerDetailClass.dienstverband.functie}" size="40"></p:inputText>
+	
+						<p:outputLabel for="personeelsnr"  >Pers. nr</p:outputLabel>
+						<p:inputText  id="personeelsnr" value="#{werknemerDetailClass.dienstverband.personeelsnummer}" size="10"></p:inputText>
+						<p:outputLabel  >Afdeling</p:outputLabel>
+						<p:selectOneMenu id="afdeling" value = "#{werknemerDetailClass.afdeling}" style="width: 107px;" >
+							<f:selectItems value = "#{werknemerDetailClass.afdelingen}" />
+						</p:selectOneMenu>
+	
+						<p:outputLabel for="startdatum"  >In dienst</p:outputLabel>
+						<p:calendar id="startdatum" value="#{werknemerDetailClass.dienstverband.startdatumcontract}" pattern="dd-MM-yyyy" ></p:calendar>
+						<p:outputLabel for="einddatum"  >Uit dienst</p:outputLabel>
+						<p:calendar id="einddatum" value="#{werknemerDetailClass.dienstverband.einddatumcontract}" pattern="dd-MM-yyyy" ></p:calendar>
+	
+	
+		        	</p:panelGrid>
+		 			<f:facet name="footer">
+			        	<h:panelGroup style="display:block; text-align:center">
+							<p:commandButton id="btnOpslaan" 
+											 value="Opslaan"
+											 action="#{werknemerDetailClass.save()}"
+											 update="messages">
+							</p:commandButton>
+							<p:commandButton id="btnVerzuimen" 
+											 value="Verzuimen" 
+											 action="#{werknemerDetailClass.verzuimen}"
+											 update="messages">
+							</p:commandButton>
+							<p:commandButton id="btnVerzuimhistorie" 
+											 value="Verzuim historie" 
+											 action="#{werknemerDetailClass.verzuimhistorie}"
+											 update="messages">
+							</p:commandButton>
+			        	</h:panelGroup>
+		        	</f:facet>
+	        	</p:panel>
+			</p:panelGrid>
+	   	</p:panelGrid>
+	    <div id="footer">
+	    	<ui:insert name="footer" >
+	    	  <ui:include src="templates/commonFooter.xhtml" />
+	    	</ui:insert>
+    	</div>
+   	</h:form>
+</h:body>
+</html>

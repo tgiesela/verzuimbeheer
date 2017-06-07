@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:ejb="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd" version="3.1">
+  <display-name>ejbs</display-name>
+  <assembly-descriptor>
+    <security-role>
+      <role-name>javaee</role-name>
+    </security-role>
+    <application-exception>
+      <exception-class>com.gieselaar.verzuimbeheer.exceptions.permissionException</exception-class>
+      <rollback>true</rollback>
+    </application-exception>
+    <application-exception>
+      <exception-class>com.gieselaar.verzuimbeheer.exceptions.authenticationException</exception-class>
+      <rollback>true</rollback>
+    </application-exception>
+    <application-exception>
+      <exception-class>com.gieselaar.verzuimbeheer.exceptions.validationException</exception-class>
+      <rollback>true</rollback>
+    </application-exception>
+    <application-exception>
+      <exception-class>com.gieselaar.verzuimbeheer.exceptions.VerzuimApplicationException</exception-class>
+      <rollback>true</rollback>
+    </application-exception>
+  </assembly-descriptor>
+</ejb-jar>

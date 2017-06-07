@@ -1,0 +1,225 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!-- 
+Voor JasperReports onderstaande uitvoeren in een mvn enabled omgeving:
+
+set eclipsedir="D:\Java development\eclipse Mars 64-bit\configuration\org.eclipse.osgi\1042\0\.cp\lib"
+mvn install:install-file -Dfile=%eclipsedir%\jasperreports-6.2.2-20160505.150232-15.jar -DgroupId=JasperReports -DartifactId=jasperreports -Dversion=6.2.2 -Dpackaging=jar
+mvn install:install-file -Dfile=%eclipsedir%\jasperreports-chart-themes-6.2.2-20160505.150354-3.jar -DgroupId=JasperReports -DartifactId=jasperreports-chart-themes -Dversion=6.2.2 -Dpackaging=jar
+mvn install:install-file -Dfile=%eclipsedir%\jasperreports-fonts-6.1.1.jar -DgroupId=JasperReports -DartifactId=jasperreports-fonts -Dversion=6.1.1 -Dpackaging=jar
+mvn install:install-file -Dfile=%eclipsedir%\jasperreports-functions-6.2.2-20160505.150541-3.jar -DgroupId=JasperReports -DartifactId=jasperreports-functions -Dversion=6.2.2 -Dpackaging=jar
+ -->
+  <properties>
+	<eclipse.lib.location>D:\Java development\eclipse Mars 64-bit\configuration\org.eclipse.osgi\1042\0\.cp\lib\</eclipse.lib.location>
+  </properties>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>root.project</groupId>
+  <artifactId>JasperReports</artifactId>
+<!-- Used for compiling reports during maven build (does not work with current version) 
+  <pluginRepositories>
+  	<pluginRepository>
+  	<id>opennms</id>
+  	<url>http://repo.opennms.org/maven2/</url>
+  	</pluginRepository>
+  </pluginRepositories>
+ -->
+  <build>
+    <sourceDirectory>sources</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>sources</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>resources</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>images</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source/>
+          <target/>
+        </configuration>
+      </plugin>
+	  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+		<executions>
+           <execution>
+              <id>attach-sources</id>
+              <goals>
+                  <goal>jar-no-fork</goal>
+              </goals>
+           </execution>
+        </executions>
+        <configuration>
+        	<outputDirectory>${project.build.directory}</outputDirectory>
+         		<attach>true</attach>
+          		<excludeResources>false</excludeResources>
+        	</configuration>
+      	</plugin>
+		<plugin>
+			<groupId>com.alexnederlof</groupId>
+			<artifactId>jasperreports-plugin</artifactId>
+			<version>2.0</version>
+			<executions>
+			</executions>
+			<configuration>
+				<!-- These are the default configurations: -->
+				<compiler>net.sf.jasperreports.engine.design.JRJdtCompiler</compiler>
+				<sourceDirectory>resources</sourceDirectory>
+				<outputDirectory>resources</outputDirectory>
+				<outputFileExt>.jasper</outputFileExt>
+				<xmlValidation>true</xmlValidation>
+				<verbose>false</verbose>
+				<numberOfThreads>4</numberOfThreads>
+				<failOnMissingSourceDirectory>true</failOnMissingSourceDirectory>
+				<sourceScanner>org.codehaus.plexus.compiler.util.scan.StaleSourceScanner</sourceScanner>
+
+				<additionalProperties>
+<!-- 					<net.sf.jasperreports.awt.ignore.missing.font>true</net.sf.jasperreports.awt.ignore.missing.font> -->
+<!-- 					<net.sf.jasperreports.default.pdf.font.name>Courier</net.sf.jasperreports.default.pdf.font.name>-->
+<!-- 					<net.sf.jasperreports.default.pdf.encoding>UTF-8</net.sf.jasperreports.default.pdf.encoding> -->
+<!-- 					<net.sf.jasperreports.default.pdf.embedded>true</net.sf.jasperreports.default.pdf.embedded> -->
+           		</additionalProperties>
+			</configuration>
+			<dependencies>
+			<dependency>
+		    	<groupId>JasperReports</groupId>
+		    	<artifactId>jasperreports-chart-themes</artifactId>
+		    	<version>6.2.2</version>
+			</dependency>    
+			<dependency>
+		    	<groupId>JasperReports</groupId>
+		    	<artifactId>jasperreports-fonts</artifactId>
+		    	<version>6.1.1</version>
+			</dependency>    
+			<dependency>
+		    	<groupId>JasperReports</groupId>
+		    	<artifactId>jasperreports-functions</artifactId>
+		    	<version>6.2.2</version>
+			</dependency>
+			<dependency>
+			    <groupId>joda-time</groupId>
+			    <artifactId>joda-time</artifactId>
+			    <version>2.9.9</version>
+			</dependency>
+			</dependencies>
+		</plugin>      	
+      	<!-- maven report compilation (does not work woth current version) 
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>jasperreports-maven-plugin</artifactId>
+          <version>1.0-beta-4-OPENNMS-20160912-1</version>
+          <configuration>
+             <sourceDirectory>resources</sourceDirectory>
+             <outputDirectory>${project.build.outputDirectory}/reports</outputDirectory>
+          </configuration>
+          
+          <executions>
+            <execution>
+                <phase>compile</phase>
+                <goals>
+                  <goal>compile-reports</goal>
+                </goals>
+            </execution>
+          </executions>
+          
+          <dependencies>
+            <dependency>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jasperreports-maven-plugin</artifactId>
+                <version>1.0-beta-4-OPENNMS-20160912-1</version>
+                <exclusions>
+                  <exclusion>
+                    <groupId>jasperreports</groupId>
+                    <artifactId>jasperreports</artifactId>
+                  </exclusion>
+                </exclusions>
+            </dependency>
+			<dependency>
+		    	<groupId>net.sf.jasperreports</groupId>
+		    	<artifactId>jasperreports</artifactId>
+		    	<version>6.4.0</version>
+		            <exclusions>
+		               <exclusion>
+		                  <groupId>commons-logging</groupId>
+		                  <artifactId>commons-logging</artifactId>
+		               </exclusion>
+		            </exclusions>
+			</dependency>    
+			<dependency>
+			    <groupId>org.codehaus.plexus</groupId>
+			    <artifactId>plexus-compiler-javac</artifactId>
+			    <version>1.8</version>
+			</dependency>
+			<dependency>
+				<groupId>root.project</groupId>
+				<artifactId>ejbClient</artifactId>
+				<version>1.1</version>
+			</dependency>
+          </dependencies>
+	   </plugin>	
+      	 -->
+    </plugins>
+  </build>
+  <parent>
+  	<groupId>root</groupId>
+  	<artifactId>project</artifactId>
+  	<version>1.1</version>
+  </parent>
+
+  <dependencies>
+	<dependency>
+	    <groupId>net.sf.jasperreports</groupId>
+	    <artifactId>jasperreports</artifactId>
+	    <version>6.2.2</version>
+	</dependency>
+	<dependency>
+    	<groupId>JasperReports</groupId>
+    	<artifactId>jasperreports-chart-themes</artifactId>
+    	<version>6.2.2</version>
+	</dependency>    
+	<dependency>
+    	<groupId>JasperReports</groupId>
+    	<artifactId>jasperreports-fonts</artifactId>
+    	<version>6.1.1</version>
+	</dependency>    
+	<dependency>
+    	<groupId>JasperReports</groupId>
+    	<artifactId>jasperreports-functions</artifactId>
+    	<version>6.2.2</version>
+	</dependency>
+	<dependency>
+		<groupId>root.project</groupId>
+		<artifactId>ejbClient</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>root.project</groupId>
+		<artifactId>utils</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	</dependency>
+	<dependency>
+		<groupId>root.project</groupId>
+		<artifactId>ejbs</artifactId>
+		<type>ejb</type>
+	</dependency>
+  </dependencies>
+</project>

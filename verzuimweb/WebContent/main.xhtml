@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body>
+   <h:outputStylesheet name="css/verzuim.css" />
+   <h:outputStylesheet>
+        .cols {
+        vertical-align: top;
+        }
+        .alignTop {
+			vertical-align: top;
+		}
+        
+    </h:outputStylesheet>   
+	<p:growl autoUpdate="true"/>
+    <h:form id="form">
+	    <div class="header">
+		  	<ui:insert name="header" >
+			  <ui:include src="templates/commonHeader.xhtml" />
+			</ui:insert>
+	    </div>
+ 	    <p:panelGrid columns="2" columnClasses="alignTop,alignTop" width="300px" heigth="600px">
+			<ui:include src="templates/mainMenu.xhtml"/>
+    	</p:panelGrid>
+   	
+	    <div id="footer">
+	    	<ui:insert name="footer" >
+	    	  <ui:include src="templates/commonFooter.xhtml" />
+	    	</ui:insert>
+    	</div>
+	</h:form>
+</body> 
+</html>

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-05-11T14:07:14 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BTWOverzicht" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4a11b97b-c028-4432-a566-5e8994334190">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="Footer_datasource" class="java.util.ArrayList"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:/Temp/verzuim_1.1/verzuimbeheer/JasperReports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="holdingid" class="java.lang.Integer">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[-1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="werkgeverid" class="java.lang.Integer">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="gebruikernaam" class="java.lang.String">
+		<fieldDescription><![CDATA[gebruikernaam]]></fieldDescription>
+	</field>
+	<field name="werkgevernaam" class="java.lang.String">
+		<fieldDescription><![CDATA[werkgevernaam]]></fieldDescription>
+	</field>
+	<field name="werkzaamheid" class="com.gieselaar.verzuimbeheer.services.WerkzaamhedenInfo">
+		<fieldDescription><![CDATA[werkzaamheid]]></fieldDescription>
+	</field>
+	<sortField name="gebruikernaam"/>
+	<sortField name="werkgevernaam"/>
+	<sortField name="Datum" type="Variable"/>
+	<variable name="Datum" class="java.util.Date">
+		<variableExpression><![CDATA[$F{werkzaamheid}.getDatum()]]></variableExpression>
+	</variable>
+	<variable name="somUrenBedrijf" class="java.math.BigDecimal" resetType="Group" resetGroup="Werkgever" calculation="Sum">
+		<variableExpression><![CDATA[$F{werkzaamheid}.getUren()]]></variableExpression>
+	</variable>
+	<variable name="somKmBedrijf" class="java.math.BigDecimal" resetType="Group" resetGroup="Werkgever" calculation="Sum">
+		<variableExpression><![CDATA[$F{werkzaamheid}.getAantalkm()]]></variableExpression>
+	</variable>
+	<variable name="somKostenBedrijf" class="java.math.BigDecimal" resetType="Group" resetGroup="Werkgever" calculation="Sum">
+		<variableExpression><![CDATA[$F{werkzaamheid}.getOverigekosten()]]></variableExpression>
+	</variable>
+	<variable name="somUrenGebruiker" class="java.math.BigDecimal" resetType="Group" resetGroup="Gebruiker" calculation="Sum">
+		<variableExpression><![CDATA[$F{werkzaamheid}.getUren()]]></variableExpression>
+	</variable>
+	<variable name="somKostenGebruiker" class="java.math.BigDecimal" resetType="Group" resetGroup="Gebruiker" calculation="Sum">
+		<variableExpression><![CDATA[$F{werkzaamheid}.getOverigekosten()]]></variableExpression>
+	</variable>
+	<variable name="somKmGebruiker" class="java.math.BigDecimal" resetType="Group" resetGroup="Gebruiker" calculation="Sum">
+		<variableExpression><![CDATA[$F{werkzaamheid}.getAantalkm()]]></variableExpression>
+	</variable>
+	<variable name="somKostenTotaal" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{werkzaamheid}.getOverigekosten()]]></variableExpression>
+	</variable>
+	<variable name="somKmTotaal" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{werkzaamheid}.getAantalkm()]]></variableExpression>
+	</variable>
+	<variable name="somUrenTotaal" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{werkzaamheid}.getUren()]]></variableExpression>
+	</variable>
+	<group name="Gebruiker">
+		<groupExpression><![CDATA[$F{gebruikernaam}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField>
+					<reportElement x="0" y="0" width="100" height="13" forecolor="#FC0703" uuid="19eba381-f0f7-4daa-b891-dfaeb4127859">
+						<property name="local_mesure_unitx" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{gebruikernaam}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="13">
+				<textField pattern="#,##0.00#">
+					<reportElement x="351" y="-1" width="50" height="13" uuid="1033b951-836e-49b8-b8ae-c38c8e279c42">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somUrenGebruiker}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.###;(#,##0.###-)">
+					<reportElement x="410" y="-1" width="50" height="13" uuid="584b6c5a-6cd9-459c-bddd-5aa456e7b9eb">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somKmGebruiker}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="460" y="-1" width="60" height="13" uuid="6c6d2b6d-f537-46d8-8202-e2768077a2d5">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somKostenGebruiker}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="101" height="13" uuid="47fc76a2-fe3e-4e7f-8c65-367f3128b721">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unity" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Totaal werknemer]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Werkgever">
+		<groupExpression><![CDATA[$F{werkgevernaam}]]></groupExpression>
+		<groupHeader>
+			<band height="28">
+				<textField>
+					<reportElement x="30" y="0" width="230" height="13" uuid="e985713b-7c71-4679-85e3-bdace7a93f47">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{werkgevernaam}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="350" y="13" width="51" height="13" uuid="9d702cfb-156c-43a2-9919-2db04bfd0589">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Uren]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="410" y="13" width="51" height="13" uuid="9309a770-2421-4736-bedf-19f1135a3cf7">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Km]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="460" y="13" width="51" height="13" uuid="f2baebce-a607-4abc-8411-50f3d3584af3">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Kosten]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15">
+				<textField pattern="#,##0.00#">
+					<reportElement x="351" y="0" width="50" height="13" uuid="9a80dd57-3082-48da-8031-73c464243c83">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unitwidth" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somUrenBedrijf}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.###;(#,##0.###-)">
+					<reportElement x="410" y="0" width="50" height="13" uuid="4413d4ab-3e52-4510-9956-cfb68ae9888a">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somKmBedrijf}]]></textFieldExpression>
+				</textField>
+				<textField pattern="€ #,##0.00;€ -#,##0.00">
+					<reportElement x="460" y="0" width="60" height="13" uuid="04761f13-c7bd-46e4-9a38-28a5e8c859be">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{somKostenBedrijf}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="30" y="0" width="110" height="13" uuid="369fd403-f438-4b04-bb12-bad6d4718217">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Totaal werkgever]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="701" y="4" width="100" height="70" uuid="34e4ffed-0831-4a09-85d0-c51b48515f7b"/>
+				<imageExpression><![CDATA["logo_de_vos.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="260" y="32" width="280" height="28" uuid="331ff8c1-1823-4a25-9790-b1890e001cb7"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Overzicht Werkzaamheden]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="50" y="0" width="70" height="13" uuid="448bdede-5cda-4aae-a626-08fef7edef79">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[DATEFORMAT($V{Datum},"yyyy-MM-dd")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="100" height="13" uuid="58f27b02-1d81-4df6-ab31-2944cdf583ac">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheid}.getPersoon()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement x="350" y="0" width="50" height="13" uuid="daf5df72-d922-4703-8342-7dabc1e9a797">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheid}.getUren()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###;(#,##0.###-)">
+				<reportElement x="410" y="0" width="50" height="13" uuid="a2be03d0-9ec2-4856-a16b-8962f7525354">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheid}.getAantalkm()]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="460" y="0" width="60" height="13" uuid="4285d1f5-e9a1-4d8c-bf20-6e89dcd8329a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheid}.getOverigekosten()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="0" width="100" height="13" uuid="543f4b5a-85f3-493a-b7e5-96ec18e47dc2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheid}.getSoortwerkzaamheden().toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="100" height="13" uuid="bac372a8-b2fa-43fa-81bb-005f77a4c3e8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheid}.getWoonplaats()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="630" y="0" width="170" height="13" uuid="c3d5a931-0a87-4bca-a033-b7edfd6b3ffa">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheid}.getOmschrijving()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="64" splitType="Stretch">
+			<subreport>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="60" uuid="8b8eddf7-a809-4ce9-bce0-3aa599dc70eb">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{Footer_datasource})]]></dataSourceExpression>
+				<subreportExpression><![CDATA["Footer.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField pattern="#,##0.00#">
+				<reportElement x="351" y="1" width="50" height="13" uuid="96efc197-2352-4462-87e3-6ef8f8bf29cd">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{somUrenTotaal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###;(#,##0.###-)">
+				<reportElement x="410" y="1" width="50" height="13" uuid="fc5ad8d1-78d8-4a9d-abad-49917213d6e7">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{somKmTotaal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="460" y="1" width="60" height="13" uuid="bd61ca42-d5ab-43de-ba5b-3cde8fb3d15f">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{somKostenTotaal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="110" height="13" uuid="c24b9485-caae-4d4d-bd50-8d7affd14b8f">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totaal periode]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:components="http://java.sun.com/jsf/composite/components"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+		<title>Werkgever gegevens</title>
+</h:head> 
+<body>
+	<h:outputStylesheet name="css/verzuim.css" />
+   <h:outputStylesheet>
+        .ui-panelgrid tr, .ui-panelgrid td {
+    		border: none !important;
+		}
+		.alignTop {
+			vertical-align: top;
+		}
+    </h:outputStylesheet>
+    <h:form id="form">
+	    <div class="header">
+		  	<ui:insert name="header" >
+			  <ui:include src="templates/commonHeader.xhtml" />
+			</ui:insert>
+	    </div>
+		<p:growl id="messages" showDetail="true"/>
+	    <p:panelGrid columns="2" columnClasses="alignTop,alignTop">
+			<ui:include src="templates/mainMenu.xhtml"/>
+
+			<p:panelGrid styleclass="werkgeverGrid" columns="3" layout="grid">
+				<h:outputLabel style="display: block;min-width: 150px"/>
+				<p:panel style="border: none;width: 80%;">
+					<p:selectOneMenu value = "#{werkgeverClass.selectedWerkgever}" style="width: 363px;" immediate="true" >
+						<f:selectItems value = "#{werkgeverClass.werkgevers}" />
+						<p:ajax listener="#{werkgeverClass.werkgeverChanged}" update="form" />
+					</p:selectOneMenu>
+				</p:panel>
+				<h:outputLabel style="display: block;min-width:200px"/>
+				<h:outputLabel value="" />
+				<p:panel header="Algemene gegevens" style="width:550px;">
+				<p:panelGrid frame="none" id="werkgeversGrid" rowClasses="oddRow, evenRow" border="0" columns="4">
+					<h:outputLabel for="naam">Naam</h:outputLabel>
+					<p:inputText  id="naam" label="Naam" value="#{werkgeverClass.werkgever.naam}" required="true" requiredMessage="Naam ontbreekt" size="40"></p:inputText>
+					<h:outputLabel ></h:outputLabel>
+					<h:outputLabel ></h:outputLabel>
+					<h:outputLabel for="telefoon" >Telefoon</h:outputLabel>
+					<p:inputText  id="telefoon"  value="#{werkgeverClass.werkgever.telefoon}" size="12"></p:inputText>
+					<h:outputLabel ></h:outputLabel>
+					<h:outputLabel ></h:outputLabel>
+				</p:panelGrid>
+				</p:panel>
+				<h:outputLabel value="" />
+				<h:outputLabel value="" />
+				<p:panel header="Vestigingsadres" style="width:550px;">
+	   			<components:adres adres="#{werkgeverClass.werkgever.vestigingsAdres}" soortadresLabel="Vestigingsadres"></components:adres>
+	    		</p:panel>
+				<h:outputLabel value="" />
+				<h:outputLabel value="" />
+				<p:panel header="Postadres" style="width:550px;">
+	   			<components:adres adres="#{werkgeverClass.postAdres}" soortadresLabel="Postadres"></components:adres>
+				</p:panel>
+				<h:outputLabel value="" />
+				<h:outputLabel value="" />
+				<p:panel header="Contactpersoon" style="width:550px;">
+	   			<components:contactpersoon contactpersoon="#{werkgeverClass.contactpersoon}"></components:contactpersoon>
+				<f:facet name="footer">
+					<h:panelGroup style="display:block; text-align:center">
+						<p:commandButton id="btnOpslaan" 
+										 value="Opslaan" 
+										 action="#{werkgeverClass.save}"
+										 update="messages"
+										 >
+						</p:commandButton>
+						<p:commandButton id="btnAfdelingen" 
+										 value="Afdelingen" 
+										 action="#{werkgeverClass.afdelingen}"
+										 update="messages"
+										 >
+						</p:commandButton>
+						<p:commandButton id="btnVerzuimstatistiek" 
+										 value="Verzuim Statistiek" 
+										 action="#{werkgeverClass.verzuimstatistieken}"
+										 update="messages"
+										 >
+						</p:commandButton>
+					</h:panelGroup>
+	       		</f:facet>
+				</p:panel>
+	       	</p:panelGrid>
+    	</p:panelGrid>
+	    <div id="footer">
+	    	<ui:insert name="footer" >
+	    	  <ui:include src="templates/commonFooter.xhtml" />
+	    	</ui:insert>
+    	</div>
+	</h:form>
+</body> 
+</html>

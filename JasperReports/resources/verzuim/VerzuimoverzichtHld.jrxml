@@ -1,0 +1,920 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-04-30T15:06:54 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VerzuimoverzichtHolding" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" uuid="a90c1279-3609-4e8d-8630-9fb8f1e27488">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Default" fontName="Arial" fontSize="8"/>
+	<parameter name="holdingid" class="java.lang.Integer" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="Grafiek_datasource" class="java.util.ArrayList"/>
+	<parameter name="startperiode" class="java.util.Date"/>
+	<parameter name="eindperiode" class="java.util.Date"/>
+	<parameter name="Bedrijfsnaam" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="aantalverzuimenVrouwen_92_182" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenVrouwen_92_182]]></fieldDescription>
+	</field>
+	<field name="afdelingid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[afdelingid]]></fieldDescription>
+	</field>
+	<field name="aantalnieuweverzuimenVrouwen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalnieuweverzuimenVrouwen]]></fieldDescription>
+	</field>
+	<field name="urenmannenEindperiode" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[urenmannenEindperiode]]></fieldDescription>
+	</field>
+	<field name="gemAantalMannen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[gemAantalMannen]]></fieldDescription>
+	</field>
+	<field name="urenvrouwenEindperiode" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[urenvrouwenEindperiode]]></fieldDescription>
+	</field>
+	<field name="werkgeverid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[werkgeverid]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimenMannen_8_41" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenMannen_8_41]]></fieldDescription>
+	</field>
+	<field name="verzuimduurMannen_42_91" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurMannen_42_91]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimenVrouwen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenVrouwen]]></fieldDescription>
+	</field>
+	<field name="aantalbeeindigdeverzuimenMannen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalbeeindigdeverzuimenMannen]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimenMannen_92_182" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenMannen_92_182]]></fieldDescription>
+	</field>
+	<field name="holdingid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[holdingid]]></fieldDescription>
+	</field>
+	<field name="afdelingnaam" class="java.lang.String">
+		<fieldDescription><![CDATA[afdelingnaam]]></fieldDescription>
+	</field>
+	<field name="urenmannenStartperiode" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[urenmannenStartperiode]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimenMannen_183_730" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenMannen_183_730]]></fieldDescription>
+	</field>
+	<field name="verzuimduurMannen_8_41" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurMannen_8_41]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="aantalmannenEindperiode" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalmannenEindperiode]]></fieldDescription>
+	</field>
+	<field name="verzuimduurVrouwen_92_182" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurVrouwen_92_182]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimenVrouwen_183_730" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenVrouwen_183_730]]></fieldDescription>
+	</field>
+	<field name="aantalmannenStartperiode" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalmannenStartperiode]]></fieldDescription>
+	</field>
+	<field name="gemVerzuimduurVrouwen" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[gemVerzuimduurVrouwen]]></fieldDescription>
+	</field>
+	<field name="verzuimduurVrouwen_1_7" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurVrouwen_1_7]]></fieldDescription>
+	</field>
+	<field name="aantalvrouwenStartperiode" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalvrouwenStartperiode]]></fieldDescription>
+	</field>
+	<field name="gemVerzuimduurMannen" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[gemVerzuimduurMannen]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimenVrouwen_42_91" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenVrouwen_42_91]]></fieldDescription>
+	</field>
+	<field name="werkgevernaam" class="java.lang.String">
+		<fieldDescription><![CDATA[werkgevernaam]]></fieldDescription>
+	</field>
+	<field name="holdingnaam" class="java.lang.String">
+		<fieldDescription><![CDATA[holdingnaam]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimenVrouwen_8_41" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenVrouwen_8_41]]></fieldDescription>
+	</field>
+	<field name="gemFTEVrouwen" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[gemFTEVrouwen]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimenMannen_42_91" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenMannen_42_91]]></fieldDescription>
+	</field>
+	<field name="verzuimduurVrouwen" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurVrouwen]]></fieldDescription>
+	</field>
+	<field name="verzuimduurMannen" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurMannen]]></fieldDescription>
+	</field>
+	<field name="aantalbeeindigdeverzuimenVrouwen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalbeeindigdeverzuimenVrouwen]]></fieldDescription>
+	</field>
+	<field name="urenvrouwenStartperiode" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[urenvrouwenStartperiode]]></fieldDescription>
+	</field>
+	<field name="verzuimduurVrouwen_8_41" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurVrouwen_8_41]]></fieldDescription>
+	</field>
+	<field name="aantalnieuweverzuimenMannen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalnieuweverzuimenMannen]]></fieldDescription>
+	</field>
+	<field name="verzuimduurnettoMannen" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurnettoMannen]]></fieldDescription>
+	</field>
+	<field name="werkgeverWerkweek" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[werkgeverWerkweek]]></fieldDescription>
+	</field>
+	<field name="gemAantalVrouwen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[gemAantalVrouwen]]></fieldDescription>
+	</field>
+	<field name="verzuimduurVrouwen_42_91" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurVrouwen_42_91]]></fieldDescription>
+	</field>
+	<field name="verzuimduurMannen_92_182" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurMannen_92_182]]></fieldDescription>
+	</field>
+	<field name="verzuimduurMannen_1_7" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurMannen_1_7]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimenVrouwen_1_7" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenVrouwen_1_7]]></fieldDescription>
+	</field>
+	<field name="verzuimduurVrouwen_183_730" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurVrouwen_183_730]]></fieldDescription>
+	</field>
+	<field name="aantalvrouwenEindperiode" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalvrouwenEindperiode]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimenMannen_1_7" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenMannen_1_7]]></fieldDescription>
+	</field>
+	<field name="gemFTEMannen" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[gemFTEMannen]]></fieldDescription>
+	</field>
+	<field name="verzuimduurnettoVrouwen" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurnettoVrouwen]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimenMannen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimenMannen]]></fieldDescription>
+	</field>
+	<field name="verzuimduurMannen_183_730" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[verzuimduurMannen_183_730]]></fieldDescription>
+	</field>
+	<variable name="Gemiddeldaantalmannen" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double(1.00*($F{aantalmannenStartperiode}+$F{aantalmannenEindperiode})/2)]]></variableExpression>
+	</variable>
+	<variable name="Gemiddeldaantalvrouwen" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double(1.00*($F{aantalvrouwenStartperiode}+$F{aantalvrouwenEindperiode})/2)]]></variableExpression>
+	</variable>
+	<variable name="dageninperiode" class="java.lang.Integer">
+		<variableExpression><![CDATA[DAYS($P{startperiode},$P{eindperiode})+1]]></variableExpression>
+	</variable>
+	<variable name="Gemiddeldaantalwerknemers" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{Gemiddeldaantalmannen}+$V{Gemiddeldaantalvrouwen}]]></variableExpression>
+	</variable>
+	<variable name="GemFTEWerknemers" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{gemFTEMannen}.doubleValue()+$F{gemFTEVrouwen}.doubleValue()]]></variableExpression>
+	</variable>
+	<variable name="RTgemFTEVrouwen" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{gemFTEVrouwen}]]></variableExpression>
+	</variable>
+	<variable name="RTgemFTEMannen" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{gemFTEMannen}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalvrouwenstartperiode" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalvrouwenStartperiode}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalmannenstartperiode" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalmannenStartperiode}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalmanneneindperiode" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalmannenEindperiode}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalvrouweneindperiode" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalvrouwenEindperiode}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenvrouwen" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenVrouwen}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenmannen" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenMannen}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalnieuweverzuimenvrouwen" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalnieuweverzuimenVrouwen}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalnieuweverzuimenmannen" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalnieuweverzuimenMannen}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalbeeindigdeverzuimenvrouwen" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalbeeindigdeverzuimenVrouwen}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalbeeindigdeverzuimenmannen" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalbeeindigdeverzuimenMannen}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenMannen_1_7" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenMannen_1_7}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenMannen_8_41" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenMannen_8_41}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenMannen_42_91" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenMannen_42_91}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenMannen_92_182" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenMannen_92_182}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenMannen_183_730" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenMannen_183_730}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenVrouwen_1_7" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenVrouwen_1_7}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenVrouwen_8_41" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenVrouwen_8_41}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenVrouwen_42_91" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenVrouwen_42_91}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenVrouwen_92_182" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenVrouwen_92_182}]]></variableExpression>
+	</variable>
+	<variable name="RTaantalverzuimenVrouwen_183_730" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{aantalverzuimenVrouwen_183_730}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurvrouwen" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurVrouwen}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurmannen" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurMannen}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurvrouwen_1_7" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurVrouwen_1_7}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurmannen_1_7" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurMannen_1_7}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurvrouwen_8_41" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurVrouwen_8_41}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurmannen_8_41" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurMannen_8_41}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurvrouwen_42_91" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurVrouwen_42_91}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurmannen_42_91" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurMannen_42_91}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurvrouwen_92_182" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurVrouwen_92_182}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurmannen_92_182" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurMannen_92_182}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurvrouwen_183_730" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurVrouwen_183_730}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurmannen_183_730" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurMannen_183_730}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurnettoVrouwen" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurnettoVrouwen}]]></variableExpression>
+	</variable>
+	<variable name="RTverzuimduurnettomannen" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{verzuimduurnettoMannen}]]></variableExpression>
+	</variable>
+	<filterExpression><![CDATA[$F{holdingid}.equals( $P{holdingid} )]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="1" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="357" splitType="Stretch">
+			<staticText>
+				<reportElement style="Default" x="14" y="50" width="188" height="15" uuid="1179ab3c-8640-4087-a516-119aea77ca42">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[GemFTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="271" y="35" width="70" height="15" uuid="92c817ca-fdfd-47e0-9ffb-013df322f05e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Mannen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="341" y="35" width="70" height="15" uuid="96ac41ce-aad3-41e8-a453-981327e7d069">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Vrouwen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="411" y="35" width="70" height="15" uuid="29352c0a-19b6-42fc-80dd-ea4e09fd046b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Totaal]]></text>
+			</staticText>
+			<textField pattern="#,##0.0" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="50" width="70" height="15" uuid="d80b3455-a5c4-4343-90e0-de0327db9a4f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTgemFTEMannen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="50" width="70" height="15" uuid="ce762efe-56a2-401c-975c-ef28dd7d6ca8">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTgemFTEVrouwen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="50" width="70" height="15" uuid="728da132-d1e3-4617-9450-0864516918f6">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{GemFTEWerknemers}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="480" y="34" width="321" height="250" uuid="f2f0554c-1791-4851-bfbf-42824f39ebdd"/>
+				<subreportParameter name="gemFTEMannen">
+					<subreportParameterExpression><![CDATA[$V{RTgemFTEMannen}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="gemFTEVrouwen">
+					<subreportParameterExpression><![CDATA[$V{RTgemFTEVrouwen}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Grafiek_datasource">
+					<subreportParameterExpression><![CDATA[$P{Grafiek_datasource}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="holdingid">
+					<subreportParameterExpression><![CDATA[$F{holdingid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{Grafiek_datasource})]]></dataSourceExpression>
+				<subreportExpression><![CDATA["verzuim/VerzuimoverzichtHldGrafiek.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement style="Default" x="14" y="64" width="188" height="15" uuid="44e814f9-2047-4e04-b250-21da5e1eb114">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Aantal werknemers]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="79" width="188" height="15" uuid="fec8fc38-db3e-4af0-8625-b0a5fd971760">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Aantal verzuimen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="94" width="188" height="15" uuid="95881d30-07af-4c17-9fab-43f54196863f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Aantal nieuwe verzuimen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="109" width="188" height="15" uuid="8561ffa5-9e2e-45bc-b568-d80ef7e1aeb7">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Aantal beeindigde verzuimen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="124" width="188" height="15" uuid="6e0c6635-523a-4423-9e75-d2c827849974">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Aantal verzuimen kort (1-7 dgn)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="139" width="188" height="15" uuid="e7c46bb3-a86a-4a2e-9a58-b7579c7d1257">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Aantal verzuimen middellang (8-41 dgn)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="154" width="188" height="15" uuid="7755c825-849a-4ba8-8c6d-e55b95a0d67f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Aantal verzuimen middellang (42-91 dgn)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="168" width="188" height="15" uuid="d30d818a-27c4-4321-876a-0719ffbb4045">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Aantal verzuimen middellang (92-182 dgn)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="184" width="188" height="15" uuid="8ca1b600-35de-4007-918f-4ed28c1c0d6c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Aantal verzuimen middellang (183-730 dgn)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="199" width="188" height="15" uuid="a2452b7a-4dda-4bca-b92e-b74d6de0069f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Ziekmeldingsfrequentie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="214" width="188" height="15" uuid="fb4e2e4f-5bbb-48b7-b60b-dae2cefb7be5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Gem. verzuimduur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="242" width="188" height="15" uuid="6e0c6635-523a-4423-9e75-d2c827849974">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Ziekteverzuimpercentage kort (1-7 dgn)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="257" width="188" height="15" uuid="e7c46bb3-a86a-4a2e-9a58-b7579c7d1257">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Ziekteverzuimpercentage middellang (8-41 dgn)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="272" width="188" height="15" uuid="7755c825-849a-4ba8-8c6d-e55b95a0d67f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Ziekteverzuimpercentage middellang (42-91 dgn)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="287" width="188" height="15" uuid="d30d818a-27c4-4321-876a-0719ffbb4045">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Ziekteverzuimpercentage middellang (92-182 dgn)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="302" width="188" height="15" uuid="8ca1b600-35de-4007-918f-4ed28c1c0d6c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Ziekteverzuimpercentage middellang (183-730 dgn)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Default" x="14" y="317" width="188" height="15" uuid="8ca1b600-35de-4007-918f-4ed28c1c0d6c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Ziekteverzuimpercentage totaal]]></text>
+			</staticText>
+			<textField pattern="#,##0.0" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="64" width="70" height="15" uuid="06906e47-995b-43e8-89f8-8d4f36b5eaa8">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{Gemiddeldaantalmannen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="64" width="70" height="15" uuid="7e69b170-f8d3-463f-9be3-dcc7d3f0d840">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{Gemiddeldaantalvrouwen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="64" width="70" height="15" uuid="7f022256-98d0-4656-9d6f-921804bf119a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($V{Gemiddeldaantalwerknemers})]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="79" width="70" height="15" uuid="cefb7ae1-f9dc-4ff7-92f7-8d78646833e0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenmannen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="79" width="70" height="15" uuid="83094ec1-4dee-4a53-8d5f-8dd798c698dc">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenvrouwen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="79" width="70" height="15" uuid="1d26a927-44de-4f44-b009-e6b16047b3da">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenmannen}+$V{RTaantalverzuimenvrouwen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="94" width="70" height="15" uuid="3d1b414d-32df-445b-a480-bf6f4ae50ae4">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalnieuweverzuimenmannen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="94" width="70" height="15" uuid="f12bb62f-8868-42fe-bfd2-19636e94cf6d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalnieuweverzuimenvrouwen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="94" width="70" height="15" uuid="271a3201-b7b9-4369-85a5-34a0d2708386">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{RTaantalnieuweverzuimenmannen}+$V{RTaantalnieuweverzuimenvrouwen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="109" width="70" height="15" uuid="fbe8c8e3-15c6-4c13-b15e-88c0de4023a9">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalbeeindigdeverzuimenmannen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="109" width="70" height="15" uuid="ed338a59-6c69-46f4-ab7f-f21cf2b77c8e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalbeeindigdeverzuimenvrouwen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="109" width="70" height="15" uuid="3440e392-c8a6-4cfb-837b-385ae4eec32f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{RTaantalbeeindigdeverzuimenmannen}+$V{RTaantalbeeindigdeverzuimenvrouwen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="124" width="70" height="15" uuid="cad0ddf4-727c-4ced-a9dc-c9ec8e4eef50">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenMannen_1_7}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="124" width="70" height="15" uuid="75690951-9538-448b-8881-28630d68be63">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenVrouwen_1_7}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="124" width="70" height="15" uuid="76f006fd-9172-417e-8de6-f8dfbf5ee9ec">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenMannen_1_7}+$V{RTaantalverzuimenVrouwen_1_7}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="139" width="70" height="15" uuid="b673cd0d-0e44-4c73-901c-63f85c569b2e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenMannen_8_41}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="139" width="70" height="15" uuid="488b73fa-92e4-48c7-8178-df1d1fc5fcf1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenVrouwen_8_41}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="139" width="70" height="15" uuid="da6ec475-fa60-498f-81d9-d7f26e926a68">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenMannen_8_41}+$V{RTaantalverzuimenVrouwen_8_41}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="154" width="70" height="15" uuid="5a3c9ce6-bb9d-4e17-80c5-e0bb2a050644">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenMannen_42_91}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="154" width="70" height="15" uuid="fc0943a4-6700-4b39-bb68-01d6fbeccdc3">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenVrouwen_42_91}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="154" width="70" height="15" uuid="1bb9c0b9-8787-4051-a570-0b2024104503">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenMannen_42_91}+$V{RTaantalverzuimenVrouwen_42_91}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="168" width="70" height="15" uuid="39ea3c73-9ecd-49e1-b439-4285cce600c7">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenMannen_92_182}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="168" width="70" height="15" uuid="e3e587f1-7557-4c2c-a197-16c172bd4381">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenVrouwen_92_182}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="168" width="70" height="15" uuid="34b72bd7-e1ca-49f9-a1cf-31a2e9f9f9b1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenMannen_92_182}+$V{RTaantalverzuimenVrouwen_92_182}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="184" width="70" height="15" uuid="594a79b3-0b5d-4c22-9647-ada55372fb2f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenMannen_183_730}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="184" width="70" height="15" uuid="30376bdf-4c71-4e6b-85a5-8b3ec93e95b4">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenVrouwen_183_730}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="184" width="70" height="15" uuid="6b766e9a-500d-4c8e-abc0-353614929c96">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{RTaantalverzuimenMannen_183_730}+$V{RTaantalverzuimenVrouwen_183_730}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="199" width="70" height="15" uuid="34565c15-5488-42de-bbb8-968cca4a57cf">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF($V{Gemiddeldaantalmannen}>0,new Double((365.00/$V{dageninperiode})*$V{RTaantalnieuweverzuimenmannen})/$V{Gemiddeldaantalmannen},0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="199" width="70" height="15" uuid="ba57be70-db5b-4cba-93be-c5ab847086cb">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF($V{Gemiddeldaantalvrouwen}>0,new Double((365.00/$V{dageninperiode})*$V{RTaantalnieuweverzuimenvrouwen})/$V{Gemiddeldaantalvrouwen},0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="199" width="70" height="15" uuid="a1257c6c-52be-42fc-9e81-9ca3e276f50d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[IF($V{Gemiddeldaantalwerknemers}>0,new Double((365.00/$V{dageninperiode})*($V{RTaantalnieuweverzuimenmannen}+$V{RTaantalnieuweverzuimenvrouwen}))/$V{Gemiddeldaantalwerknemers},0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="214" width="70" height="15" uuid="19f9dbd6-85e2-4cb9-9dca-c38689ec6667">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF($V{RTaantalbeeindigdeverzuimenmannen}>0,$V{RTverzuimduurmannen}.doubleValue()/$V{RTaantalbeeindigdeverzuimenmannen},0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="214" width="70" height="15" uuid="5d2a595e-b71b-4093-b32a-7c77cede4ff5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF($V{RTaantalbeeindigdeverzuimenvrouwen}>0,$V{RTverzuimduurvrouwen}.doubleValue()/$V{RTaantalbeeindigdeverzuimenvrouwen},0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="214" width="70" height="15" uuid="b95b9c70-132a-4723-a5f0-63be350c160e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[IF(($V{RTaantalbeeindigdeverzuimenmannen}+$V{RTaantalbeeindigdeverzuimenvrouwen})>0,($V{RTverzuimduurmannen}.doubleValue()+$V{RTverzuimduurvrouwen}.doubleValue())/($V{RTaantalbeeindigdeverzuimenmannen}+$V{RTaantalbeeindigdeverzuimenvrouwen}),0)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Default" x="11" y="0" width="149" height="15" uuid="c2d1214e-33b7-4b03-95c5-7440ce5bc3bb">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Verzuimstatistieken voor holding]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Default" x="170" y="0" width="200" height="15" uuid="47eb1a51-1657-4358-84de-8bb6263dd121">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Bedrijfsnaam}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="242" width="70" height="15" uuid="80d95718-ed54-4eec-b3d8-652b2807f9a5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurmannen_1_7}.doubleValue()/($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="242" width="70" height="15" uuid="ef5236f5-ef49-4137-91ff-9f6de14175de">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurvrouwen_1_7}.doubleValue()/($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="242" width="70" height="15" uuid="fa93a47e-eac0-44b4-954f-6430344c367c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[IF(($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue())>0,($V{RTverzuimduurmannen_1_7}.doubleValue()+$V{RTverzuimduurvrouwen_1_7}.doubleValue())/($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="257" width="70" height="15" uuid="8ce336b8-432b-432c-a8fb-a8aaf8fd9caa">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurmannen_8_41}.doubleValue()/($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="257" width="70" height="15" uuid="2952827c-d985-490e-b2d1-5d35e27fd0fa">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurvrouwen_8_41}.doubleValue()/($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="257" width="70" height="15" uuid="66cf0258-5dd5-483d-8d89-11d2a0ce1c3d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[IF(($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue())>0,($V{RTverzuimduurmannen_8_41}.doubleValue()+$V{RTverzuimduurvrouwen_8_41}.doubleValue())/($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="272" width="70" height="15" uuid="13731b58-9c2e-466a-884b-9c04e6253e39">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurmannen_42_91}.doubleValue()/($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="272" width="70" height="15" uuid="ce5ed76c-276e-40cd-97e9-1b229f833360">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurvrouwen_42_91}.doubleValue()/($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="272" width="70" height="15" uuid="dc4c3e97-e935-4cb5-8d83-1eb93fb1b1ba">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[IF(($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue())>0,($V{RTverzuimduurmannen_42_91}.doubleValue()+$V{RTverzuimduurvrouwen_42_91}.doubleValue())/($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="287" width="70" height="15" uuid="097509dc-92d1-47b7-848e-bd8f0453d8bc">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurmannen_92_182}.doubleValue()/($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="287" width="70" height="15" uuid="4eeac6d6-f182-46f3-8a9f-9dfeecdc06b9">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurvrouwen_92_182}.doubleValue()/($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="287" width="70" height="15" uuid="63127f1a-feeb-4741-90f0-0b4e842e1f0d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[IF(($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue())>0,($V{RTverzuimduurmannen_92_182}.doubleValue()+$V{RTverzuimduurvrouwen_92_182}.doubleValue())/($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="302" width="70" height="15" uuid="90a3bdf2-4df8-4dd1-8dac-eb9653025def">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurmannen_183_730}.doubleValue()/($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="302" width="70" height="15" uuid="137b39a7-3c97-4e3e-a987-6726e07433a2">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurvrouwen_183_730}.doubleValue()/($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="302" width="70" height="15" uuid="12c817ce-f590-409f-af0a-65d701b0748b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[IF(($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue())>0,($V{RTverzuimduurmannen_183_730}.doubleValue()+$V{RTverzuimduurvrouwen_183_730}.doubleValue())/($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="271" y="317" width="70" height="15" uuid="08dad846-2a65-4324-a194-75d24e1368f7">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurnettomannen}.doubleValue()/($V{RTgemFTEMannen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="341" y="317" width="70" height="15" uuid="4a2b7cb9-b9f9-4376-914c-8129ef119e1e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[IF(($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue())>0,$V{RTverzuimduurnettoVrouwen}.doubleValue()/($V{RTgemFTEVrouwen}.doubleValue() * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0%" isBlankWhenNull="true">
+				<reportElement style="Default" x="411" y="317" width="70" height="15" uuid="8a935298-920e-419b-9449-9e1319b07d08">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[IF(($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue())>0,($V{RTverzuimduurnettomannen}.doubleValue()+$V{RTverzuimduurnettoVrouwen}.doubleValue())/($V{GemFTEWerknemers} * $V{dageninperiode}.doubleValue()),0)]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

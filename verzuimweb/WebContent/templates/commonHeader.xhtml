@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    <body>
+	    <ui:composition>
+	    	<center>
+	    	<div id="header">
+		    	<p:panel style="border: 0px">
+					<h:graphicImage styleClass="logo" style="height: 83px; width: 119px; " value="resources/images/logo.jpg"></h:graphicImage>
+			 		<h3>De Vos Verzuimbeheer</h3>
+			 	</p:panel>
+		        <p:breadCrumb model="#{panelMenuClass.model}"></p:breadCrumb>
+		 	</div>
+			</center>
+ 	    </ui:composition>
+    </body>
+</html>

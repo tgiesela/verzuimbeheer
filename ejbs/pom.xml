@@ -1,0 +1,195 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>root.project</groupId>
+   <artifactId>ejbs</artifactId>
+   <packaging>ejb</packaging>
+   <name>enterprise java beans</name>
+   <parent>
+      <groupId>root</groupId>
+      <artifactId>project</artifactId>
+      <version>1.1</version>
+   </parent>
+   <dependencies>
+      <dependency>
+         <groupId>root.project.projects</groupId>
+         <artifactId>logging</artifactId>
+      </dependency>
+      <dependency>
+      	<groupId>javax.ejb</groupId>
+      	<artifactId>javax.ejb-api</artifactId>
+      	<version>3.2</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.eclipse.persistence</groupId>
+      	<artifactId>eclipselink</artifactId>
+      	<version>2.5.1</version>
+      </dependency>
+      <dependency>
+      	<groupId>javax.mail</groupId>
+      	<artifactId>javax.mail-api</artifactId>
+      	<version>1.5.1</version>
+      </dependency>
+      <dependency>
+      	<groupId>root.project</groupId>
+      	<artifactId>ejbClient</artifactId>
+      </dependency>
+      <dependency>
+      	<groupId>junit</groupId>
+      	<artifactId>junit</artifactId>
+      	<version>4.12</version>
+      	<scope>test</scope>
+      </dependency>
+
+<!-- 
+<dependency>
+	<groupId>org.glassfish.main.extras</groupId>
+	<artifactId>glassfish-embedded-all</artifactId>
+	<version>4.1</version>
+	<scope>test</scope>
+</dependency>
+<dependency>
+  	<groupId>org.glassfish.main.extras</groupId>
+  	<artifactId>glassfish-embedded-static-shell</artifactId>
+  	<version>4.1</version>
+  	<scope>test</scope>
+ </dependency>
+ -->
+<!--  Start Dependencies for arquillian testing (http://blog.payara.fish/testing-applications-with-payara-server-arquillian)-->
+	<dependency>
+		<groupId>org.jboss.arquillian</groupId>
+		<artifactId>arquillian-bom</artifactId>
+		<version>1.1.12.Final</version>
+		<type>pom</type>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.jboss.arquillian.junit</groupId>
+	    <artifactId>arquillian-junit-container</artifactId>
+	    <version>1.1.12.Final</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+        <groupId>javax.enterprise</groupId>
+        <artifactId>cdi-api</artifactId>
+        <version>1.2</version>
+    </dependency>	
+<!-- 
+	<dependency>
+	    <groupId>org.jboss.arquillian.extension</groupId>
+	    <artifactId>arquillian-persistence-dbunit</artifactId>
+	    <version>1.0.0.Alpha7</version>
+	    <scope>test</scope>
+	</dependency>
+ -->
+	<dependency>
+      <groupId>org.jboss.shrinkwrap.resolver</groupId>
+      <artifactId>shrinkwrap-resolver-depchain</artifactId>
+      <version>2.2.5</version>
+      <scope>test</scope>
+      <type>pom</type>
+    </dependency>
+
+<!--  End Dependencies for arquillian testing -->
+
+
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>5.1.24</version>
+	    <scope>test</scope>
+	</dependency> 	  
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	</dependency>
+</dependencies>
+<profiles>
+	<profile>
+	    <id>arquillian-jbossas-managed</id>
+	    <dependencies>
+	        <dependency>
+	            <groupId>org.jboss.spec</groupId>
+	            <artifactId>jboss-javaee-7.0</artifactId>
+	            <version>1.0.3.Final</version>
+	            <type>pom</type>
+	            <scope>provided</scope>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.jboss.as</groupId>
+	            <artifactId>jboss-as-arquillian-container-managed</artifactId>
+	            <version>7.2.0.Final</version>
+	            <scope>test</scope>
+	        </dependency>
+		    <dependency>
+			    <groupId>fish.payara.extras</groupId>
+			    <artifactId>payara-embedded-all</artifactId>
+			    <version>4.1.1.161</version>
+			    <scope>test</scope>
+			</dependency>
+	    </dependencies>
+	</profile>
+	<profile>
+	    <id>arquillian-glassfish-embedded</id>
+	    <dependencies>
+	        <dependency>
+	            <groupId>org.jboss.arquillian.container</groupId>
+	            <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+	            <version>1.0.0.Final</version>
+	            <scope>test</scope>
+	        </dependency>
+		    <dependency>
+			    <groupId>fish.payara.extras</groupId>
+			    <artifactId>payara-embedded-all</artifactId>
+			    <version>4.1.1.161</version>
+			    <scope>test</scope>
+			</dependency>
+	    </dependencies>
+	</profile>
+</profiles>
+<build>
+	<testSourceDirectory>src/main/test</testSourceDirectory>
+	<pluginManagement>
+    	<plugins>
+      		<plugin>
+        		<groupId>org.sonarsource.scanner.maven</groupId>
+        		<artifactId>sonar-maven-plugin</artifactId>
+        		<version>3.2</version>
+      		</plugin>
+    	</plugins>
+  	</pluginManagement>
+    <plugins>
+        <plugin>
+            <artifactId>maven-ejb-plugin</artifactId>
+            <version>2.3</version>
+            <configuration>
+	           <ejbVersion>3.2</ejbVersion>
+               <archive>
+                  <manifest>
+                     <addClasspath>true</addClasspath>
+                  </manifest>
+               </archive> 
+            </configuration>
+        </plugin>
+		<plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-source-plugin</artifactId>
+        	<version>3.0.1</version>
+			<executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+          		<outputDirectory>${project.build.directory}</outputDirectory>
+          		<attach>true</attach>
+          		<excludeResources>false</excludeResources>
+        	</configuration>
+      	</plugin>		
+	</plugins>
+</build>
+</project>

@@ -1,0 +1,71 @@
+View verzuimen statisitieken (ActueelVerzuim)
+select dienstverband.`einddatumcontract` AS `einddatumcontract`
+      ,dienstverband.`startdatumcontract` AS `startdatumcontract`
+      ,dienstverband.`ID` AS `dienstverbandid`
+      ,dienstverband.`werkweek` AS `werkweek`
+      ,dienstverband.`personeelsnummer` AS `personeelsnummer`
+      ,werknemer.`voorletters` AS `voorletters`
+      ,werknemer.`voorvoegsel` AS `voorvoegsel`
+      ,werknemer.`achternaam` AS `achternaam`
+      ,werknemer.`ID` AS `werknemerid`
+      ,werknemer.`geslacht` AS `geslacht`
+      ,werknemer.`burgerservicenummer` AS `burgerservicenummer`
+      ,werknemer.`geboortedatum` AS `geboortedatum`
+      ,verzuim.`meldingsdatum` AS `verzuimmeldingsdatum`
+      ,verzuim.`einddatumverzuim` AS `einddatumverzuim`
+      ,verzuim.`startdatumverzuim` AS `startdatumverzuim`
+      ,verzuim.`gerelateerdheid` AS `gerelateerdheid`
+      ,verzuim.`cascode` AS `cascode`
+      ,cascode.`omschrijving` AS `cascodeomschrijving`
+      ,verzuim.`opmerkingen` AS `opmerkingen`
+      ,coalesce(verzuim.`ID`,0) AS `verzuimid`
+      ,coalesce(verzuim.`vangnettype`,2) AS `vangnettype`
+      ,werkgever.`naam` AS `werkgevernaam`
+      ,werkgever.`id` AS `werkgeverid`
+      ,werkgever.`Holding_id` AS `holdingid`
+      ,werkgever.`werkweek` AS `werkgeverwerkweek`
+      ,holding.`naam` as `holdingnaam`
+      ,afdeling.`naam` AS `Afdelingnaam`
+      ,afdeling.`id` AS `afdelingid`
+      ,herstel.`datum_herstel` AS `datum_herstel`
+      ,herstel.`percentage_herstel` AS `percentage_herstel`
+      ,herstel.`percentage_herstel_at` AS `percentage_herstel_at`
+      ,herstel.`meldingsdatum` AS `herstelmeldingsdatum`
+      ,herstel.`opmerkingen` AS `herstelopmerkingen`
+      ,coalesce(herstel.`id`,0) AS `herstelid` 
+      from 
+             verzuim.WERKGEVER werkgever 
+   left join verzuim.HOLDING holding ON werkgever.holding_id = holding.id
+        join verzuim.AFDELING afdeling ON werkgever.id = afdeling.werkgever_id
+        join verzuim.AFDELING_HAS_WERKNEMER afdwnr ON afdeling.id = afdwnr.afdeling_id
+        join verzuim.WERKNEMER werknemer ON werknemer.id = afdwnr.werknemer_id
+        join verzuim.DIENSTVERBAND dienstverband ON dienstverband.werknemer_id = werknemer.id
+   left join verzuim.VERZUIM verzuim ON verzuim.dienstverband_id = dienstverband.id
+   left join verzuim.CASCODE cascode ON verzuim.cascode = cascode.id
+   left join verzuim.VERZUIMHERSTEL herstel ON herstel.verzuim_id = verzuim.id
+   ;
+   
+View Verzuimen (WerknemerVerzuim)
+select werknemer.`voorletters` AS `voorletters`
+      ,werknemer.`achternaam` AS `achternaam`
+      ,werknemer.`voorvoegsel` AS `voorvoegsel`
+      ,werknemer.`ID` AS `werknemerid`
+      ,werknemer.`geslacht` AS `geslacht`
+      ,werknemer.`burgerservicenummer` AS `burgerservicenummer`
+      ,werknemer.`geboortedatum` AS `geboortedatum`
+      ,werkgever.`naam` AS `werkgevernaam`
+      ,werkgever.`id` AS `werkgeverid`
+      ,werkgever.`Holding_id` AS `holdingid`
+      ,holding.`naam` as `holdingnaam`
+      ,afdeling.`naam` AS `Afdelingnaam`
+      ,afdeling.`id` AS `afdelingid`
+      ,count(*) AS `aantalverzuimen`
+      from   verzuim.WERKGEVER werkgever 
+			   left join verzuim.HOLDING holding ON werkgever.holding_id = holding.id
+			        join verzuim.AFDELING afdeling ON werkgever.id = afdeling.werkgever_id
+			        join verzuim.AFDELING_HAS_WERKNEMER afdwnr ON afdeling.id = afdwnr.afdeling_id
+			        join verzuim.WERKNEMER werknemer ON werknemer.id = afdwnr.werknemer_id
+			        join verzuim.DIENSTVERBAND dienstverband ON dienstverband.werknemer_id = werknemer.id
+			        join verzuim.VERZUIM verzuim ON verzuim.dienstverband_id = dienstverband.id
+	 group by holdingid, werkgeverid,werknemerid;
+			   

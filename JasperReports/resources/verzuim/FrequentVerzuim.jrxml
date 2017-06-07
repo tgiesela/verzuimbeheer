@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-05-01T13:15:26 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="WerknemerVerzuimHistorie" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1ac8aa1b-f1de-4d2e-9305-e5462449fd57">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Default" isDefault="true" pattern="" fontName="Arial" fontSize="8"/>
+	<parameter name="startdatum" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="einddatum" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="Footer_datasource" class="java.util.ArrayList"/>
+	<parameter name="Grafiek_datasource" class="java.util.ArrayList" isForPrompting="false"/>
+	<parameter name="minimumaantalverzuimen" class="java.lang.Number">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="werkgeverwerkweek" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[werkgeverwerkweek]]></fieldDescription>
+	</field>
+	<field name="werkweek" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[werkweek]]></fieldDescription>
+	</field>
+	<field name="werkgevernaam" class="java.lang.String">
+		<fieldDescription><![CDATA[werkgevernaam]]></fieldDescription>
+	</field>
+	<field name="holdingnaam" class="java.lang.String">
+		<fieldDescription><![CDATA[holdingnaam]]></fieldDescription>
+	</field>
+	<field name="afdelingid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[afdelingid]]></fieldDescription>
+	</field>
+	<field name="dienstverbandid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[dienstverbandid]]></fieldDescription>
+	</field>
+	<field name="voorletters" class="java.lang.String">
+		<fieldDescription><![CDATA[voorletters]]></fieldDescription>
+	</field>
+	<field name="creationts" class="java.util.Date">
+		<fieldDescription><![CDATA[creationts]]></fieldDescription>
+	</field>
+	<field name="state" class="com.gieselaar.verzuimbeheer.services.InfoBase.persistencestate">
+		<fieldDescription><![CDATA[state]]></fieldDescription>
+	</field>
+	<field name="werkgeverid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[werkgeverid]]></fieldDescription>
+	</field>
+	<field name="version" class="java.lang.Long">
+		<fieldDescription><![CDATA[version]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="burgerservicenummer" class="java.lang.String">
+		<fieldDescription><![CDATA[burgerservicenummer]]></fieldDescription>
+	</field>
+	<field name="geboortedatum" class="java.util.Date">
+		<fieldDescription><![CDATA[geboortedatum]]></fieldDescription>
+	</field>
+	<field name="action" class="com.gieselaar.verzuimbeheer.services.InfoBase.persistenceaction">
+		<fieldDescription><![CDATA[action]]></fieldDescription>
+	</field>
+	<field name="voornaam" class="java.lang.String">
+		<fieldDescription><![CDATA[voornaam]]></fieldDescription>
+	</field>
+	<field name="updatets" class="java.util.Date">
+		<fieldDescription><![CDATA[updatets]]></fieldDescription>
+	</field>
+	<field name="holdingid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[holdingid]]></fieldDescription>
+	</field>
+	<field name="aantalverzuimen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[aantalverzuimen]]></fieldDescription>
+	</field>
+	<field name="afdelingnaam" class="java.lang.String">
+		<fieldDescription><![CDATA[afdelingnaam]]></fieldDescription>
+	</field>
+	<field name="einddatumcontract" class="java.util.Date">
+		<fieldDescription><![CDATA[einddatumcontract]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="createdby" class="java.lang.Integer">
+		<fieldDescription><![CDATA[createdby]]></fieldDescription>
+	</field>
+	<field name="voorvoegsel" class="java.lang.String">
+		<fieldDescription><![CDATA[voorvoegsel]]></fieldDescription>
+	</field>
+	<field name="updatedby" class="java.lang.Integer">
+		<fieldDescription><![CDATA[updatedby]]></fieldDescription>
+	</field>
+	<field name="achternaam" class="java.lang.String">
+		<fieldDescription><![CDATA[achternaam]]></fieldDescription>
+	</field>
+	<field name="werknemerid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[werknemerid]]></fieldDescription>
+	</field>
+	<field name="geslacht" class="java.lang.Integer">
+		<fieldDescription><![CDATA[geslacht]]></fieldDescription>
+	</field>
+	<field name="startdatumcontract" class="java.util.Date">
+		<fieldDescription><![CDATA[startdatumcontract]]></fieldDescription>
+	</field>
+	<sortField name="holdingid"/>
+	<sortField name="werkgevernaam"/>
+	<sortField name="afdelingnaam"/>
+	<sortField name="werknemerid"/>
+	<variable name="Werknemernaam" class="java.lang.String" resetType="Group" resetGroup="Werknemer" incrementType="Group" incrementGroup="Werknemer">
+		<variableExpression><![CDATA[$F{voorletters}.trim() + " " + $F{voorvoegsel}.trim() + " " + $F{achternaam}.trim()]]></variableExpression>
+	</variable>
+	<variable name="Dagengewerkt" class="java.math.BigDecimal" resetType="Group" resetGroup="Werkgever" incrementType="Group" incrementGroup="Werkgever">
+		<variableExpression><![CDATA[new java.math.BigDecimal((DAYS($P{startdatum},$P{einddatum})+1))]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="geslacht" class="java.lang.String">
+		<variableExpression><![CDATA[IF($F{geslacht}==1,"M",IF($F{geslacht}==2,"V",""))]]></variableExpression>
+	</variable>
+	<group name="Werkgever" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{werkgeverid}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<staticText>
+					<reportElement style="Default" x="0" y="0" width="70" height="15" uuid="355b5549-5f0f-4cf1-8ad1-a650e2d9390c">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement markup="none">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Werkgever]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="Default" x="90" y="0" width="200" height="15" uuid="a9102beb-b262-4fb3-9902-8f27d6b3d55e">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement verticalAlignment="Top">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{werkgevernaam}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Afdeling">
+		<groupExpression><![CDATA[$F{afdelingid}]]></groupExpression>
+		<groupHeader>
+			<band height="31">
+				<staticText>
+					<reportElement style="Default" x="0" y="0" width="60" height="15" uuid="b9699460-514b-4139-8529-0ab2788204fd">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement markup="none">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Afdeling]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="0" width="556" height="1" uuid="7cf1b78e-a48e-4be9-9a96-fe64f34b67ec">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="local_mesure_unity" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+				</line>
+				<textField>
+					<reportElement x="90" y="0" width="200" height="15" uuid="18c34040-22be-4fd3-9da0-3de793294673">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{afdelingnaam}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Default" x="30" y="15" width="60" height="15" uuid="8bf1ab11-8286-4b87-91d5-57015cd865cb">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[BSN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Default" x="290" y="15" width="60" height="15" uuid="6e3f4e2b-e5b8-4f4c-b965-62300d0c1cbe">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Geb. Datum]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Default" x="390" y="15" width="120" height="15" uuid="d32abe60-3f93-4669-b690-504abb7dff84">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Aantal verzuimen]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Default" x="90" y="15" width="200" height="15" uuid="c5350c14-9663-4211-890a-6eb8273a03d2">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Naam]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Default" x="355" y="15" width="35" height="15" uuid="5bf7b148-1a3d-45c2-8464-b411edf4254e">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[M/V]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Werknemer">
+		<groupExpression><![CDATA[$F{werknemerid}]]></groupExpression>
+	</group>
+	<background>
+		<band height="72" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70">
+			<image>
+				<reportElement x="450" y="0" width="100" height="70" uuid="7b8a5b73-efcd-4b27-856f-3d11805ea22f">
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["logo_de_vos.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="dd MMMM yyyy">
+				<reportElement style="Default" x="16" y="0" width="100" height="15" uuid="8402c228-c5a4-46be-83c4-b467929638e7">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="480" height="17" uuid="935b1d7b-65e5-4bce-9d85-f47f6f9f9881">
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Werkgever Frequent Verzuimers]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" style="Default" x="0" y="20" width="40" height="15" uuid="d6b9428f-c075-464e-a215-a58824974f9e">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Periode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" style="Default" x="238" y="20" width="102" height="15" uuid="8f84921a-1727-4b01-b282-259b98a77a2b">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Minimum aantal verzuimen]]></text>
+			</staticText>
+			<textField pattern="d MMMM yyyy">
+				<reportElement key="" style="Default" x="40" y="20" width="80" height="15" uuid="e9ecbb6b-d5bf-4270-897f-718454401969">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{startdatum}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d MMMM yyyy">
+				<reportElement key="" style="Default" x="170" y="20" width="100" height="15" uuid="4d5b226a-9cec-46f9-a0ab-e91f983af485"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{einddatum}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="33" width="556" height="1" uuid="58bb5b79-f07d-4105-b777-3b374fd48427">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement key="" style="Default" x="120" y="20" width="50" height="15" uuid="c422a47d-e8cd-4336-88c1-09d7aafde133"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[tot en met:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Default" x="340" y="20" width="30" height="13" uuid="dafa6391-6389-474c-b162-976ecef4f405"/>
+				<textFieldExpression><![CDATA[$P{minimumaantalverzuimen}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField pattern="">
+				<reportElement style="Default" x="30" y="0" width="60" height="12" uuid="44b56820-d220-401d-99f7-4d08a376aed8">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{burgerservicenummer}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Group" evaluationGroup="Werknemer">
+				<reportElement style="Default" x="90" y="0" width="200" height="12" uuid="151c11bf-ce7f-40fc-bab2-934e52699752">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$V{Werknemernaam}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="290" y="0" width="60" height="12" uuid="edcb5b3a-a717-4aa7-bb4b-ffa8c8f96f4e"/>
+				<textFieldExpression><![CDATA[$F{geboortedatum}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###;(#,##0.###-)">
+				<reportElement style="Default" x="390" y="0" width="40" height="12" uuid="53f9e54a-9d25-4e5e-a857-6e25c86f9298">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{aantalverzuimen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Default" x="350" y="0" width="32" height="12" uuid="feb127be-69b7-450b-b618-30343c00ce15">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$V{geslacht}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="62" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<subreport>
+				<reportElement positionType="Float" x="0" y="0" width="554" height="61" uuid="8ec584cb-ab4c-40d9-b883-7d19327547ab">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{Footer_datasource})]]></dataSourceExpression>
+				<subreportExpression><![CDATA["Footer.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="510" y="40" width="44" height="13" uuid="e909e836-abe8-4cf3-8857-dedcf7f74d09">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="201">
+			<subreport>
+				<reportElement x="0" y="0" width="554" height="200" uuid="e6ac63c8-b379-44bf-a21a-f0b0a5aec1a1"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{Grafiek_datasource})]]></dataSourceExpression>
+				<subreportExpression><![CDATA["verzuim/VerzuimHistorieGrafiek.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

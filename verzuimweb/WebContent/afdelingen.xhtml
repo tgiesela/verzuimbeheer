@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<title>Afdelingen werkgever</title>
+</h:head> 
+<body>
+	
+	<h:outputStylesheet name="css/verzuim.css" />
+    <h:outputStylesheet>
+        .ui-panelgrid tr, .ui-panelgrid td {
+    		border: none !important;
+		}
+    </h:outputStylesheet>
+	<h:form id="form">
+	
+	    <div class="header">
+		  	<ui:insert name="header" >
+			  <ui:include src="templates/commonHeader.xhtml" />
+			</ui:insert>
+	    </div>
+		<p:growl id="messages" showDetail="true"/>
+		<p:panelGrid columns="2" >
+		
+			<ui:include src="templates/mainMenu.xhtml"/>
+			<p:panelGrid columns="2" >
+				<p:panel>
+					<p:outputLabel for="werkgevernaam" >Werkgever: </p:outputLabel>
+					<h:outputText id="werkgevernaam" 
+								  value="#{afdelingClass.werkgever.naam}" />
+				</p:panel>
+				<p:outputLabel></p:outputLabel>
+				
+				<p:dataTable id="afdelingen" 
+							rows="5" 
+							paginator="true"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							paginatorPosition="bottom"
+							rowsPerPageTemplate="5"
+							selection="#{afdelingClass.selectedAfdeling}"
+							selectionMode="single"
+							value="#{afdelingClass.werkgever.afdelings}" 
+							sortMode="single" 
+							var="afdeling" 
+							widgetVar="afdelingTable"
+							rowKey="#{afdeling.id}">
+					<p:ajax event="rowSelect" update="btnDetails" listener="#{afdelingClass.rowSelected}" />
+					<p:column width="40" id="Afdeling" headerText="Afdeling">
+						<h:outputText value="#{afdeling.afdelingsid}"/>
+					</p:column>
+					<p:column width="60" id="Naam" headerText="Naam">
+						<h:outputText value="#{afdeling.naam}"></h:outputText>
+					</p:column>
+					<p:column width="150" id="Contactpersoon" headerText="Contactpersoon">
+						<h:outputText value="#{afdeling.contactpersoon.voorletters.concat(' ').concat(afdeling.contactpersoon.voorvoegsel).concat(' ').concat(afdeling.contactpersoon.achternaam)}"></h:outputText>
+					</p:column>
+						<f:facet name="footer">
+							<h:panelGroup style="display:block; text-align:center">
+								<p:commandButton id="btnNieuw" 
+												 value="Nieuw..." 
+												 action="#{afdelingClass.nieuweAfdeling()}"
+												 ajax="false"
+												 update="messages">
+								</p:commandButton>
+								<p:commandButton id="btnDetails" 
+												 value="Details..." 
+												 action="#{afdelingClass.editAfdeling()}"
+												 ajax="false"
+												 disabled="#{!afdelingClass.rowSelected}"
+												 update="messages">
+								</p:commandButton>
+							</h:panelGroup>
+			       		</f:facet>
+				</p:dataTable>
+				<h:outputText style="display: block;min-width: 150px"/>
+			</p:panelGrid>
+		</p:panelGrid>
+	</h:form>
+</body>
+</html>

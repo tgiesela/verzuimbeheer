@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+	<title>Aanvraag rapport verzuim historie</title>
+</h:head> 
+
+<body>
+	<f:view>
+	   	<h:outputStylesheet name="css/verzuim.css" />
+		<h:outputStylesheet>
+	        .ui-panelgrid tr, .ui-panelgrid td {
+	    		border: none !important;
+			}
+	        .alignTop {
+				vertical-align: top;
+			}
+			
+	    </h:outputStylesheet>	   	
+		<h:form id="form">
+		    <div class="header">
+			  	<ui:insert name="header" >
+				  <ui:include src="templates/commonHeader.xhtml" />
+				</ui:insert>
+		    </div>
+
+			<p:growl id="message" showDetail="true"/>
+			<p:panelGrid columns="2" columnClasses="alignTop,alignTop">
+				<ui:include src="templates/mainMenu.xhtml"/>
+				<p:panelGrid columns="2">
+					<p:panel header="Persoonsgegevens" style="width:550px;">
+						<p:panelGrid frame="none" id="persoonsgegevensGrid" rowClasses="oddRow, evenRow" border="0" columns="4">
+							<h:outputLabel for="bsn"  >BSN</h:outputLabel>
+							<h:outputText  id="bsn" label="bsn" value="#{verzuimClass.werknemer.burgerservicenummer}" size="10"></h:outputText>
+							<h:outputLabel ></h:outputLabel>
+							<h:outputLabel ></h:outputLabel>
+							<h:outputLabel for="achternaam" >Achternaam</h:outputLabel>
+							<h:outputText  id="achternaam"  value="#{verzuimClass.werknemer.achternaam}" required = "true" size="30"></h:outputText>
+							<h:outputLabel for="voorvoegsel" >Voorvoegsel</h:outputLabel>
+							<h:outputText  id="voorvoegsel" value="#{verzuimClass.werknemer.voorvoegsel}" required = "false" size="10"></h:outputText>
+							<h:outputLabel for="voornaam"  >Voornaam</h:outputLabel>
+							<h:outputText  id="voornaam" value="#{verzuimClass.werknemer.voornaam}" required = "false" size="30"></h:outputText>
+							<h:outputLabel for="voorletters"  >Voorletters</h:outputLabel>
+							<h:outputText  id="voorletters" value="#{verzuimClass.werknemer.voorletters}" required = "false" size="6"></h:outputText>
+							<h:outputLabel for="geboortedatum"  >Geb. datum</h:outputLabel>
+							<p:calendar  disabled="true" id="geboortedatum" value="#{verzuimClass.werknemer.geboortedatum}" pattern="dd-MM-yyyy" ></p:calendar>
+							<h:outputLabel for="geslacht"  >Geslacht</h:outputLabel>
+							<p:selectOneMenu id="geslacht" value = "#{verzuimClass.werknemer.geslacht}" style="width: 107px; background-image:none" disabled="true" converter="geslachtConverter" >
+								<f:selectItems value = "#{enumClass.geslachtenEnum}" />
+							</p:selectOneMenu>
+							<h:outputLabel for="burgerlijkestaat"  >Burgerlijke staat</h:outputLabel>
+							<p:selectOneMenu id="burgerlijkestaat" value = "#{verzuimClass.werknemer.burgerlijkestaat}" style="width: 180px; background-image:none" disabled="true"  >
+								<f:selectItems value = "#{enumClass.burgelijkestatenEnum}" />
+							</p:selectOneMenu>
+						</p:panelGrid>
+					</p:panel>
+					<h:outputText></h:outputText>
+
+					<p:panel header="Periode verzuimhistorie" style="width:550px;">
+						<p:panelGrid frame="none" id="verzuimhistorieGrid" rowClasses="oddRow, evenRow" border="0" columns="2">
+							<h:outputLabel for="StartdatumPeriode"  >Startdatum rapport</h:outputLabel>
+							<p:calendar 
+								id="StartdatumPeriode" 
+								value="#{verzuimClass.startdatumperiode}" 
+								pattern="dd-MM-yyyy" 
+								enableManualInput="true" 
+								required="false" ></p:calendar>
+							<h:outputLabel for="Einddatumperiode"  >Einddatum rapport</h:outputLabel>
+							<p:calendar 
+								id="Einddatumperiode" 
+								value="#{verzuimClass.einddatumperiode}" 
+								pattern="dd-MM-yyyy" 
+								enableManualInput="false"></p:calendar>
+						</p:panelGrid>
+						<f:facet name="footer">
+							<h:panelGroup style="display:block; text-align:center">
+							<p:commandButton id="btnRapport" 
+											 value="Rapport tonen" 
+											 action="#{verzuimClass.rapportTonen}"
+											 ajax="false"
+											 update="messages">
+							</p:commandButton>
+							</h:panelGroup>
+			       		</f:facet>
+					</p:panel>
+					<h:outputText></h:outputText>
+				</p:panelGrid>
+			</p:panelGrid>
+		    <div id="footer">
+		    	<ui:insert name="footer" >
+		    	  <ui:include src="templates/commonFooter.xhtml" />
+		    	</ui:insert>
+	    	</div>
+		</h:form>
+ 	</f:view>
+</body> 
+</html>

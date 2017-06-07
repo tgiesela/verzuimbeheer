@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Huisbezoekenvast" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2e9010b8-a5a8-45b8-811a-ed55e58acbf1">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="factuurAdapter"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="casemanagementkosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[casemanagementkosten]]></fieldDescription>
+	</field>
+	<field name="factuurid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[factuurid]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="kilometerkosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[kilometerkosten]]></fieldDescription>
+	</field>
+	<field name="kilometertarief" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[kilometertarief]]></fieldDescription>
+	</field>
+	<field name="overigekosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[overigekosten]]></fieldDescription>
+	</field>
+	<field name="uurkosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[uurkosten]]></fieldDescription>
+	</field>
+	<field name="uurtarief" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[uurtarief]]></fieldDescription>
+	</field>
+	<field name="vastekosten" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[vastekosten]]></fieldDescription>
+	</field>
+	<field name="werkzaamheden" class="com.gieselaar.verzuimbeheer.services.WerkzaamhedenInfo">
+		<fieldDescription><![CDATA[werkzaamheden]]></fieldDescription>
+	</field>
+	<field name="werkzaamhedenid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[werkzaamhedenid]]></fieldDescription>
+	</field>
+	<field name="oe" class="com.gieselaar.verzuimbeheer.services.OeInfo">
+		<fieldDescription><![CDATA[oe]]></fieldDescription>
+	</field>
+	<sortField name="datumwerkzaamheden" type="Variable"/>
+	<variable name="RTVastekosten" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{vastekosten}]]></variableExpression>
+	</variable>
+	<variable name="RTOverigekosten" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{overigekosten}]]></variableExpression>
+	</variable>
+	<variable name="datumwerkzaamheden" class="java.util.Date">
+		<variableExpression><![CDATA[$F{werkzaamheden}.getDatum()]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="240" y="9" width="100" height="20" uuid="af60f32d-119b-4948-b76e-856b0b747aba"/>
+				<text><![CDATA[Huisbezoeken vast tarief]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="0" width="60" height="13" uuid="74e00a40-78a0-40e0-808b-8680b9178d8c">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Woonplaats]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="504" y="0" width="50" height="13" uuid="dcdb61d2-a476-4868-a74b-3b06653dd0b0">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Onkosten]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="434" y="0" width="80" height="13" uuid="5db7395d-ab0f-4e80-b3be-a818f0a49d0a">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Huisbezoekkosten]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="13" uuid="604a78a0-e699-4050-a953-5771dab6413c">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datum]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="60" height="13" uuid="1b3c0f49-b947-4634-b8da-18a24d5af57b">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Werknemer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="0" width="60" height="13" uuid="e938d92c-0caf-4121-99be-ab9ba7acb72e">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Filiaal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="0" width="40" height="13" uuid="541a9c28-1c14-4bac-931e-1ab4b1894ad3">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BSN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="0" width="80" height="13" uuid="552277b8-d069-44a9-81e1-95a1c2b34ea7">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Soort bezoek]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$F{vastekosten}.compareTo( java.math.BigDecimal.ZERO )>0]]></printWhenExpression>
+			<textField isBlankWhenNull="true">
+				<reportElement x="240" y="0" width="70" height="13" uuid="94ad5040-3ea4-41ea-aa03-288d776061dc">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[IF($F{oe} == null,"",$F{oe}.getNaam())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="50" height="13" uuid="bf48fbd1-164c-4bbc-b326-63a803264fd1">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[DATEFORMAT($F{werkzaamheden}.getDatum(),"dd-MM-yyyy")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="90" height="13" uuid="b0338307-1f44-4c7e-a1be-0cce2bcfb0c2">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheden}.getWoonplaats()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="0" width="90" height="13" uuid="2cc54bb0-3550-4fd5-a0a8-b84bd68c0ffa">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheden}.getPersoon()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="314" y="0" width="40" height="13" uuid="fcc244a7-ab74-49c0-aeac-2ea6069a4d67">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheden}.getPersoneelsnummer()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="354" y="0" width="80" height="13" uuid="96d2d469-7fb3-4c0c-a4f8-68f11e24b570">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheden}.getUrgentie().toString()]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="460" y="0" width="40" height="13" uuid="ceb90731-853c-4bf8-bcef-7d91dc8781ae">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vastekosten}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="514" y="0" width="40" height="13" uuid="3e7da368-beb9-4cb3-9cb6-8ac21dd478d0">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{overigekosten}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="13">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$F{vastekosten}.compareTo( java.math.BigDecimal.ZERO )>0]]></printWhenExpression>
+			<textField>
+				<reportElement x="50" y="0" width="230" height="13" isRemoveLineWhenBlank="true" uuid="cf8a4041-23e1-4bdd-aaf4-5460f65585a8">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{werkzaamheden}.getOmschrijving()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="440" y="0" width="60" height="13" uuid="6b68101e-637b-48ab-93b8-7ca6fd78f3e3">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Double" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{RTVastekosten}]]></textFieldExpression>
+			</textField>
+			<textField pattern="€ #,##0.00;€ -#,##0.00">
+				<reportElement x="514" y="0" width="41" height="13" uuid="64696f89-28fa-4b6c-81de-a0cc3a221cf0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Double" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{RTOverigekosten}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="60" height="13" uuid="b5c86eaf-164a-4e80-ac77-2f9bd9222a62">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totaal]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<title>Verzuim details</title>
+</h:head> 
+
+<body>
+   <h:outputStylesheet name="css/verzuim.css" />
+   <h:outputStylesheet>
+        .ui-panelgrid tr, .ui-panelgrid td {
+    		border: none !important;
+		}
+		.alignTop {
+			vertical-align: top;
+		}
+					
+    </h:outputStylesheet>
+	<h:form id="form">
+	    <div class="header">
+		  	<ui:insert name="header" >
+			  <ui:include src="templates/commonHeader.xhtml" />
+			</ui:insert>
+	    </div>
+		<p:growl id="messages" showDetail="true"/>
+		<p:panelGrid columns="2"  columnClasses="alignTop,alignTop" >
+			<ui:include src="templates/mainMenu.xhtml"/>
+			<p:panelGrid columns="2">
+				<p:panel header="Verzuim gegevens">
+					<h:panelGrid frame="none" 
+							 id="verzuimgegevensGrid" 
+							 border="0" 
+							 columns="4">
+					<h:outputLabel for="aanvangsdatum"  >Aanvang verzuim</h:outputLabel>
+					<p:calendar id="aanvangsdatum" 
+								   value="#{verzuimDetailClass.verzuim.startdatumverzuim}" 
+								   pattern="dd-MM-yyyy" 
+								   enableManualInput="true" 
+								   required="false" ></p:calendar>
+					<h:outputLabel for="meldingsdatum"  >Meldingsdatum verzuim</h:outputLabel>
+					<p:calendar id="meldingsdatum" 
+								   value="#{verzuimDetailClass.verzuim.meldingsdatum}" 
+								   pattern="dd-MM-yyyy" 
+								   enableManualInput="false" 
+								   disabled="true"></p:calendar>
+					<h:outputLabel for="einddatum"  >Einddatum verzuim</h:outputLabel>
+					<p:calendar id="einddatum" 
+								   value="#{verzuimDetailClass.verzuim.einddatumverzuim}" 
+								   pattern="dd-MM-yyyy" 
+								   enableManualInput="false"
+								   disabled="true"></p:calendar>
+					<h:outputLabel for="meldingswijze"  >Meldingswijze</h:outputLabel>
+					<h:outputText id="meldingswijze" 
+								  value="#{verzuimDetailClass.meldingswijze}">
+					</h:outputText>
+					<h:outputLabel for="cascode"  >Cascode</h:outputLabel>
+					<p:selectOneMenu id="cascode" 
+								     value="#{verzuimDetailClass.cascode}"
+								     valueChangeListener="#{verzuimDetailClass.cascodeChanged}">
+						<f:selectItems value = "#{verzuimDetailClass.cascodeslist}" />
+						<p:ajax listener="#{verzuimDetailClass.clearVangnettype}" update="vangnet messages"></p:ajax>
+					</p:selectOneMenu>
+					<h:outputLabel ></h:outputLabel>
+					<h:outputLabel ></h:outputLabel>
+					<h:outputLabel for="gerelateerdheid"  >Gerelateerdheid</h:outputLabel>
+					<p:selectOneMenu id="gerelateerdheid" 
+								     value="#{verzuimDetailClass.verzuim.gerelateerdheid}">
+						<f:selectItems value = "#{enumClass.gerelateerdheidEnum}" />
+					</p:selectOneMenu>
+					<h:outputLabel ></h:outputLabel>
+					<h:outputLabel ></h:outputLabel>
+					<h:outputLabel for="verzuimtype"  >Verzuimtype</h:outputLabel>
+					<p:selectOneMenu id="verzuimtype" 
+								     value="#{verzuimDetailClass.verzuim.verzuimtype}">
+						<f:selectItems value = "#{enumClass.verzuimtypeEnum}" />
+					</p:selectOneMenu>
+					<h:outputLabel ></h:outputLabel>
+					<h:outputLabel ></h:outputLabel>
+					<h:outputLabel for="vangnet"  >Vangnet</h:outputLabel>
+					<p:selectOneMenu id="vangnet" 
+								     value="#{verzuimDetailClass.vangnet}">
+						<f:selectItems value = "#{enumClass.vangnettypeEnum}" />
+					</p:selectOneMenu>
+					<h:outputLabel >Ketenverzuim</h:outputLabel>
+					<h:outputText value="#{verzuimDetailClass.verzuim.ketenverzuim==true?'Ja':'Nee'}" /> 
+					<f:facet name="footer">
+		            	<h:panelGroup style="display:block; text-align:center">
+						<p:commandButton value="Opslaan" 
+										 action="#{verzuimDetailClass.saveVerzuim}" 
+										 oncomplete="if (#{verzuimDetailClass.frequentverzuim}) {PF('frequentverzuim').show();}"
+										 id="btnOpslaan" 
+										 update="@form,@this">
+						</p:commandButton>
+						<p:commandButton value="Informatiekaart" 
+										 action="#{verzuimDetailClass.showInformatiekaart}"
+										 disabled="#{verzuimDetailClass.isNewVerzuim()}" 
+										 id="btnInformatiekaart">
+						</p:commandButton>
+						<p:commandButton value="Documenten" 
+										 action="#{verzuimDetailClass.showDocumenten}" 
+										 id="btnDocumenten">
+						</p:commandButton>
+		            	</h:panelGroup>
+		    		</f:facet>
+					<p:dialog id="frequentverzuimpopup"
+							  visible="#{verzuimDetailClass.frequentverzuim}"
+					          style="text-align:center"
+					          widgetVar="frequentverzuim"
+					          modal="true">  
+					    <h:outputLabel>Let op: dit is een frequent verzuimer!</h:outputLabel>
+					</p:dialog> 	        
+				</h:panelGrid>
+				</p:panel>
+				<h:outputLabel style="display: block;min-width: 150px"/>
+		
+				<p:dataTable id="verzuimherstellen" 
+					 rows="10" 
+					 paginator="true"
+					 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					 paginatorPosition="bottom"
+					 rowsPerPageTemplate="10,15"
+					 selection="#{verzuimDetailClass.selectedHerstel}"
+					 selectionMode="single"
+					 value="#{verzuimDetailClass.verzuimherstellen}" 
+					 sortMode="single" 
+					 var="herstel"
+					 widgetVar="herstelTable"
+					 rowKey="#{herstel.id}">
+					<p:ajax event="rowSelect" update="btnDetails" listener="#{verzuimDetailClass.rowSelected}" />
+					<f:facet name="header">
+						<h:outputText value="Verzuim herstellen"></h:outputText>
+					</f:facet>
+					<p:column id="hersteldatum">
+						<f:facet name="header">
+							<h:outputText  value="Hersteldatum"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{herstel.datumHerstel}">
+							<f:convertDateTime type="date" 
+											   pattern="dd-MM-yyyy"/>
+						</h:outputText>
+					</p:column>
+					<p:column id="meldingsdatum">
+						<f:facet name="header">
+							<h:outputText  value="Meldingsdatum"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{herstel.meldingsdatum}">
+							<f:convertDateTime type="date" 
+											   pattern="dd-MM-yyyy"/>
+						</h:outputText>
+					</p:column>
+					<p:column id="herstelpercentage" >
+						<f:facet name="header">
+							<h:outputText  value="Herstel%">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{herstel.percentageHerstel}">
+						</h:outputText>
+					</p:column>
+					<p:column id="herstelpercentageAT" >
+						<f:facet name="header">
+							<h:outputText  value="Herstel% AT">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{herstel.percentageHerstelAT}">
+						</h:outputText>
+					</p:column>
+					<f:facet name="footer">
+						<h:panelGroup style="display:block; text-align:center">
+						<p:commandButton id="btnNieuw" 
+									     value="Nieuw herstel..." 
+										 action="#{verzuimDetailClass.nieuwHerstel}"
+										 update="@form,@this"
+										 >
+						<p:ajax event="dialogReturn" listener="#{verzuimDetailClass.refreshVerzuim}" update=":form" onclick="submit()" />  
+						</p:commandButton>
+						<p:commandButton id="btnDetails" 
+										 value="Details" 
+										 action="#{verzuimDetailClass.editHerstel()}"
+										 disabled="#{!verzuimDetailClass.rowSelected}"
+										 update="@form,@this">
+						<p:ajax event="dialogReturn" listener="#{verzuimDetailClass.refreshVerzuim}" update=":form" onclick="submit()" />  
+						</p:commandButton>
+						
+						</h:panelGroup>
+			    	</f:facet>
+				</p:dataTable>
+				<h:outputLabel style="display: block;min-width: 150px"/>
+			</p:panelGrid>
+		</p:panelGrid>
+	    <div id="footer">
+	    	<ui:insert name="footer" >
+	    	  <ui:include src="templates/commonFooter.xhtml" />
+	    	</ui:insert>
+    	</div>
+	</h:form>
+</body> 
+</html>

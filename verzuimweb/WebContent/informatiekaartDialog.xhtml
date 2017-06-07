@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<title>Informatiekaart</title>
+</h:head> 
+<body>
+<h:form id ="form">
+	<h:outputStylesheet name="css/verzuim.css" />
+   <h:outputStylesheet>
+        .ui-panelgrid tr, .ui-panelgrid td {
+    		border: none !important;
+		}
+    </h:outputStylesheet>
+	<p:growl id="dialogmessage" showDetail="true"/>
+	<p:panelGrid  columns="2" >
+		<h:outputLabel for="date" value="Datum: " />
+	    <h:outputText id="date" value="#{informatiekaartDetailClass.informatiekaart.wijzigingsdatum}"> 
+	    	<f:convertDateTime  type="date" pattern="dd-MM-yyyy"/>
+	    </h:outputText>
+	 
+	 	<h:outputLabel for="door" value="Door: " />
+	    <h:outputText id="door" value="#{informatiekaartDetailClass.gebruikernaam}"/>
+	 
+	    <h:outputLabel for="text" value="Inhoud: " />
+	    <p:inputTextarea 
+	    	id="text" 
+	    	value="#{informatiekaartDetailClass.informatiekaart.medischekaart}" 
+	    	style="width: 600px;"
+	    	autoresize="false"
+	    	cols="250"
+	    	rows="15"
+	    />
+		<f:facet name="footer">
+           	<h:panelGroup style="display:block; text-align:center; max-width: 400px">
+				<p:commandButton 
+					action="#{informatiekaartDetailClass.saveInformatieKaart()}" 
+					id="btnOpslaan" 
+					value="Opslaan"
+					disabled="#{!informatiekaartDetailClass.kaartEditable}"
+					update="dialogmessage">
+				 </p:commandButton>
+           	</h:panelGroup>
+   		</f:facet>
+	</p:panelGrid>
+</h:form>
+</body> 
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions" 
+	  xmlns:components="http://java.sun.com/jsf/composite/components"> 
+
+<h:head>
+	<title>Wachtwoord wijzigen</title>
+</h:head> 
+<h:body>
+   	<h:outputStylesheet name="css/verzuim.css" />
+    <h:outputStylesheet>
+        .ui-panelgrid tr, .ui-panelgrid td {
+    		border: none !important;
+		}
+		.alignTop {
+				vertical-align: top;
+		}
+    </h:outputStylesheet>
+	<h:form id="form">
+	    <div class="header">
+		  	<ui:insert name="header" >
+			  <ui:include src="templates/commonHeader.xhtml" />
+			</ui:insert>
+	    </div>
+		<p:growl id="messages" showDetail="true" />
+		<p:panelGrid columns="2" columnClasses="alignTop,alignTop">
+			<ui:include src="templates/mainMenu.xhtml"/>
+		
+			<p:panelGrid styleclass="werknemerGrid" columns="3" layout="grid">
+				<p:outputLabel style="display: block;min-width: 150px"/>
+				<p:panel header="Wachtwoord" style="width:500px">
+					<p:panelGrid id="wachtwoordGrid"  columns="2">
+						<p:outputLabel for="Huidigwachtwoord" value="Huidig wachtwoord"></p:outputLabel>
+						<p:password  id="Huidigwachtwoord" 
+									 value="#{gebruikerClass.oldpassword}" 
+									 required="false" 
+									 requiredMessage="Huidig wachtwoord is verplicht" 
+									 size="30">
+						</p:password>
+						<p:outputLabel for="Nieuwwachtwoord"  value="Nieuw wachtwoord"></p:outputLabel>
+						<p:password  id="Nieuwwachtwoord" 
+									 value="#{gebruikerClass.newpassword}" 
+									 required="false" 
+									 requiredMessage="Nieuw wachtwoord is verplicht" 
+									 size="30">
+						</p:password>
+						<p:outputLabel for="NieuwwachtwoordHerhaald" value="Herhaal nieuw wachtwoord"></p:outputLabel>
+						<p:password  id="NieuwwachtwoordHerhaald" 
+									 value="#{gebruikerClass.newpasswordRepeated}" 
+									 required="false" 
+									 requiredMessage="Herhaal nieuw wachtwoord is verplicht" 
+									 size="30">
+						</p:password>
+					</p:panelGrid>
+					<f:facet name="footer">
+						<h:panelGroup style="display:block; text-align:center">
+							<p:commandButton id="btnOpslaan" 
+											 value="Wijzig" 
+											 action="#{gebruikerClass.changePassword}" 
+											 update="messages">
+							</p:commandButton>
+						</h:panelGroup>
+		       		</f:facet>
+				</p:panel>
+	       	</p:panelGrid>
+       	</p:panelGrid>
+	</h:form>
+</h:body> 
+</html>

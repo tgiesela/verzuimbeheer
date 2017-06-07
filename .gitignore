@@ -1,0 +1,39 @@
+# Directories #
+/build/
+/bin/
+target/
+ 
+# OS Files #
+.DS_Store
+ 
+*.class
+*.jasper
+ 
+# Package Files #
+*.jar
+*.war
+*.ear
+*.db
+ 
+ 
+######################
+# Eclipse
+######################
+ 
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.settings/**
+*/.settings/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+ 
+ 

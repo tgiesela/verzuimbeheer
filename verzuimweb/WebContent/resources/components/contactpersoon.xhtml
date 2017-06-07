@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:composite="http://java.sun.com/jsf/composite">
+ 
+    <composite:interface>
+ 
+    	<composite:attribute name="contactpersoon" type="com.gieselaar.verzuimbeheer.services.ContactpersoonInfo" required="true" />
+ 
+    </composite:interface>
+ 
+    <composite:implementation>
+ 
+		<p:panelGrid columns="4" header="Contactpersoon" >
+			<h:outputLabel for="achternaam" >Achternaam</h:outputLabel>
+			<p:inputText id="achternaam" value="#{cc.attrs.contactpersoon.achternaam}" size="40"></p:inputText>
+			<h:outputText value="" />
+			<h:outputText value="" />
+			<h:outputLabel for="voorvoegsel" >Voorvoegsel</h:outputLabel>
+			<h:panelGroup>
+				<p:inputText id="voorvoegsel" value="#{cc.attrs.contactpersoon.voorvoegsel}" size="8"></p:inputText>
+				<h:outputLabel for="voorletters" >Voorletters</h:outputLabel>
+				<p:inputText  id="voorletters" value="#{cc.attrs.contactpersoon.voorletters}" size="5"></p:inputText>
+			</h:panelGroup>
+				<h:outputLabel for="voornaam" >Voornaam</h:outputLabel>
+				<p:inputText  id="voornaam" value="#{cc.attrs.contactpersoon.voornaam}" size="10"></p:inputText>
+			<h:outputLabel for="geslacht" >Geslacht</h:outputLabel>
+			<p:selectOneMenu id="geslacht" 
+							 value = "#{cc.attrs.contactpersoon.geslacht}" 
+							 style="width: 107px;" 
+							 converter="geslachtConverter">
+				<f:selectItems value = "#{enumClass.geslachtenEnum}" />
+			</p:selectOneMenu>
+			<h:outputLabel></h:outputLabel>
+			<h:outputLabel></h:outputLabel>
+			<h:outputLabel for="cptelefoon" >Telefoon</h:outputLabel>
+			<h:panelGroup>
+				<p:inputText id="cptelefoon" value="#{cc.attrs.contactpersoon.telefoon}" size="12"></p:inputText>
+				<h:outputLabel for="mobiel" >Mobiel</h:outputLabel>
+				<p:inputText id="mobiel" value="#{cc.attrs.contactpersoon.mobiel}" size="12"></p:inputText>
+			</h:panelGroup>
+			<h:outputLabel></h:outputLabel>
+			<h:outputLabel></h:outputLabel>
+			<h:outputLabel for="email" >Email</h:outputLabel>
+			<p:inputText id="email" value="#{cc.attrs.contactpersoon.emailadres}" size="40"></p:inputText>
+		
+		</p:panelGrid>
+    </composite:implementation>
+ 
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+	<title>Aanvraag rapport verzuim statistiek</title>
+</h:head> 
+
+<body>
+	   	<h:outputStylesheet name="css/verzuim.css" />
+	   <h:outputStylesheet>
+	        .ui-panelgrid tr, .ui-panelgrid td {
+	    		border: none !important;
+			}
+	        .alignTop {
+				vertical-align: top;
+			}
+			
+	    </h:outputStylesheet>	   	
+		<h:form id="form">
+		    <div class="header">
+			  	<ui:insert name="header" >
+				  <ui:include src="templates/commonHeader.xhtml" />
+				</ui:insert>
+		    </div>
+
+			<p:growl id="message" showDetail="true"/>
+			<p:panelGrid columns="2" columnClasses="alignTop,alignTop">
+				<ui:include src="templates/mainMenu.xhtml"/>
+				<p:panelGrid columns="2">
+						<p:selectOneMenu value = "#{werkgeverClass.selectedHolding}" style="width: 363px;" immediate="true" >
+							<f:selectItems value = "#{werkgeverClass.holdings}" />
+							<p:ajax update="form" />
+						</p:selectOneMenu>
+						<h:outputLabel style="display: block;min-width: 150px"/>
+						<p:selectOneMenu value = "#{werkgeverClass.selectedWerkgever}" style="width: 363px;" immediate="true" >
+							<f:selectItems value = "#{werkgeverClass.werkgevers}" />
+							<p:ajax update="form" />
+						</p:selectOneMenu>
+						<h:outputLabel style="display: block;min-width: 150px"/>
+
+					<p:panel header="Periode verzuimstatistiek" style="width:550px;">
+						<p:panelGrid frame="none" id="verzuimstatistiekGrid" rowClasses="oddRow, evenRow" border="0" columns="2">
+							<h:outputLabel for="StartdatumPeriode"  >Startdatum rapport</h:outputLabel>
+							<p:calendar 
+								id="StartdatumPeriode" 
+								value="#{werkgeverClass.startdatumperiode}" 
+								pattern="dd-MM-yyyy" 
+								enableManualInput="true" 
+								required="false" ></p:calendar>
+							<h:outputLabel for="Einddatumperiode"  >Einddatum rapport</h:outputLabel>
+							<p:calendar 
+								id="Einddatumperiode" 
+								value="#{werkgeverClass.einddatumperiode}" 
+								pattern="dd-MM-yyyy" 
+								enableManualInput="false"></p:calendar>
+							<h:outputLabel>Inclusief zwangerschap</h:outputLabel>
+							<p:selectBooleanCheckbox value="#{werkgeverClass.inclusiefZwangerschap}">
+							</p:selectBooleanCheckbox>
+						</p:panelGrid>
+						<f:facet name="footer">
+							<h:panelGroup style="display:block; text-align:center">
+							<p:commandButton id="btnRapport" 
+											 value="Rapport tonen" 
+											 action="#{werkgeverClass.rapportVerzuimStatistiekTonen}"
+											 ajax="false"
+											 update="messages">
+							</p:commandButton>
+							</h:panelGroup>
+			       		</f:facet>
+					</p:panel>
+					<h:outputText></h:outputText>
+				</p:panelGrid>
+			</p:panelGrid>
+		    <div id="footer">
+		    	<ui:insert name="footer" >
+		    	  <ui:include src="templates/commonFooter.xhtml" />
+		    	</ui:insert>
+	    	</div>
+		</h:form>
+</body> 
+</html>
