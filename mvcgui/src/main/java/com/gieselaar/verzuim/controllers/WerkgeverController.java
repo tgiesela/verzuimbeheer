@@ -253,7 +253,7 @@ public class WerkgeverController extends AbstractController {
 	private WerkgeverInfo createNewWerkgever() {
 		WerkgeverInfo werkgever = new WerkgeverInfo();
 		werkgever.setStartdatumcontract(new Date());
-		return null;
+		return werkgever;
 	}
 	public void getTableModel(List<WerkgeverInfo> werkgevers, ColorTableModel tblmodel, List<Integer> colsinview) {
 		/*

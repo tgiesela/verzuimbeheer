@@ -154,6 +154,9 @@ public class VerzuimController extends AbstractController {
 		}
 		VerzuimInfo verzuim = new VerzuimInfo();
 		initializeVerzuim(verzuim);
+		selectedrow = verzuim;
+		selectedVerzuim = verzuim;
+		this.getVerzuim(-1);
 		AbstractDetail form = super.createDetailForm(verzuim, VerzuimDetail.class, __formmode.NEW);
 		super.addRow(ves, form);
 	}
@@ -347,7 +350,7 @@ public class VerzuimController extends AbstractController {
 		}
 		if (werknemer.getId() == null || werknemer.getId() <= 0){
 			JOptionPane.showMessageDialog(null,
-					"Nieuw verzuim aanmaken niet toegestaan.\r\nSla eerste de gegevens op");
+					"Nieuw verzuim aanmaken niet toegestaan.\r\nSla eerst de gegevens op");
 		}
 		return true;
 	}
@@ -475,6 +478,20 @@ public class VerzuimController extends AbstractController {
 
 	public void setSelectedverzuim(VerzuimInfo selectedVerzuim) {
 		this.selectedVerzuim = selectedVerzuim;
+	}
+	@Override
+	public void rowAdded(Object data) {
+		super.rowAdded(data);
+		/*
+		 * data contains the newly added verzuim, so now we 
+		 * know the verzuimid.
+		 */
+		try {
+			VerzuimInfo verzuim = model.getVerzuim(((VerzuimInfo)data).getId());
+			this.getDetailform().setData(verzuim);
+		} catch (VerzuimApplicationException e) {
+			ExceptionLogger.ProcessException(e, null);
+		}
 	}
 
 }

@@ -73,6 +73,8 @@ public class VerzuimMedischeKaartList extends AbstractDetail {
 		super("Medische kaart overzicht", controller);
 		verzuimmedischekaartcontroller = controller;
 		initialize();
+		/* Treat OK as Cancel */
+		super.getOkButton().setActionCommand(controller.cancelDetailActionCommand);
 	}
 	@Override
 	public void setData(InfoBase info){

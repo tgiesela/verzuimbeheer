@@ -91,6 +91,9 @@ public class WerkzaamhedenController extends AbstractController {
 		info.setOverigekosten(BigDecimal.ZERO);
 		info.setDatum(new Date());
 		info.setSoortwerkzaamheden(__werkzaamhedensoort.SECRETARIAAT);
+		info.setGeslacht(__geslacht.ONBEKEND);
+		info.setSoortverzuim(__verzuimsoort.ONBEKEND);
+		info.setUrgentie(__huisbezoekurgentie.NVT);
 		return info;
 	}
 	@Override
@@ -297,7 +300,11 @@ public class WerkzaamhedenController extends AbstractController {
 
 		VerzuimComboBoxModel oemodel = new VerzuimComboBoxModel(this);
 		oemodel.addElement(new TypeEntry(-1,"[]"));
-		if (oes != null && oes.size() > 0 && werkgeverid > 0) {
+		if (werkgeverid == null){
+			/* Geen werkgever geselecteerd */
+			return oemodel;
+		}
+		if (oes != null && !oes.isEmpty() && werkgeverid > 0) {
 			if (werkgeverid != null)
 				oemodel.setId(-1);
 			for (OeInfo oeniveau:oes) {

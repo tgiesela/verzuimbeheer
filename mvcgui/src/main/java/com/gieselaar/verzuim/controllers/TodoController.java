@@ -264,10 +264,7 @@ public class TodoController extends AbstractController {
 			return;
 		}
 		TodoFastInfo todof = (TodoFastInfo) data;
-		TodoInfo todo = new TodoInfo();
-		todo.setAction(persistenceaction.DELETE);
-		todo.setState(persistencestate.EXISTS);
-		todo.setId(todof.getId());
+		TodoInfo todo = model.getTodoDetails(todof.getId());
 		model.deleteTodo(todo);
 
 	}

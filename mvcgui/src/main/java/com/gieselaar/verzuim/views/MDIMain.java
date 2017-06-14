@@ -55,7 +55,6 @@ public class MDIMain implements WindowListener {
 		}
 	}
 	private void Login() throws VerzuimAuthenticationException, VerzuimApplicationException{
-		controller.getModel().getSession().authenticateGebruiker("tonny", "password");
 		controller.logon();
 		if (this.controller.isAuthorised(__applicatiefunctie.BEHEERTARIEVEN)){
 			mntmTarieven.setEnabled(true);

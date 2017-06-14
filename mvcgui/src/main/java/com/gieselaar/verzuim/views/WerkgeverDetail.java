@@ -98,7 +98,9 @@ public class WerkgeverDetail extends AbstractDetail{
 		accesstotarieven = controller.getMaincontroller().isAuthorised(__applicatiefunctie.RAADPLEGENTARIEVEN);
 		origArtsid = werkgever.getBedrijfsartsid();
 		txtNaam.setText(werkgever.getNaam());
-		txtWerkweek.setText(df.format(werkgever.getWerkweek()));
+		if (werkgever.getWerkweek() != null){
+			txtWerkweek.setText(df.format(werkgever.getWerkweek()));
+		}
 
 		if (werkgever.getHoldingId() != null){
 			holdingmodel.setId(werkgever.getHoldingId());

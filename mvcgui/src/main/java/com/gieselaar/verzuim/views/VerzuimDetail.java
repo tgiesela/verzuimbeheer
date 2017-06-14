@@ -93,7 +93,6 @@ public class VerzuimDetail extends AbstractDetail {
 	private boolean initialized = false;
 
 	private VerzuimController verzuimcontroller;
-//	private transient List<ControllerEventListener> listeners = new ArrayList<>();
 
 	private static final String PANELNAMEVERRICHTINGEN = "Verrichtingen";
 	private static final String PANELNAMETODOS = "TODO";
@@ -448,7 +447,7 @@ public class VerzuimDetail extends AbstractDetail {
 		this.registerControllerListener(verzuimdocumentencontroller, listener);
 
 		List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-		sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+		sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
 		tpVerzuimdocumenten.getSorter().setSortKeys(sortKeys);
 		tpVerzuimdocumenten.getSorter().sort();
 	}
@@ -535,13 +534,22 @@ public class VerzuimDetail extends AbstractDetail {
 		};
 		registerControllerListener(controller.getMaincontroller(), listener);
 		cmbCascode.setBounds(159, 113, 254, 20);
+		cmbCascode.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cmbCascodeClicked(e);
+			}
+		});
 
 		getContentPane().add(cmbCascode);
 	}
 
 	private void refreshComboCascodes() {
+		initialized = false;
 		verzuimcontroller.getMaincontroller()
 				.updateComboModelCascodes((VerzuimComboBoxModel) cmbCascode.getModel(), true, verzuim.getCascode());
+		initialized = true;
 	}
 
 	protected void btnGenereerClicked(ActionEvent e) {
@@ -552,13 +560,13 @@ public class VerzuimDetail extends AbstractDetail {
 	protected void cmbCascodeClicked(ActionEvent e) {
 		VerzuimComboBoxModel vangnetModel;
 		int vangnet;
-		TypeEntry cascode;
+		Integer cascode = null;
 		if (initialized) {
-			cascode = (TypeEntry) cmbCascode.getSelectedItem();
+			cascode = ((VerzuimComboBoxModel) cmbCascode.getModel()).getId();
 			vangnetModel = (VerzuimComboBoxModel) cmbVangnet.getModel();
 			vangnet = vangnetModel.getId();
 			for (CascodeInfo cci : cascodes) {
-				if (cci.getId() == cascode.getValue()) {
+				if (cci.getId().equals(cascode)) {
 					/* Geselecteerde cascode gevonden */
 					if (cci.getVangnettype().getValue() == vangnet){
 						/* Vangnettype staat al goed */
@@ -627,4 +635,12 @@ public class VerzuimDetail extends AbstractDetail {
 		verzuim.setUitkeringnaarwerknemer(chckbxUitkeringNaarWerknemer.isSelected());
 		return verzuim;
 	}
+//	@Override
+//	public void refreshTable() {
+//		try {
+//			verzuimcontroller.refreshDatabase();
+//		} catch (VerzuimApplicationException e) {
+//			ExceptionLogger.ProcessException(e, this);
+//		}
+//	}
 }

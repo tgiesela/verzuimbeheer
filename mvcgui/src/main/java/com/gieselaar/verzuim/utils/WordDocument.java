@@ -123,8 +123,6 @@ public class WordDocument {
 			;
 		else
 			returnadres = returnadres + " " + adres.getHuisnummertoevoeging();
-		// returnadres = returnadres + "," + adres.getPostcode() + " "
-		// + adres.getPlaats();
 		return returnadres;
 	}
 
@@ -134,9 +132,9 @@ public class WordDocument {
 		else
 			ht.put(key,StringEscapeUtils.escapeXml11(value));
 	}
-	private HashMap<String, String> populateHashTable() {
+	private HashMap<String, String> populateHashTable() throws ValidationException {
 		DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		DienstverbandInfo dvb = verzuim.getDienstverband();
+		DienstverbandInfo dvb = null;
 		WerknemerInfo wnr = null;
 		WerkgeverInfo wgr = null;
 		UitvoeringsinstituutInfo uvi = null;
@@ -149,7 +147,15 @@ public class WordDocument {
 		List<CascodeGroepInfo> cascodegroepen = null;
 		try {
 			wnr = werknemerRemote.getWerknemer(verzuim.getWerknemer().getId());
-			wgr = werknemerRemote.getWerkgever(dvb.getWerkgeverId());
+			for (DienstverbandInfo dvbi: wnr.getDienstVerbanden()){
+				if (dvbi.getId().equals(verzuim.getDienstverbandId())){
+					dvb = dvbi;
+				}
+			}
+			if (dvb == null){
+				throw new ValidationException("Logic error: Dienstverband bij verzuim niet ingevuld");
+			}
+			wgr = werknemerRemote.getWerkgever(wnr.getWerkgeverid());
 			uvi = instantieRemote.getUitkeringsinstantie(wgr.getUwvId());
 			abd = instantieRemote.getArbodienst(wgr.getArbodienstId());
 			bgl = instantieRemote.allBedrijfsgegevens();
@@ -182,7 +188,7 @@ public class WordDocument {
 		}
 		HashMap<String, String> ht = new HashMap<String, String>();
 
-		htput(ht,"Werknemer Werkweek", verzuim.getDienstverband().getWerkweek()
+		htput(ht,"Werknemer Werkweek", dvb.getWerkweek()
 				.toPlainString());
 		htput(ht,"Werknemer Wao Percentage", wia.getCodeWiaPercentage()
 				.toString());
@@ -204,7 +210,6 @@ public class WordDocument {
 		htput(ht,"Werknemer Personeelsnr", dvb.getPersoneelsnummer());
 		htput(ht,"Werknemer Opmerkingen", wnr.getOpmerkingen());
 		htput(ht,"Werknemer Mobiel", wnr.getMobiel());
-		// htput(ht,"Werknemer Huisarts",);
 		switch (wnr.getGeslacht()) {
 		case MAN:
 			htput(ht,"Werknemer heer/mevrouw", "heer");
@@ -626,7 +631,7 @@ public class WordDocument {
 	}
 
 	
-	public void GenerateDocument(VerzuimInfo vzm, DocumentTemplateInfo template) throws IOException{
+	public void GenerateDocument(VerzuimInfo vzm, DocumentTemplateInfo template) throws IOException, ValidationException{
 		String localOutputfilename;
 		verzuim = vzm;
 		selectedFile = SelectFilename();
@@ -675,9 +680,6 @@ public class WordDocument {
 		new File(localOutputfilename).delete();
 		zipper.zipIt(localOutputfilename);
 		Files.move(new File(localOutputfilename), new File(outputPathFilename));
-		//Files.copy(new File(localOutputfilename), new File(outputPathFilename));
-		
-		//zipper.zipIt(outputPathFilename);
 		removeDirectory(new File(tempDir));
 
 		URI uri;

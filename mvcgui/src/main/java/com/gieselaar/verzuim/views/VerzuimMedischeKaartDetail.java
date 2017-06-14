@@ -35,6 +35,7 @@ public class VerzuimMedischeKaartDetail extends AbstractDetail {
 		super("Beheer Medische kaart", controller);
 		initialize();
 	}
+	@Override
 	public void setData(InfoBase info){
 		medischekaart = (VerzuimMedischekaartInfo) info;
 		gebruikers = controller.getMaincontroller().getGebruikers();

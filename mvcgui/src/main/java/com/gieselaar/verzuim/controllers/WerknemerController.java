@@ -16,6 +16,7 @@ import com.gieselaar.verzuim.models.WerknemerModel;
 import com.gieselaar.verzuim.utils.ExceptionLogger;
 import com.gieselaar.verzuim.views.AbstractDetail;
 import com.gieselaar.verzuim.views.ReportVerzuimenHistorie;
+import com.gieselaar.verzuim.views.WerkgeverList;
 import com.gieselaar.verzuim.views.WerknemerDetail;
 import com.gieselaar.verzuim.views.WerknemerWizard;
 import com.gieselaar.verzuim.viewsutils.ColorTableModel;
@@ -624,5 +625,13 @@ public class WerknemerController extends AbstractController {
 	@Override
 	public void dataSaved(AbstractDetail view) {
 		view.setData(null);
+	}
+
+	public void openwerkgever(Integer werkgeverid) {
+		WerkgeverController controller = new WerkgeverController(this.getModel().getSession());
+		controller.setDesktoppane(getDesktoppane());
+		controller.setMaincontroller(this.getMaincontroller());
+		WerkgeverInfo werkgever = controller.getWerkgeverDetails(werkgeverid);
+		controller.showRow(null, werkgever);
 	}
 }

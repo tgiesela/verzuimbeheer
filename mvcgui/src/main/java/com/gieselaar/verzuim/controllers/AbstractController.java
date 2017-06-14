@@ -576,27 +576,6 @@ public abstract class AbstractController implements ModelEventListener, Serializ
 			return null;
 
 	}
-/*
-	protected File SelectFilename() {
-		File selectedfile;
-		JFileChooser fd = new JFileChooser();
-
-		fd.setDialogType(JFileChooser.SAVE_DIALOG);
-		fd.setFileSelectionMode(JFileChooser.FILES_ONLY);
-		int retval = fd.showSaveDialog(null);
-		if (retval == JFileChooser.APPROVE_OPTION) {
-			selectedfile = fd.getSelectedFile();
-			String filename = selectedfile.getAbsolutePath();
-			if (filename.endsWith(".xls"))
-				return selectedfile;
-			else {
-				return new File(filename + ".xls");
-			}
-		} else{
-			return null;
-		}
-	}
-*/
 	public void genereerDocument(VerzuimInfo verzuim, Integer templateid) {
 		List<DocumentTemplateInfo> templates = maincontroller.getDocumentTemplates();
 		for (DocumentTemplateInfo template:templates){
@@ -604,7 +583,7 @@ public abstract class AbstractController implements ModelEventListener, Serializ
 				WordDocument doc = new WordDocument(null, this.model.getSession());
 				try {
 					doc.GenerateDocument(verzuim, template);
-				} catch (IOException e1) {
+				} catch (IOException | ValidationException e1) {
 					ExceptionLogger.ProcessException(e1,null);
 				}
 				break;

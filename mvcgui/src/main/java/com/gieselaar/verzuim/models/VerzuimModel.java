@@ -74,11 +74,11 @@ public class VerzuimModel extends AbstractModel {
 
 	public void addVerzuim(VerzuimInfo verzuim) throws VerzuimApplicationException {
 		try {
-			ServiceCaller.verzuimFacade(getSession()).addVerzuim(verzuim);
+			VerzuimInfo newVerzuim = ServiceCaller.verzuimFacade(getSession()).addVerzuim(verzuim);
 			/* Now also the list has to be updated */
-			verzuimen.add(verzuim);
+			verzuimen.add(newVerzuim);
 			for (ModelEventListener ml: this.changelisteners){
-				ml.rowUpdated(verzuim);
+				ml.rowAdded(newVerzuim);
 			}
 		} catch (PermissionException | ServiceLocatorException | ValidationException e) {
 			throw new VerzuimApplicationException(e, e.getMessage());

@@ -150,7 +150,7 @@ public class WerkgeverSelection extends JPanel{
 						Integer werkgever = ((VerzuimComboBoxModel)cmbWerkgever.getModel()).getId();
 						Integer savedwerkgever = selectedWerkgever;
 						setWerkgeverId(werkgever);
-						if (werkgever.intValue() != savedwerkgever.intValue() &&
+						if (!werkgever.equals(savedwerkgever) &&
 							eventNotifier != null && eventNotifier.werkgeverSelected(werkgever)){
 							setWerkgeverId(savedwerkgever);
 							return;

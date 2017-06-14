@@ -28,6 +28,7 @@ import com.gieselaar.verzuim.controllers.DienstverbandController.__dienstverband
 import com.gieselaar.verzuim.controllers.TodoController;
 import com.gieselaar.verzuim.controllers.TodoController.__todocommands;
 import com.gieselaar.verzuim.controllers.TodoController.__todofields;
+import com.gieselaar.verzuim.interfaces.ControllerEventListener;
 import com.gieselaar.verzuim.interfaces.DefaultControllerEventListener;
 import com.gieselaar.verzuim.utils.ExceptionLogger;
 import com.gieselaar.verzuim.viewsutils.ColorTableModel;
@@ -711,6 +712,10 @@ public class WerknemerDetail extends AbstractDetail {
 				selectedVerzuim = (VerzuimInfo)info;
 				setVerzuimSelected(true);
 			}
+			@Override
+			public void formClosed(ControllerEventListener cev){
+				displayWerknemerInfo();
+			}
 		};
 		registerControllerListener(verzuimcontroller, listener);
         List<RowSorter.SortKey> sortKeys;
@@ -730,9 +735,9 @@ public class WerknemerDetail extends AbstractDetail {
 		tpTodos = new DatatablePanel(todocontroller);
 		tpTodos.setName(PANELNAMETODOS);
 		tpTodos.addColumn(__todofields.INDICATOR.getValue(),"", 20);
-		tpTodos.addColumn(__todofields.ACTIVITEIT.getValue(),"Activiteit", 100);
 		tpTodos.addColumn(__todofields.DEADLINE.getValue(),"Deadline", 80, Date.class);
 		tpTodos.addColumn(__todofields.WAARSCHUWEN.getValue(),"Waarschuwen", 80, Date.class);
+		tpTodos.addColumn(__todofields.ACTIVITEIT.getValue(),"Activiteit", 100);
 		tpTodos.addColumn(__todofields.HERHALEN.getValue(),"Herhalen", 60);
 
 		JCheckBox chckbxToekomstigeTonen = new JCheckBox("Toekomstige tonen");
@@ -767,7 +772,7 @@ public class WerknemerDetail extends AbstractDetail {
 		registerControllerListener(todocontroller, listener);
         List<RowSorter.SortKey> sortKeys;
 		sortKeys = new ArrayList<>();
-        sortKeys.add(new RowSorter.SortKey(2, SortOrder.DESCENDING));
+        sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
         tpTodos.getSorter().setSortKeys(sortKeys);
         tpTodos.getSorter().sort();
 	}
@@ -862,9 +867,12 @@ public class WerknemerDetail extends AbstractDetail {
 	}
 	protected void btnGenereerClicked() {
 		Integer documentid = ((VerzuimComboBoxModel)cmbTemplates.getModel()).getId();
+		selectedVerzuim.setWerknemer(this.werknemer);
 		controller.genereerDocument(selectedVerzuim, documentid);
 	}
 	protected void btnWerkgeverClicked(ActionEvent e) {
+		Integer werkgeverid = ((VerzuimComboBoxModel)cmbWerkgever.getModel()).getId();
+		werknemercontroller.openwerkgever(werkgeverid);
 	}
 	protected void btnVerzuimhistorieClicked(ActionEvent e) {
 		werknemercontroller.showVerzuimhistorie(werknemer.getWerkgeverid(), werknemer.getId());;
