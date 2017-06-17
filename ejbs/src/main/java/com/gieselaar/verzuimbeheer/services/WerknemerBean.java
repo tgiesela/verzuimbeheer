@@ -147,12 +147,12 @@ public class WerknemerBean extends BeanBase {
 				break;
 			case INACTIVEONLY:
 				queryString = werknemerQuery + "and (wg.einddatumcontract is null or wg.einddatumcontract > ?1)"
-						+ " and not d.einddatumcontract is null "
+						+ " and (d.einddatumcontract <= ?1)"
 						+ groupAndOrderBy;
 				break;
 			case ACTIVEONLY:
 				queryString = werknemerQuery + "and (wg.einddatumcontract is null or wg.einddatumcontract > ?1)"
-						+ " and d.einddatumcontract is null "
+						+ " and (d.einddatumcontract is null or d.einddatumcontract > ?1)"
 						+ groupAndOrderBy;
 				break;
 			}
@@ -166,17 +166,18 @@ public class WerknemerBean extends BeanBase {
 				break;
 			case INACTIVEONLY:
 				queryString = werknemerQuery + "and wg.id = ?1"  
-						+ " and not d.einddatumcontract is null "
+						+ " and (d.einddatumcontract <= ?2)"
 						+ groupAndOrderBy;
 				break;
 			case ACTIVEONLY:
 				queryString = werknemerQuery + "and wg.id = ?1"  
-						+ " and d.einddatumcontract is null "
+						+ " and (d.einddatumcontract is null or d.einddatumcontract > ?2)"
 						+ groupAndOrderBy;
 				break;
 			}
 			qw = em.createNativeQuery(queryString, WerknemerFast.class);
 			qw.setParameter(1, werkgeverId);
+			qw.setParameter(2, new Date());
 		}
 		@SuppressWarnings("unchecked")
 		List<WerknemerFast> resultWnr = (List<WerknemerFast>) getResultList(qw);

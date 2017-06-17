@@ -136,7 +136,11 @@ public class WerknemerController extends AbstractController {
 				uitDiensttonen = !uitDiensttonen;
 				if (uitDiensttonen && !uitDienstselected){
 					try {
-						model.getWerknemersuitdienst();
+						if (this.werkgeverid == null){
+							model.getWerknemersuitdienst();
+						}else{
+							model.getWerknemersuitdienst(werkgeverid);
+						}
 					} catch (VerzuimApplicationException e1) {
 						ExceptionLogger.ProcessException(e1, null);
 					}

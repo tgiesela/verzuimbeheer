@@ -248,9 +248,9 @@ public class WerknemerWizard extends AbstractWizard {
 		});
 		panelAlgemeen.add(cmbWerkgever);
 		
-		JLabel label_1 = new JLabel("BSN");
-		label_1.setBounds(10, 37, 46, 14);
-		panelAlgemeen.add(label_1);
+		JLabel lblBSN = new JLabel("BSN");
+		lblBSN.setBounds(10, 37, 46, 14);
+		panelAlgemeen.add(lblBSN);
 		
 		txtBSN = new JTextFieldTGI();
 		txtBSN.setColumns(10);
@@ -268,44 +268,45 @@ public class WerknemerWizard extends AbstractWizard {
 		
 		panelAlgemeen.add(txtBSN);
 		
-		JLabel label_2 = new JLabel("Achternaam");
-		label_2.setBounds(10, 60, 75, 14);
-		panelAlgemeen.add(label_2);
+		JLabel lblAchternaam = new JLabel("Achternaam");
+		lblAchternaam.setBounds(10, 60, 75, 14);
+		panelAlgemeen.add(lblAchternaam);
 		
 		txtAchternaam = new JTextFieldTGI();
 		txtAchternaam.setColumns(10);
 		txtAchternaam.setBounds(107, 57, 152, 20);
 		panelAlgemeen.add(txtAchternaam);
 		
-		JLabel label_3 = new JLabel("Voornaam");
-		label_3.setBounds(10, 83, 74, 14);
-		panelAlgemeen.add(label_3);
+		JLabel lblVoornaam = new JLabel("Voornaam");
+		lblVoornaam.setBounds(10, 83, 74, 14);
+		panelAlgemeen.add(lblVoornaam);
 		
 		txtVoornaam = new JTextFieldTGI();
 		txtVoornaam.setColumns(10);
 		txtVoornaam.setBounds(107, 80, 152, 20);
 		panelAlgemeen.add(txtVoornaam);
 		
-		JLabel label_4 = new JLabel("Geboortedatum");
-		label_4.setBounds(11, 107, 75, 14);
-		panelAlgemeen.add(label_4);
+		JLabel lblGeboortedatum = new JLabel("Geboortedatum");
+		lblGeboortedatum.setBounds(11, 107, 75, 14);
+		panelAlgemeen.add(lblGeboortedatum);
 		
 		dtpGeboortedatum = new DatePicker();
 		dtpGeboortedatum.setBounds(107, 103, 112, 21);
+		dtpGeboortedatum.setDateFormat(new SimpleDateFormat("dd-MM-yyyy"));
 		panelAlgemeen.add(dtpGeboortedatum);
 		
-		JLabel label_5 = new JLabel("Voorvoegsel");
-		label_5.setBounds(272, 60, 65, 14);
-		panelAlgemeen.add(label_5);
+		JLabel lblVoorvoegsel = new JLabel("Voorvoegsel");
+		lblVoorvoegsel.setBounds(272, 60, 65, 14);
+		panelAlgemeen.add(lblVoorvoegsel);
 		
 		txtVoorvoegsel = new JTextFieldTGI();
 		txtVoorvoegsel.setColumns(10);
 		txtVoorvoegsel.setBounds(344, 57, 86, 20);
 		panelAlgemeen.add(txtVoorvoegsel);
 		
-		JLabel label_10 = new JLabel("Voorletters");
-		label_10.setBounds(272, 83, 65, 14);
-		panelAlgemeen.add(label_10);
+		JLabel lblVoorletters = new JLabel("Voorletters");
+		lblVoorletters.setBounds(272, 83, 65, 14);
+		panelAlgemeen.add(lblVoorletters);
 		
 		txtVoorletters = new JTextFieldTGI();
 		txtVoorletters.setColumns(10);
