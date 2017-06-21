@@ -70,9 +70,13 @@ public class WerkgeverConversion extends BaseConversion {
 			entity.setPostAdres(adresconverter.toEntity(info.getPostAdres(),currentUser));
 			entity.setVestigingsAdres(adresconverter.toEntity(info.getVestigingsAdres(),currentUser));
 			entity.setContactPersoon(contactpersoonconverter.toEntity(info.getContactpersoon(),currentUser));
-			if (info.getArbodienst() == null)
-				entity.setArbodienst_ID(null);
-			else
+			if (info.getArbodienst() == null){
+				if (info.getArbodienstId() == null){
+					entity.setArbodienst_ID(null);
+				}else{
+					entity.setArbodienst_ID(info.getArbodienstId());
+				}
+			}else
 				entity.setArbodienst_ID(info.getArbodienst().getId());
 			entity.setUitvoeringsinstituut_ID(info.getUwvId());
 			entity.setBedrijfsartsid(info.getBedrijfsartsid());

@@ -736,7 +736,6 @@ public class WerknemerDetail extends AbstractDetail {
 		tpTodos.setName(PANELNAMETODOS);
 		tpTodos.addColumn(__todofields.INDICATOR.getValue(),"", 20);
 		tpTodos.addColumn(__todofields.DEADLINE.getValue(),"Deadline", 80, Date.class);
-		tpTodos.addColumn(__todofields.WAARSCHUWEN.getValue(),"Waarschuwen", 80, Date.class);
 		tpTodos.addColumn(__todofields.ACTIVITEIT.getValue(),"Activiteit", 100);
 		tpTodos.addColumn(__todofields.HERHALEN.getValue(),"Herhalen", 60);
 

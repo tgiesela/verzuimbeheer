@@ -94,7 +94,7 @@ public class WerkgeverSelection extends JPanel{
 					private void HoldingSelected() {
 						holdingModel = (VerzuimComboBoxModel)cmbHolding.getModel();
 						Integer holding = holdingModel.getId();
-						if (holding.intValue() != selectedHolding.intValue() &&
+						if (!holding.equals(selectedHolding) &&
 							eventNotifier != null && eventNotifier.holdingSelected(holding)){
 							return;
 						}
@@ -191,7 +191,7 @@ public class WerkgeverSelection extends JPanel{
 		cmbHolding.setEnabled(false);
 	}
 	public WerkgeverInfo getWerkgever() {
-		if (selectedWerkgever.intValue() == -1)
+		if (selectedWerkgever == null || selectedWerkgever.intValue() == -1)
 			return null;
 		for (WerkgeverInfo w: werkgevers){
 			if (w.getId().intValue() == selectedWerkgever.intValue()){

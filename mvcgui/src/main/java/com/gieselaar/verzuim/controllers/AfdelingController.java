@@ -18,6 +18,7 @@ import com.gieselaar.verzuimbeheer.services.AfdelingInfo;
 import com.gieselaar.verzuimbeheer.services.InfoBase;
 import com.gieselaar.verzuimbeheer.services.InfoBase.persistenceaction;
 import com.gieselaar.verzuimbeheer.services.InfoBase.persistencestate;
+import com.gieselaar.verzuimbeheer.services.WerkgeverInfo;
 
 public class AfdelingController extends AbstractController {
 
@@ -48,7 +49,7 @@ public class AfdelingController extends AbstractController {
 	}
 
 	private WerkgeverModel model;
-	private Integer selectedWerkgever;
+	private WerkgeverInfo selectedWerkgever;
 	
 	public AfdelingController(LoginSessionRemote session) {
 		super(new WerkgeverModel(session), null);
@@ -65,7 +66,7 @@ public class AfdelingController extends AbstractController {
 
 	private AfdelingInfo createNewAfdeling() {
 		AfdelingInfo afdeling = new AfdelingInfo();
-		afdeling.setWerkgeverId(this.selectedWerkgever);
+		afdeling.setWerkgeverId(this.selectedWerkgever.getId());
 		return afdeling;
 	}
 	@Override
@@ -75,7 +76,7 @@ public class AfdelingController extends AbstractController {
 			afdeling.validate();
 			model.addAfdeling(afdeling);
 		} catch (ValidationException e) {
-			throw new VerzuimApplicationException(e, "Opslaan todo niet geslaagd.");
+			throw new VerzuimApplicationException(e, "Opslaan afdeling niet geslaagd.");
 		}
 	}
 	@Override
@@ -85,7 +86,7 @@ public class AfdelingController extends AbstractController {
 			afdeling.validate();
 			model.saveAfdeling(afdeling);
 		} catch (ValidationException e) {
-			throw new VerzuimApplicationException(e, "Opslaan todo niet geslaagd.");
+			throw new VerzuimApplicationException(e, "Opslaan afdeling niet geslaagd.");
 		}
 	}
 
@@ -184,8 +185,14 @@ public class AfdelingController extends AbstractController {
 		return true;
 	}
 
-	public void setWerkgever(Integer id) {
-		selectedWerkgever = id;
+	public void setWerkgever(WerkgeverInfo werkgever) {
+		selectedWerkgever = werkgever;
 		
+	}
+
+	public void setAfdelingen(List<AfdelingInfo> afdelingen) {
+		// Trick to bypass query in model when werkgever has not been created yet
+		model.setAfdelingen(afdelingen);
+
 	}
 }

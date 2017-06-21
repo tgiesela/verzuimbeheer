@@ -56,15 +56,22 @@ public class WerkgeverModel extends AbstractModel {
 			throw new VerzuimApplicationException(e, e.getMessage());
 		}
 	}
-	public void selectAfdelingen(Integer werkgeverid) throws VerzuimApplicationException {
+	public void selectAfdelingen(WerkgeverInfo selectedWerkgever) throws VerzuimApplicationException {
 		try {
-			afdelingen = ServiceCaller.werkgeverFacade(this.getSession()).getAfdelingenWerkgever(werkgeverid);
+			if (selectedWerkgever.getId() == null || selectedWerkgever.getId() == -1){
+				afdelingen = selectedWerkgever.getAfdelings();
+			}else{
+				afdelingen = ServiceCaller.werkgeverFacade(this.getSession()).getAfdelingenWerkgever(selectedWerkgever.getId());
+			}
 			for (ModelEventListener ml: this.changelisteners){
 				ml.listComplete(afdelingen);
 			}
 		} catch (PermissionException | ServiceLocatorException e) {
 			throw new VerzuimApplicationException(e, e.getMessage());
 		}
+	}
+	public void setAfdelingen(List<AfdelingInfo> afdelingen){
+		this.afdelingen = afdelingen;
 	}
 	
 	public void selectOeNiveaus() throws VerzuimApplicationException{
@@ -144,7 +151,7 @@ public class WerkgeverModel extends AbstractModel {
 
 	public void addAfdeling(AfdelingInfo afdeling)throws VerzuimApplicationException {
 		try {
-			if (afdeling.getId() != null && afdeling.getId() > 0){
+			if (afdeling.getWerkgeverId() != null && afdeling.getWerkgeverId() > 0){
 				AfdelingInfo newAfdeling = ServiceCaller.werkgeverFacade(getSession()).addAfdeling(afdeling);
 				if (afdelingen != null){
 					afdelingen.add(newAfdeling);
@@ -168,7 +175,7 @@ public class WerkgeverModel extends AbstractModel {
 
 	public void saveAfdeling(AfdelingInfo afdeling)throws VerzuimApplicationException {
 		try {
-			if (afdeling.getId() != null && afdeling.getId() > 0){
+			if (afdeling.getWerkgeverId() != null && afdeling.getWerkgeverId() > 0){
 				ServiceCaller.werkgeverFacade(getSession()).updateAfdeling(afdeling);
 			}
 			/* Now also the list has to be updated */
@@ -191,7 +198,7 @@ public class WerkgeverModel extends AbstractModel {
 
 	public void deleteAfdeling(AfdelingInfo afdeling)throws VerzuimApplicationException {
 		try {
-			if (afdeling.getId() != null && afdeling.getId() > 0){
+			if (afdeling.getWerkgeverId() != null && afdeling.getWerkgeverId() > 0){
 				ServiceCaller.werkgeverFacade(getSession()).deleteAfdeling(afdeling);
 			}
 			if (afdelingen != null){

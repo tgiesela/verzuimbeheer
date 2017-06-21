@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import com.gieselaar.verzuim.interfaces.ControllerEventListener;
 import com.gieselaar.verzuim.models.VerzuimModel;
+import com.gieselaar.verzuim.models.WerknemerModel;
 import com.gieselaar.verzuim.utils.ExceptionLogger;
 import com.gieselaar.verzuim.views.AbstractDetail;
 import com.gieselaar.verzuim.views.VerzuimDetail;
@@ -67,6 +68,7 @@ public class VerzuimController extends AbstractController {
 	}
 
 	private VerzuimModel model;
+	private WerknemerModel werknemermodel;
 	private WerknemerInfo werknemer;
 	private VerzuimInfo selectedVerzuim;
 	private DienstverbandInfo dienstverband;
@@ -77,6 +79,7 @@ public class VerzuimController extends AbstractController {
 	public VerzuimController(LoginSessionRemote session) {
 		super(new VerzuimModel(session), null);
 		this.model = (VerzuimModel) getModel();
+		this.werknemermodel = new WerknemerModel(this.model.getSession());
 		selectedVerzuim = (VerzuimInfo)selectedrow;
 	}
 
@@ -111,9 +114,11 @@ public class VerzuimController extends AbstractController {
 			throw new VerzuimApplicationException(e, "Opslaan verzuim niet geslaagd.");
 		}
 	}
-
+	@Override
 	public void saveData(InfoBase data) throws VerzuimApplicationException {
 		VerzuimInfo verzuim = (VerzuimInfo)data;
+		verzuim.setVersion(selectedVerzuim.getVersion());
+		verzuim.setEinddatumverzuim(selectedVerzuim.getEinddatumverzuim());
 		try {
 			verzuim.validate();
 			additionalValidations(verzuim, false);
@@ -343,6 +348,18 @@ public class VerzuimController extends AbstractController {
 
 	@Override
 	protected boolean isNewAllowed() {
+		/*
+		 * Dienstverband may have been refreshed (verzuimen) due
+		 * to changes on the HerstelForm.
+		 */
+		for (DienstverbandInfo dvb: werknemer.getDienstVerbanden()){
+			if (dvb.getId().equals(dienstverband.getId())){
+				dienstverband = dvb;
+				break;
+			}
+		}
+		
+		
 		if (werknemer.hasOpenVerzuim(dienstverband)) {
 			JOptionPane.showMessageDialog(null,
 					"Nieuw verzuim aanmaken niet toegestaan.\r\nEr is nog een open verzuim");
@@ -404,6 +421,7 @@ public class VerzuimController extends AbstractController {
 
 	protected void handleHerstelformClosed() {
 		try {
+			werknemer = werknemermodel.getWerknemerDetails(werknemer.getId());
 			selectedVerzuim = model.getVerzuim(selectedVerzuim.getId());
 		} catch (VerzuimApplicationException e) {
 			ExceptionLogger.ProcessException(e, this.getActiveForm());

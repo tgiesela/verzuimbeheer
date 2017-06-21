@@ -21,11 +21,13 @@ import com.gieselaar.verzuim.views.WerknemerList;
 import com.gieselaar.verzuim.viewsutils.ColorTableModel;
 import com.gieselaar.verzuimbeheer.exceptions.VerzuimApplicationException;
 import com.gieselaar.verzuimbeheer.facades.LoginSessionRemote;
+import com.gieselaar.verzuimbeheer.services.AfdelingInfo;
 import com.gieselaar.verzuimbeheer.services.HoldingInfo;
 import com.gieselaar.verzuimbeheer.services.InfoBase;
 import com.gieselaar.verzuimbeheer.services.WerkgeverInfo;
 import com.gieselaar.verzuimbeheer.services.InfoBase.persistenceaction;
 import com.gieselaar.verzuimbeheer.services.InfoBase.persistencestate;
+import com.gieselaar.verzuimbeheer.services.PakketInfo;
 
 public class WerkgeverController extends AbstractController {
 	
@@ -192,7 +194,7 @@ public class WerkgeverController extends AbstractController {
 			};
 			afdelingcontroller.setDesktoppane(getDesktoppane());
 			afdelingcontroller.setMaincontroller(this.getMaincontroller());
-			afdelingcontroller.setWerkgever(selectedWerkgever.getId());
+			afdelingcontroller.setWerkgever(selectedWerkgever);
 		}
 		return afdelingcontroller;
 	}
@@ -253,6 +255,9 @@ public class WerkgeverController extends AbstractController {
 	private WerkgeverInfo createNewWerkgever() {
 		WerkgeverInfo werkgever = new WerkgeverInfo();
 		werkgever.setStartdatumcontract(new Date());
+		werkgever.setAfdelings(new ArrayList<AfdelingInfo>());
+		werkgever.setPakketten(new ArrayList<PakketInfo>());
+		selectedWerkgever = werkgever;
 		return werkgever;
 	}
 	public void getTableModel(List<WerkgeverInfo> werkgevers, ColorTableModel tblmodel, List<Integer> colsinview) {
@@ -355,7 +360,7 @@ public class WerkgeverController extends AbstractController {
 		controller.setDesktoppane(getDesktoppane());
 		controller.setMaincontroller(this.getMaincontroller());
 		AfdelingList frame = new AfdelingList(controller);
-		controller.setWerkgever(selectedWerkgever.getId());
+		controller.setWerkgever(selectedWerkgever);
 		controller.selectAfdelingen();
 		frame.setVisible(true);
 		this.getDesktoppane().add(frame);

@@ -16,6 +16,7 @@ import com.gieselaar.verzuim.models.WerknemerModel;
 import com.gieselaar.verzuim.utils.ExceptionLogger;
 import com.gieselaar.verzuim.views.AbstractDetail;
 import com.gieselaar.verzuim.views.ReportVerzuimenHistorie;
+import com.gieselaar.verzuim.views.VerzuimDetail;
 import com.gieselaar.verzuim.views.WerkgeverList;
 import com.gieselaar.verzuim.views.WerknemerDetail;
 import com.gieselaar.verzuim.views.WerknemerWizard;
@@ -205,12 +206,30 @@ public class WerknemerController extends AbstractController {
 						l.rowSelected(selectedRow, data);
 					}
 				}
+				@Override
+				public void closeView(ControllerEventListener listener) {
+					handleVerzuimformClosed();
+					
+				}
 			};
 			verzuimcontroller.setDesktoppane(getDesktoppane());
 			verzuimcontroller.setMaincontroller(this.getMaincontroller());
-			verzuimcontroller.setWerknemer(selectedWerknemer);
 		}
+		verzuimcontroller.setWerknemer(selectedWerknemer);
 		return verzuimcontroller;
+	}
+	protected void handleVerzuimformClosed() {
+		try {
+			selectedWerknemer = model.getWerknemerDetails(selectedWerknemer.getId());
+//			this.getDetailform().setData(selectedWerknemer);
+		} catch (VerzuimApplicationException e) {
+			ExceptionLogger.ProcessException(e, this.getActiveForm());
+		}
+		for (ControllerEventListener l: views){
+			if (l instanceof VerzuimDetail){
+				((VerzuimDetail)l).setData(selectedWerknemer);
+			}
+		}
 	}
 	public TodoController getTodoController() throws VerzuimApplicationException {
 		if (todocontroller == null) {

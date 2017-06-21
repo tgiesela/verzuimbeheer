@@ -84,7 +84,7 @@ public class VerzuimherstellenController extends AbstractController {
 	private boolean confirmCleanupTodo(VerzuimHerstelInfo verzuimherstel){
 		if (verzuimherstel.getPercentageHerstel().compareTo(new BigDecimal(100)) == 0) {
 			/*
-			 * Vraag of de todo's opgeschoond moeten worden.
+			 * Vraag of de to do's opgeschoond moeten worden.
 			 */
 			if (JOptionPane.showConfirmDialog(null, "Wilt U de Todo's voor dit verzuim opschonen?",
 					"Opslaan", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -100,8 +100,8 @@ public class VerzuimherstellenController extends AbstractController {
 			verzuimherstel.validate();
 			boolean cleanupTodo = confirmCleanupTodo(verzuimherstel);
 			model.addVerzuimherstel(verzuimherstel,cleanupTodo);
-			VerzuimInfo verzuim = model.getVerzuim(verzuimherstel.getVerzuimId());
-			selectVerzuimherstellen(verzuim);
+			VerzuimInfo updatedverzuim = model.getVerzuim(verzuimherstel.getVerzuimId());
+			selectVerzuimherstellen(updatedverzuim);
 		} catch (ValidationException e) {
 			throw new VerzuimApplicationException(e, "Toevoegen herstel niet geslaagd.");
 		}
@@ -145,8 +145,8 @@ public class VerzuimherstellenController extends AbstractController {
 		info.setAction(persistenceaction.DELETE);
 		info.setState(persistencestate.EXISTS);
 		model.deleteVerzuimherstel(info);
-		VerzuimInfo verzuim = model.getVerzuim(info.getVerzuimId());
-		selectVerzuimherstellen(verzuim);
+		VerzuimInfo verzuimupdated = model.getVerzuim(info.getVerzuimId());
+		selectVerzuimherstellen(verzuimupdated);
 	}
 
 	public void getTableModel(List<VerzuimHerstelInfo> herstellen, ColorTableModel tblmodel, List<Integer> colsinview) {

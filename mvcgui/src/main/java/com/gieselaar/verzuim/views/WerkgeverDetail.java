@@ -16,6 +16,7 @@ import com.gieselaar.verzuim.components.AdresPanel;
 import com.gieselaar.verzuim.components.ContactpersoonPanel;
 import com.gieselaar.verzuim.components.JTextFieldTGI;
 import com.gieselaar.verzuim.controllers.AbstractController;
+import com.gieselaar.verzuim.controllers.AbstractController.__formmode;
 import com.gieselaar.verzuim.controllers.WerkgeverController;
 import com.gieselaar.verzuim.interfaces.DefaultControllerEventListener;
 import com.gieselaar.verzuim.utils.ExceptionLogger;
@@ -45,6 +46,7 @@ public class WerkgeverDetail extends AbstractDetail{
 	private JButton btnPakketten;
 	private JButton btnAfdelingen; 
 	private JButton btnTarieven;
+	private JButton btnWerknemers;
 	private AdresPanel panelPostadres;
 	private AdresPanel panelVestigingsadres;
 	private AdresPanel panelFactuuradres;
@@ -156,6 +158,12 @@ public class WerkgeverDetail extends AbstractDetail{
 			chckbxDetailsSecretariaat.setEnabled(false);
 			txtEmailadresfactuur.setEnabled(false);
 		}
+
+		if (this.getFormmode() == __formmode.NEW){
+			btnTarieven.setEnabled(false);
+			btnWerknemers.setEnabled(false);
+		}
+		
 		txtEmailadresfactuur.setText(werkgever.getEmailadresfactuur());
 	}
 	
@@ -198,6 +206,7 @@ public class WerkgeverDetail extends AbstractDetail{
 		
 		btnPakketten = new JButton("Pakketten");
 		btnPakketten.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				btnPakkettenClicked(e);
 			}
@@ -207,6 +216,7 @@ public class WerkgeverDetail extends AbstractDetail{
 		
 		btnAfdelingen = new JButton("Afdelingen");
 		btnAfdelingen.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				btnAfdelingenClicked(e);
 			}
@@ -214,8 +224,9 @@ public class WerkgeverDetail extends AbstractDetail{
 		btnAfdelingen.setBounds(600, 45, 103, 23);
 		getContentPane().add(btnAfdelingen);
 		
-		JButton btnWerknemers = new JButton("Werknemers");
+		btnWerknemers = new JButton("Werknemers");
 		btnWerknemers.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				btnWerknemersClicked(e);
 			}

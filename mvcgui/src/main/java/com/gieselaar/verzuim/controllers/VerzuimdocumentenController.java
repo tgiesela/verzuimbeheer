@@ -1,14 +1,21 @@
 package com.gieselaar.verzuim.controllers;
 
+import java.awt.event.MouseEvent;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 import com.gieselaar.verzuim.interfaces.ControllerEventListener;
 import com.gieselaar.verzuim.models.AbstractModel;
 import com.gieselaar.verzuim.models.VerzuimModel;
+import com.gieselaar.verzuim.utils.ExceptionLogger;
 import com.gieselaar.verzuim.views.AbstractDetail;
 import com.gieselaar.verzuim.views.VerzuimDocumentDetail;
 import com.gieselaar.verzuim.viewsutils.ColorTableModel;
@@ -202,5 +209,19 @@ public class VerzuimdocumentenController extends AbstractController {
 	public List<VerzuimDocumentInfo> getVerzuimdocumentList() {
 		return verzuimdocumenten;
 	}
-	
+	@Override
+	public void tableClicked(ControllerEventListener ves, JTable table, MouseEvent e) {
+		super.tableClicked(ves, table, e);
+		VerzuimDocumentInfo doc = (VerzuimDocumentInfo) selectedrow;
+		URI uri;
+		try {
+			uri = new URI("File://"
+					+ URLEncoder.encode(doc.getPadnaam(), "UTF-8"));
+			this.open(uri);
+		} catch (UnsupportedEncodingException | URISyntaxException | ValidationException exc) {
+			ExceptionLogger.ProcessException(exc, null);
+		}
+		
+	}
+
 }

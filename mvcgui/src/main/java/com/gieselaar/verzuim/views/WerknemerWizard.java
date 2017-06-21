@@ -26,6 +26,7 @@ import com.gieselaar.verzuimbeheer.services.WiapercentageInfo;
 import com.gieselaar.verzuimbeheer.services.WiapercentageInfo.__wiapercentage;
 import com.gieselaar.verzuimbeheer.services.InfoBase.__burgerlijkestaat;
 import com.gieselaar.verzuimbeheer.services.InfoBase.__geslacht;
+import com.gieselaar.verzuimbeheer.services.WerkgeverInfo;
 import com.gieselaar.verzuimbeheer.utils.TypeEntry;
 import com.michaelbaranov.microba.calendar.DatePicker;
 
@@ -234,7 +235,12 @@ public class WerknemerWizard extends AbstractWizard {
 			public void actionPerformed(ActionEvent e) {
 				AfdelingController controller = new AfdelingController(werknemercontroller.getMaincontroller().getModel().getSession());
 				Integer werkgeverid = werkgevermodel.getId();
-				controller.setWerkgever(werkgeverid);
+				for (WerkgeverInfo wgr:werknemercontroller.getMaincontroller().getWerkgevers()){
+					if (wgr.getId().equals(werkgeverid)){
+						controller.setWerkgever(wgr);
+						break;
+					}
+				}
 				controller.selectAfdelingen();
 				List<AfdelingInfo> afdelingen = controller.getAfdelingList();
 				if (afdelingmodel != null){
