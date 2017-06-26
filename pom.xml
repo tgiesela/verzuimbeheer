@@ -7,7 +7,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
    <packaging>pom</packaging>
    <name>project</name>
    <properties>
-   		<sun.tools.location>C:\Program Files\Java\jdk1.8.0_91\lib\tools.jar</sun.tools.location>
+   		<sun.tools.location>C:\Program Files\Java\jdk1.8.0_131\lib\tools.jar</sun.tools.location>
    </properties>
    <modules>
       <module>projects</module>

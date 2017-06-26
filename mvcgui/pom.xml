@@ -12,6 +12,13 @@ mvn install:install-file -Dfile=%eclipsedir%\jasperreports-chart-themes-6.2.2-20
 mvn install:install-file -Dfile=%eclipsedir%\jasperreports-fonts-6.1.1.jar -DgroupId=JasperReports -DartifactId=jasperreports-fonts -Dversion=6.1.1 -Dpackaging=jar
 mvn install:install-file -Dfile=%eclipsedir%\jasperreports-functions-6.2.2-20160505.150541-3.jar -DgroupId=JasperReports -DartifactId=jasperreports-functions -Dversion=6.2.2 -Dpackaging=jar
  -->
+  <repositories>
+    <repository>
+      <id>atlassian</id>
+      <name>atlassian repository</name>
+      <url>https://maven.atlassian.com/content/repositories/atlassian-public/</url>
+    </repository>
+  </repositories> 
   <dependencies>
   	<dependency>
   		<groupId>root.project</groupId>
@@ -27,7 +34,8 @@ mvn install:install-file -Dfile=%eclipsedir%\jasperreports-functions-6.2.2-20160
   		<artifactId>JasperReports</artifactId>
   	</dependency>
 
-		<dependency>
+	<!-- https://mvnrepository.com/artifact/com.michaelbaranov/microba -->
+	<dependency>
     	<groupId>com.michaelbaranov</groupId>
     	<artifactId>microba</artifactId>
     	<version>0.4.4.3</version>
@@ -54,6 +62,7 @@ mvn install:install-file -Dfile=%eclipsedir%\jasperreports-functions-6.2.2-20160
     	<artifactId>derby</artifactId>
     	<version>10.10.1.1</version>
     </dependency>
+<!--     
 	<dependency>
 	    <groupId>net.sf.jasperreports</groupId>
 	    <artifactId>jasperreports</artifactId>
@@ -74,6 +83,7 @@ mvn install:install-file -Dfile=%eclipsedir%\jasperreports-functions-6.2.2-20160
     	<artifactId>jasperreports-functions</artifactId>
     	<version>6.2.2</version>
 	</dependency>    
+ -->
     <dependency>
     	<groupId>org.slf4j</groupId>
     	<artifactId>slf4j-api</artifactId>

@@ -63,7 +63,7 @@
 									var="werknemer"
 									widgetVar="werknemerTable"
 									rowKey="#{werknemer.id}"
-									rowStyleClass="#{werknemer.actief ? (werknemer.hasOpenVerzuim() ? 'ziek' : 'indienst') : 'uitdienst'}">
+									rowStyleClass="#{werknemer.actief ? (werknemer.hasOpenVerzuim() ? 'ziek':'indienst'):'uitdienst'}">
 						<p:ajax event="rowSelect" update="btnDetails btnVerzuimen" listener="#{werknemerClass.rowSelected}" />
 						<p:column width="60" id="BSN" sortable="true" sortIconDescending="dataTableDescIcon">
 							<f:facet name="header"><h:outputText value="BSN"/></f:facet>

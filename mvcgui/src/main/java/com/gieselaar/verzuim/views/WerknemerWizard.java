@@ -238,16 +238,16 @@ public class WerknemerWizard extends AbstractWizard {
 				for (WerkgeverInfo wgr:werknemercontroller.getMaincontroller().getWerkgevers()){
 					if (wgr.getId().equals(werkgeverid)){
 						controller.setWerkgever(wgr);
+						controller.selectAfdelingen();
+						List<AfdelingInfo> afdelingen = controller.getAfdelingList();
+						if (afdelingmodel != null){
+							afdelingmodel.removeAllElements();
+							afdelingmodel.addElement(new TypeEntry(-1, "[]"));
+							for (AfdelingInfo afd: afdelingen){
+								afdelingmodel.addElement(new TypeEntry(afd.getId(), afd.getNaam()));
+							}
+						}
 						break;
-					}
-				}
-				controller.selectAfdelingen();
-				List<AfdelingInfo> afdelingen = controller.getAfdelingList();
-				if (afdelingmodel != null){
-					afdelingmodel.removeAllElements();
-					afdelingmodel.addElement(new TypeEntry(-1, "[]"));
-					for (AfdelingInfo afd: afdelingen){
-						afdelingmodel.addElement(new TypeEntry(afd.getId(), afd.getNaam()));
 					}
 				}
 			}

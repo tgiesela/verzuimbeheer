@@ -5,6 +5,13 @@
   <properties>
 	<eclipse.lib.location>D:\Java development\eclipse Mars 64-bit\configuration\org.eclipse.osgi\1042\0\.cp\lib\</eclipse.lib.location>
   </properties>
+  <repositories>
+    <repository>
+      <id>atlassian</id>
+      <name>atlassian repository</name>
+      <url>https://maven.atlassian.com/content/repositories/atlassian-public/</url>
+    </repository>
+  </repositories> 
     <dependencies>
 		<dependency>
     	<groupId>com.michaelbaranov</groupId>
@@ -33,6 +40,7 @@
     	<artifactId>derby</artifactId>
     	<version>10.10.1.1</version>
     </dependency>
+<!--     
 	<dependency>
 	    <groupId>net.sf.jasperreports</groupId>
 	    <artifactId>jasperreports</artifactId>
@@ -53,7 +61,8 @@
     	<artifactId>jasperreports-functions</artifactId>
     	<version>6.2.2</version>
 	</dependency>    
-    <dependency>
+ -->
+     <dependency>
 		<groupId>org.glassfish.main.appclient</groupId>
 		<artifactId>gf-client</artifactId>
 		<version>4.0</version>

@@ -10,6 +10,7 @@ mvn install:install-file -Dfile=%eclipsedir%\jasperreports-functions-6.2.2-20160
  -->
   <properties>
 	<eclipse.lib.location>D:\Java development\eclipse Mars 64-bit\configuration\org.eclipse.osgi\1042\0\.cp\lib\</eclipse.lib.location>
+	<jasperreports.version>6.3.1</jasperreports.version>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
@@ -106,17 +107,17 @@ mvn install:install-file -Dfile=%eclipsedir%\jasperreports-functions-6.2.2-20160
 			<dependency>
 		    	<groupId>JasperReports</groupId>
 		    	<artifactId>jasperreports-chart-themes</artifactId>
-		    	<version>6.2.2</version>
+		    	<version>${jasperreports.version}</version>
 			</dependency>    
 			<dependency>
 		    	<groupId>JasperReports</groupId>
 		    	<artifactId>jasperreports-fonts</artifactId>
-		    	<version>6.1.1</version>
+		    	<version>${jasperreports.version}</version>
 			</dependency>    
 			<dependency>
 		    	<groupId>JasperReports</groupId>
 		    	<artifactId>jasperreports-functions</artifactId>
-		    	<version>6.2.2</version>
+		    	<version>${jasperreports.version}</version>
 			</dependency>
 			<dependency>
 			    <groupId>joda-time</groupId>
@@ -181,6 +182,37 @@ mvn install:install-file -Dfile=%eclipsedir%\jasperreports-functions-6.2.2-20160
 	   </plugin>	
       	 -->
     </plugins>
+    <pluginManagement>
+    	<plugins>
+    		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+    		<plugin>
+    			<groupId>org.eclipse.m2e</groupId>
+    			<artifactId>lifecycle-mapping</artifactId>
+    			<version>1.0.0</version>
+    			<configuration>
+    				<lifecycleMappingMetadata>
+    					<pluginExecutions>
+    						<pluginExecution>
+    							<pluginExecutionFilter>
+    								<groupId>com.alexnederlof</groupId>
+    								<artifactId>
+    									jasperreports-plugin
+    								</artifactId>
+    								<versionRange>[2.0,)</versionRange>
+    								<goals>
+    									<goal>jasper</goal>
+    								</goals>
+    							</pluginExecutionFilter>
+    							<action>
+    								<ignore></ignore>
+    							</action>
+    						</pluginExecution>
+    					</pluginExecutions>
+    				</lifecycleMappingMetadata>
+    			</configuration>
+    		</plugin>
+    	</plugins>
+    </pluginManagement>
   </build>
   <parent>
   	<groupId>root</groupId>
@@ -192,22 +224,22 @@ mvn install:install-file -Dfile=%eclipsedir%\jasperreports-functions-6.2.2-20160
 	<dependency>
 	    <groupId>net.sf.jasperreports</groupId>
 	    <artifactId>jasperreports</artifactId>
-	    <version>6.2.2</version>
+	    <version>${jasperreports.version}</version>
 	</dependency>
 	<dependency>
     	<groupId>JasperReports</groupId>
     	<artifactId>jasperreports-chart-themes</artifactId>
-    	<version>6.2.2</version>
+    	<version>${jasperreports.version}</version>
 	</dependency>    
 	<dependency>
     	<groupId>JasperReports</groupId>
     	<artifactId>jasperreports-fonts</artifactId>
-    	<version>6.1.1</version>
+    	<version>${jasperreports.version}</version>
 	</dependency>    
 	<dependency>
     	<groupId>JasperReports</groupId>
     	<artifactId>jasperreports-functions</artifactId>
-    	<version>6.2.2</version>
+    	<version>${jasperreports.version}</version>
 	</dependency>
 	<dependency>
 		<groupId>root.project</groupId>
