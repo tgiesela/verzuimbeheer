@@ -196,7 +196,7 @@ public class WerknemerController extends AbstractController {
 	}
 
 	public VerzuimController getVerzuimController() throws VerzuimApplicationException {
-		if (verzuimcontroller == null) {
+//		if (verzuimcontroller == null) {
 			verzuimcontroller = new VerzuimController(this.model.getSession()){
 				private static final long serialVersionUID = 1L;
 
@@ -214,7 +214,7 @@ public class WerknemerController extends AbstractController {
 			};
 			verzuimcontroller.setDesktoppane(getDesktoppane());
 			verzuimcontroller.setMaincontroller(this.getMaincontroller());
-		}
+//		}
 		verzuimcontroller.setWerknemer(selectedWerknemer);
 		return verzuimcontroller;
 	}
