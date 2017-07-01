@@ -232,38 +232,32 @@ public class WerknemerController extends AbstractController {
 		}
 	}
 	public TodoController getTodoController() throws VerzuimApplicationException {
-		if (todocontroller == null) {
-			todocontroller = new TodoController(this.model.getSession()){
-				private static final long serialVersionUID = 1L;
-
-				@Override
-				public void rowSelected(int selectedRow, Object data) {
-					for (ControllerEventListener l: views){
-						l.rowSelected(selectedRow, data);
-					}
+		todocontroller = new TodoController(this.model.getSession()){
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void rowSelected(int selectedRow, Object data) {
+				for (ControllerEventListener l: views){
+					l.rowSelected(selectedRow, data);
 				}
-			};
-			todocontroller.setDesktoppane(getDesktoppane());
-			todocontroller.setMaincontroller(this.getMaincontroller());
-		}
+			}
+		};
+		todocontroller.setDesktoppane(getDesktoppane());
+		todocontroller.setMaincontroller(this.getMaincontroller());
 		todocontroller.setVerzuim(null);
 		return todocontroller;
 	}
 	public AfdelingHasWerknemerController getAfdelingController(WerknemerInfo werknemer) throws VerzuimApplicationException {
-		if (afdelingcontroller == null) {
-			afdelingcontroller = new AfdelingHasWerknemerController(this.model.getSession(), this.getModel()){
-				private static final long serialVersionUID = 1L;
-
-				@Override
-				public void rowSelected(int selectedRow, Object data) {
-					for (ControllerEventListener l: views){
-						l.rowSelected(selectedRow, data);
-					}
+		afdelingcontroller = new AfdelingHasWerknemerController(this.model.getSession(), this.getModel()){
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void rowSelected(int selectedRow, Object data) {
+				for (ControllerEventListener l: views){
+					l.rowSelected(selectedRow, data);
 				}
-			};
-			afdelingcontroller.setDesktoppane(getDesktoppane());
-			afdelingcontroller.setMaincontroller(this.getMaincontroller());
-		}
+			}
+		};
+		afdelingcontroller.setDesktoppane(getDesktoppane());
+		afdelingcontroller.setMaincontroller(this.getMaincontroller());
 		if (werknemer != null){
 			afdelingcontroller.setWerknemer(werknemer);
 		}else{
@@ -311,29 +305,7 @@ public class WerknemerController extends AbstractController {
 		}
 		return dienstverbandcontroller;
 	}
-	private WerknemerInfo createNewWerknemer() {
-		WerknemerInfo werknemer = new WerknemerInfo();
-		werknemer.setAdres(new AdresInfo());
-		List<WiapercentageInfo> wiapercentages = new ArrayList<>();
-		List<AfdelingHasWerknemerInfo> afdelingen = new ArrayList<>();
-		List<DienstverbandInfo> dienstverbanden = new ArrayList<>();
-		werknemer.setWiaPercentages(wiapercentages);
-		werknemer.setAfdelingen(afdelingen);
-		werknemer.setDienstVerbanden(dienstverbanden);
-		WiapercentageInfo wiapercentage = new WiapercentageInfo();
-		wiapercentage.setCodeWiaPercentage(__wiapercentage.NVT);
-		wiapercentage.setStartdatum(new Date());
-		wiapercentage.setWerknemer(werknemer);
-		wiapercentages.add(wiapercentage);
-
-		DienstverbandInfo dienstverband = new DienstverbandInfo();
-		dienstverband.setWerkweek(new BigDecimal(0));
-		dienstverband.setPersoneelsnummer("");
-		dienstverband.setStartdatumcontract(new Date());
-		dienstverbanden.add(dienstverband);
-		return werknemer;
-	}
-
+	
 	public void showRow(ControllerEventListener ves, Object data) {
 		if (!isShowAllowed((InfoBase)data))
 			return;
@@ -623,11 +595,6 @@ public class WerknemerController extends AbstractController {
 	public void saveData(InfoBase data) throws VerzuimApplicationException {
 		WerknemerInfo werknemer = (WerknemerInfo)data;
 		try {
-			/* Nodig zolang afdelingen niet direct in database worden gezet */
-			/* TODO zet afdelingen direct in database */
-			if (afdelingcontroller != null){
-				werknemer.setAfdelingen(afdelingcontroller.getAfdelingenList());
-			}
 			werknemer.validate();
 			model.saveWerknemer(werknemer);
 		} catch (ValidationException e) {

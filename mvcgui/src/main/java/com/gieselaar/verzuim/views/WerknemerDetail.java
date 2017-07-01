@@ -325,7 +325,7 @@ public class WerknemerDetail extends AbstractDetail {
 	}
 	protected void displayAfdelingen() {
 		werknemerafdelingcontroller.setWerknemer(werknemer);
-		werknemerafdelingcontroller.getAfdelingen();
+		werknemerafdelingcontroller.selectAfdelingen();
 	}
 	protected void displayDienstverbanden() {
 		dienstverbandcontroller.setWerknemer(werknemer);

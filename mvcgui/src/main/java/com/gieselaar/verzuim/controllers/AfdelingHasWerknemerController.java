@@ -74,15 +74,6 @@ public class AfdelingHasWerknemerController extends AbstractController {
 		selectedWerknemer = (WerknemerInfo)selectedrow;
 	}
 
-	public void getAfdelingen() {
-		/* 
-		 * Simulate access to model and send completions
-		 */
-		afdelingen = selectedWerknemer.getAfdelingen();
-		for (ControllerEventListener l:views){
-			l.refreshTable();
-		}
-	}
 	@Override
 	public void addData(InfoBase data) throws VerzuimApplicationException {
 		AfdelingHasWerknemerInfo afdeling = (AfdelingHasWerknemerInfo)data;
@@ -212,10 +203,6 @@ public class AfdelingHasWerknemerController extends AbstractController {
 		}
 	}
 
-	public List<AfdelingHasWerknemerInfo> getAfdelingenList() {
-		return selectedWerknemer.getAfdelingen();
-	}
-
 	private boolean confirmDelete() {
 		return true;
 	}
@@ -258,5 +245,19 @@ public class AfdelingHasWerknemerController extends AbstractController {
 
 	public void setWerknemer(WerknemerInfo werknemer) {
 		this.selectedWerknemer = werknemer;
+	}
+	
+	public List<AfdelingHasWerknemerInfo> getAfdelingenList() {
+		return selectedWerknemer.getAfdelingen();
+	}
+
+	public void selectAfdelingen() {
+		/* 
+		 * Simulate access to model and send completions
+		 */
+		afdelingen = selectedWerknemer.getAfdelingen();
+		for (ControllerEventListener l:views){
+			l.refreshTable();
+		}
 	}
 }
