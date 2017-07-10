@@ -68,7 +68,9 @@ public class HoldingDetail extends AbstractDetail {
 		accesstotarieven = controller.getMaincontroller().isAuthorised(__applicatiefunctie.RAADPLEGENTARIEVEN);
 		
 		factuurtypeModel = controller.getMaincontroller().getEnumModel(__factuurtype.class);
-		factuurtypeModel.setId(holding.getFactuurtype().getValue());
+		if (holding.getFactuurtype() != null){
+			factuurtypeModel.setId(holding.getFactuurtype().getValue());
+		}
 		cmbFactuurtype.setModel(factuurtypeModel);
 		
 		txtNaam.setText(holding.getNaam());

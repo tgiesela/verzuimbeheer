@@ -134,6 +134,9 @@ public class AfdelingHasWerknemerController extends AbstractController {
 		AfdelingHasWerknemerInfo afdeling = new AfdelingHasWerknemerInfo();
 		afdeling.setWerknemerId(selectedWerknemer.getId());
 		afdeling.setWerkgeverId(selectedWerknemer.getWerkgeverid());
+		if (selectedWerknemer.getLaatsteDienstverband() != null){
+			afdeling.setStartdatum(selectedWerknemer.getLaatsteDienstverband().getStartdatumcontract());
+		}
 		AbstractDetail form = super.createDetailForm(afdeling, AfdelingHasWerknemerDetail.class, __formmode.NEW);
 		super.addRow(ves, form);
 	}

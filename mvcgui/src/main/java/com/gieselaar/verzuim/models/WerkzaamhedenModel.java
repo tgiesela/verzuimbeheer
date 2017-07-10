@@ -26,12 +26,16 @@ public class WerkzaamhedenModel extends AbstractModel {
 
 	public void selectWerkzaamheden(Integer user, Date startdate, Date enddate) throws VerzuimApplicationException, ValidationException {
 		try {
-			this.user = user;
+			if (user.equals(-1)){
+				this.user = null;
+			}else{
+				this.user = user;
+			}
 			this.holdingid = null;
 			this.werkgeverid = null;
 			this.startdate = startdate;
 			this.enddate = enddate;
-			werkzaamheden = ServiceCaller.factuurFacade(this.getSession()).getWerkzaamheden(user, startdate, enddate);
+			werkzaamheden = ServiceCaller.factuurFacade(this.getSession()).getWerkzaamheden(this.user, startdate, enddate);
 			for (ModelEventListener ml: this.changelisteners){
 				ml.listComplete(werkzaamheden);
 			}
@@ -41,12 +45,16 @@ public class WerkzaamhedenModel extends AbstractModel {
 	}
 	public void selectWerkzaamhedenHolding(Integer user, Date startdate, Date enddate, Integer holdingid) throws VerzuimApplicationException, ValidationException {
 		try {
-			this.user = user;
+			if (user.equals(-1)){
+				this.user = null;
+			}else{
+				this.user = user;
+			}
 			this.holdingid = holdingid;
 			this.werkgeverid = null;
 			this.startdate = startdate;
 			this.enddate = enddate;
-			werkzaamheden = ServiceCaller.factuurFacade(this.getSession()).getWerkzaamhedenHolding(user, startdate, enddate, holdingid);
+			werkzaamheden = ServiceCaller.factuurFacade(this.getSession()).getWerkzaamhedenHolding(this.user, startdate, enddate, holdingid);
 			for (ModelEventListener ml: this.changelisteners){
 				ml.listComplete(werkzaamheden);
 			}
@@ -56,12 +64,16 @@ public class WerkzaamhedenModel extends AbstractModel {
 	}
 	public void selectWerkzaamhedenWerkgever(Integer user, Date startdate, Date enddate, Integer werkgeverid) throws VerzuimApplicationException, ValidationException {
 		try {
-			this.user = user;
+			if (user.equals(-1)){
+				this.user = null;
+			}else{
+				this.user = user;
+			}
 			this.holdingid = null;
 			this.werkgeverid = werkgeverid;
 			this.startdate = startdate;
 			this.enddate = enddate;
-			werkzaamheden = ServiceCaller.factuurFacade(this.getSession()).getWerkzaamhedenWerkgever(user, startdate, enddate, werkgeverid);
+			werkzaamheden = ServiceCaller.factuurFacade(this.getSession()).getWerkzaamhedenWerkgever(this.user, startdate, enddate, werkgeverid);
 			for (ModelEventListener ml: this.changelisteners){
 				ml.listComplete(werkzaamheden);
 			}

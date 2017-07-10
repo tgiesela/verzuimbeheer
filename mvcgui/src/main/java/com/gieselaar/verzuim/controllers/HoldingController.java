@@ -22,6 +22,7 @@ import com.gieselaar.verzuimbeheer.facades.LoginSessionRemote;
 import com.gieselaar.verzuimbeheer.services.AdresInfo;
 import com.gieselaar.verzuimbeheer.services.ContactpersoonInfo;
 import com.gieselaar.verzuimbeheer.services.HoldingInfo;
+import com.gieselaar.verzuimbeheer.services.HoldingInfo.__factuurtype;
 import com.gieselaar.verzuimbeheer.services.InfoBase;
 import com.gieselaar.verzuimbeheer.services.InfoBase.persistenceaction;
 import com.gieselaar.verzuimbeheer.services.InfoBase.persistencestate;
@@ -213,7 +214,8 @@ public class HoldingController extends AbstractController {
 		holding.setPostAdres(new AdresInfo());
 		holding.setVestigingsAdres(new AdresInfo());
 		holding.setContactpersoon(new ContactpersoonInfo());
-		return null;
+		holding.setFactuurtype(__factuurtype.NVT);
+		return holding;
 	}
 	public void getTableModel(List<HoldingInfo> holdings, ColorTableModel tblmodel, List<Integer> colsinview) {
 		/*
