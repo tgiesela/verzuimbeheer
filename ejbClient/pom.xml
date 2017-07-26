@@ -3,7 +3,7 @@
   <groupId>root.project</groupId>
   <artifactId>ejbClient</artifactId>
   <properties>
-  	<sonar.host.url> http://10.56.57.74:9000/ </sonar.host.url>
+  	<sonar.host.url> http://dockerhost:9000/ </sonar.host.url>
   </properties>
   <build>
     <testSourceDirectory>src/main/test</testSourceDirectory>

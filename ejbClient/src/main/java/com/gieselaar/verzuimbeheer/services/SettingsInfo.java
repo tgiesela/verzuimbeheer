@@ -3,9 +3,6 @@ package com.gieselaar.verzuimbeheer.services;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-
 import org.apache.log4j.Logger;
 
 import com.gieselaar.verzuimbeheer.exceptions.ValidationException;

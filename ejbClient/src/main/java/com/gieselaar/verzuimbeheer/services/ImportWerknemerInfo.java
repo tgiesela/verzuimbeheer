@@ -268,7 +268,7 @@ public class ImportWerknemerInfo extends InfoBase {
 		this.werkweek = (BigDecimal)df.parse(werkweek.replaceAll("\\.", ","));
 	}
 
-	public void setWerkweek(BigDecimal werkweek) throws ParseException {
+	public void setWerkweek(BigDecimal werkweek)  {
 		this.werkweek = werkweek;
 	}
 

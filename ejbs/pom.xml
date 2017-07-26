@@ -5,6 +5,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
    <artifactId>ejbs</artifactId>
    <packaging>ejb</packaging>
    <name>enterprise java beans</name>
+  <properties>
+  	<sonar.host.url> http://dockerhost:9000/ </sonar.host.url>
+  </properties>
    <parent>
       <groupId>root</groupId>
       <artifactId>project</artifactId>

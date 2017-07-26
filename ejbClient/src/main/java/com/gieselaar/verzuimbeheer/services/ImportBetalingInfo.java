@@ -53,7 +53,7 @@ public class ImportBetalingInfo extends InfoBase {
 		this.bedrag = (BigDecimal)df.parse(bedrag.replaceAll("\\.", ","));
 	}
 
-	public void setBedrag(BigDecimal bedrag) throws ParseException {
+	public void setBedrag(BigDecimal bedrag)  {
 		this.bedrag = bedrag;
 	}
 	public String getRekeningnummerBetaler() {

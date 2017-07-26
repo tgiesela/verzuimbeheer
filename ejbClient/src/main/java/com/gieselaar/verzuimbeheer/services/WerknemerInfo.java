@@ -106,6 +106,8 @@ public class WerknemerInfo extends InfoBase{
 			throw new ValidationException(ERRDIENSTVERBANDONTBREEKT);
 		if (this.afdelingen == null || this.afdelingen.isEmpty())
 			throw new ValidationException(ERRAFDELINGONTBREEKT);
+		if (this.werkgeverid == null || this.werkgeverid.intValue() == -1)
+			throw new ValidationException("Logic error: Werkgever is null");
 	}
 	private void checkGeboortedatum() throws ValidationException{
 		/*

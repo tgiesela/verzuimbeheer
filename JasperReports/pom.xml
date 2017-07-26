@@ -97,7 +97,7 @@ mvn install:install-file -Dfile=%eclipsedir%\jasperreports-functions-6.2.2-20160
 				<sourceScanner>org.codehaus.plexus.compiler.util.scan.StaleSourceScanner</sourceScanner>
 
 				<additionalProperties>
-<!-- 					<net.sf.jasperreports.awt.ignore.missing.font>true</net.sf.jasperreports.awt.ignore.missing.font> -->
+ 					<net.sf.jasperreports.awt.ignore.missing.font>true</net.sf.jasperreports.awt.ignore.missing.font>
 <!-- 					<net.sf.jasperreports.default.pdf.font.name>Courier</net.sf.jasperreports.default.pdf.font.name>-->
 <!-- 					<net.sf.jasperreports.default.pdf.encoding>UTF-8</net.sf.jasperreports.default.pdf.encoding> -->
 <!-- 					<net.sf.jasperreports.default.pdf.embedded>true</net.sf.jasperreports.default.pdf.embedded> -->

@@ -40,7 +40,7 @@ public class DienstverbandInfo extends InfoBase {
 		if (this.getStartdatumcontract().before(firstPossibleDate.getTime()))
 			throw new ValidationException("Ingangsdatum dienstverband ligt voor 1950!");
 		
-		if (this.getWerkgeverId() == null)
+		if (this.getWerkgeverId() == null || this.getWerkgeverId().intValue() == -1)
 			throw new ValidationException("Werkgever niet ingevuld");
 		if (this.getWerkweek() == null)
 			throw new ValidationException("Werkweek niet ingevuld");

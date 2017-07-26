@@ -210,7 +210,24 @@ public class WerknemerDetail extends AbstractDetail {
 	}
 	private void setWerkgeverCombobox(Integer werkgeverid) {
 		if (werknemer.getWerkgeverid() != null){
-			((VerzuimComboBoxModel)cmbWerkgever.getModel()).setId(werkgeverid);
+			VerzuimComboBoxModel model = (VerzuimComboBoxModel)cmbWerkgever.getModel();
+			model.setId(werkgeverid);
+			if (model.getId() == null || model.getId().intValue() == -1){
+				/* 
+				 * Werkgever niet gevonden
+				 * Probeer het mainmodel te verversen en probeer het nogmaals 
+				 */
+				try {
+					werknemercontroller.getMaincontroller().refreshDatabase();
+					refreshComboWerkgever();
+					model.setId(werkgeverid);
+					if (model.getId() == null || model.getId().intValue() == -1){
+						throw new RuntimeException("Logic error: Werkgever niet gevonden");
+					}
+				} catch (VerzuimApplicationException e) {
+					ExceptionLogger.ProcessException(e, this);
+				}
+			}
 			txtBSN.setEnabled(true);
 		}
 	}
