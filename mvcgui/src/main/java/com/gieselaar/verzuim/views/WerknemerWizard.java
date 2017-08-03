@@ -128,12 +128,17 @@ public class WerknemerWizard extends AbstractWizard {
 		txtTelefoonwerk.setText(werknemer.getTelefoon());
 		txtVoorletters.setText(werknemer.getVoorletters());
 		txtVoorvoegsel.setText(werknemer.getVoorvoegsel());
+		txtVoornaam.setText(werknemer.getVoornaam());
 		if (werknemer.getDienstVerbanden() != null){
 			txtFunctie.setText(werknemer.getLaatsteDienstverband().getFunctie());
 			txtPersoneelsnummer.setText(werknemer.getLaatsteDienstverband().getPersoneelsnummer());
 			if (werknemer.getLaatsteDienstverband().getWerkweek() != null){
 				txtWerkweek.setText(werknemer.getLaatsteDienstverband().getWerkweek().toString());
 			}
+		}else{
+			txtFunctie.setText("");
+			txtPersoneelsnummer.setText("");
+			txtWerkweek.setText("");
 		}
 		try {
 			dtpGeboortedatum.setDate(werknemer.getGeboortedatum());
@@ -155,6 +160,8 @@ public class WerknemerWizard extends AbstractWizard {
 			adresPanel.getAdres().setHuisnummertoevoeging(werknemer.getAdres().getHuisnummertoevoeging());
 			adresPanel.getAdres().setPostcode(werknemer.getAdres().getPostcode());
 			adresPanel.getAdres().setLand(werknemer.getAdres().getLand());
+		}else{
+			adresPanel.setAdres(new AdresInfo());
 		}
 	}
 	private void initialize(){
@@ -564,13 +571,14 @@ public class WerknemerWizard extends AbstractWizard {
 		((VerzuimComboBoxModel)cmbAfdeling.getModel()).setId(getField("Afdeling",array).asInt());
 		((VerzuimComboBoxModel)cmbGeslacht.getModel()).setId(getField("Geslacht",array).asInt());
 		((VerzuimComboBoxModel)cmbBurgerlijkestaat.getModel()).setId(getField("Burgerlijkestaat",array).asInt());
-		if (adresPanel.getAdres() != null){
-			adresPanel.getAdres().setStraat(getField("Straat",array).textValue() );
-			adresPanel.getAdres().setPlaats(getField("Plaats",array).textValue());
-			adresPanel.getAdres().setHuisnummer(getField("Huisnummer",array).textValue());
-			adresPanel.getAdres().setHuisnummertoevoeging(getField("Huisnummer toevoeging", array).textValue());
-			adresPanel.getAdres().setPostcode(getField("Postcode", array).textValue());
-			adresPanel.getAdres().setLand(getField("Land",array).textValue());
+		if (adresPanel.getAdres() == null){
+			adresPanel.setAdres(new AdresInfo());
 		}
+		adresPanel.getAdres().setStraat(getField("Straat",array).textValue() );
+		adresPanel.getAdres().setPlaats(getField("Plaats",array).textValue());
+		adresPanel.getAdres().setHuisnummer(getField("Huisnummer",array).textValue());
+		adresPanel.getAdres().setHuisnummertoevoeging(getField("Huisnummer toevoeging", array).textValue());
+		adresPanel.getAdres().setPostcode(getField("Postcode", array).textValue());
+		adresPanel.getAdres().setLand(getField("Land",array).textValue());
 	}
 }

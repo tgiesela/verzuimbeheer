@@ -95,6 +95,10 @@ public class werknemerDetailClass extends BackingBeanBase implements Serializabl
 			context = FacesContext.getCurrentInstance();
 			context.addMessage(null, new FacesMessage("Kan details van werknemer niet opvragen!",e.getMessage()));
 			return;
+		} catch (ValidationException e) {
+			context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage("Kan details van werknemer niet opvragen!",e.getMessage()));
+			return;
 		}
 
 		this.dienstverband = new DienstverbandInfo();

@@ -16,10 +16,10 @@ public interface WerknemerFacadeRemote extends FacadeBaseRemote {
 
 	void setLoginSession(LoginSessionRemote session) throws PermissionException;
 
-	WerknemerInfo getWerknemer(int werknemerid) throws PermissionException, VerzuimApplicationException;
+	WerknemerInfo getWerknemer(int werknemerid) throws PermissionException, VerzuimApplicationException, ValidationException;
 	WerkgeverInfo getWerkgever(int werkgeverid) throws PermissionException, VerzuimApplicationException;
-	List<WerknemerInfo> getByBSN(Integer werkgever, String bsn) throws PermissionException, VerzuimApplicationException;
-	List<WerknemerInfo> getByBSN(String bsn) throws PermissionException, VerzuimApplicationException;
+	List<WerknemerInfo> getByBSN(Integer werkgever, String bsn) throws PermissionException, VerzuimApplicationException, ValidationException;
+	List<WerknemerInfo> getByBSN(String bsn) throws PermissionException, VerzuimApplicationException, ValidationException;
 
 	WerknemerInfo addWerknemer(WerknemerInfo werknemer) throws PermissionException, ValidationException, VerzuimApplicationException;
 	void updateWerknemer(WerknemerInfo werknemer) throws PermissionException, ValidationException, VerzuimApplicationException;

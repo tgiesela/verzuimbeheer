@@ -423,7 +423,7 @@ public class VerzuimController extends AbstractController {
 		try {
 			werknemer = werknemermodel.getWerknemerDetails(werknemer.getId());
 			selectedVerzuim = model.getVerzuim(selectedVerzuim.getId());
-		} catch (VerzuimApplicationException e) {
+		} catch (VerzuimApplicationException | ValidationException e) {
 			ExceptionLogger.ProcessException(e, this.getActiveForm());
 		}
 		for (ControllerEventListener l: views){

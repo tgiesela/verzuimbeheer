@@ -249,7 +249,7 @@ public class WerknemerBean extends BeanBase {
 	}
 
 	private List<WerknemerInfo> mergeDienstverbanden(List<Werknemer> resultw, List<Dienstverband> resultd,
-			List<Verzuim> resultv, boolean detail) {
+			List<Verzuim> resultv, boolean detail) throws ValidationException {
 
 		List<WerknemerInfo> inforesult = new ArrayList<>();
 
@@ -300,7 +300,7 @@ public class WerknemerBean extends BeanBase {
 			}
 		} catch (Exception e) {
 			log.info("Unexpted error during merge",e);
-			applicationException(new ValidationException("Unexpected error during merge"));
+			throw applicationException(new ValidationException("Unexpected error during merge"));
 		}
 		System.currentTimeMillis();
 		return inforesult;
@@ -312,7 +312,7 @@ public class WerknemerBean extends BeanBase {
 	}
 
 	@SuppressWarnings("unchecked")
-	public WerknemerInfo getById(int werknemerid) throws VerzuimApplicationException {
+	public WerknemerInfo getById(int werknemerid) throws VerzuimApplicationException, ValidationException {
 		Query qw = createQuery("select w from Werknemer w left join fetch w.adres where w.id = :wnr_id");
 		Query qd = createQuery(
 				"select d from Dienstverband d where d.werknemer_ID = :wnr_id order by d.werknemer_ID, d.id");
@@ -333,7 +333,7 @@ public class WerknemerBean extends BeanBase {
 		}
 	}
 
-	public List<WerknemerInfo> getByBSN(Integer werkgeverId, String bsn) throws VerzuimApplicationException {
+	public List<WerknemerInfo> getByBSN(Integer werkgeverId, String bsn) throws VerzuimApplicationException, ValidationException {
 		/*
 		 * Zoeken naar een BSN bij een bepaalde werkgever
 		 */
@@ -365,7 +365,7 @@ public class WerknemerBean extends BeanBase {
 		return mergeDienstverbanden(resultw, resultd, resultv, true);
 	}
 
-	public List<WerknemerInfo> getByBSN(String bsn) throws VerzuimApplicationException {
+	public List<WerknemerInfo> getByBSN(String bsn) throws VerzuimApplicationException, ValidationException {
 		/*
 		 * Zoeken naar een BSN bij een alle werkgevers
 		 */
@@ -403,10 +403,10 @@ public class WerknemerBean extends BeanBase {
 		if (!getByBSN(info.getWerkgeverid(), info.getBurgerservicenummer()).isEmpty())
 			throw new ValidationException("BSN komt al voor bij deze werkgever!");
 		if (info.getDienstVerbanden() == null || info.getDienstVerbanden().isEmpty())
-			applicationException(new ValidationException("Dienstverband ontbreekt"));
+			throw applicationException(new ValidationException("Dienstverband ontbreekt"));
 
 		if (info.getWiaPercentages() == null || info.getWiaPercentages().isEmpty())
-			applicationException(new ValidationException("Wiapercentage ontbreekt"));
+			throw applicationException(new ValidationException("Wiapercentage ontbreekt"));
 
 		adres.setCurrentuser(getCurrentuser());
 		info.setAdres(adres.update(info.getAdres()));
@@ -504,7 +504,7 @@ public class WerknemerBean extends BeanBase {
 		}
 	}
 
-	public boolean deleteWerknemer(WerknemerInfo wnrinfo) throws VerzuimApplicationException {
+	public boolean deleteWerknemer(WerknemerInfo wnrinfo) throws VerzuimApplicationException, ValidationException {
 		Query qwi = createQuery("Delete from Wiapercentage wia where wia.werknemer_ID = :wnr_id");
 		Query wa = createQuery("Delete from AfdelingHasWerknemer wa where wa.id.werknemer_ID = :wnr_id");
 		Query dv = createQuery("Delete from Dienstverband d where d.werknemer_ID = :wnr_id");
@@ -630,7 +630,7 @@ public class WerknemerBean extends BeanBase {
 		}
 	}
 
-	public void deleteWerknemers(int werkgeverid) throws VerzuimApplicationException {
+	public void deleteWerknemers(int werkgeverid) throws VerzuimApplicationException, ValidationException {
 
 		List<WerknemerFastInfo> wnrs = getByWerkgever(werkgeverid);
 		for (WerknemerFastInfo wnr : wnrs) {

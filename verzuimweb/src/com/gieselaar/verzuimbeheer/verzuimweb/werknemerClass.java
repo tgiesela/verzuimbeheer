@@ -20,6 +20,7 @@ import org.primefaces.event.SelectEvent;
 
 import com.gieselaar.verzuimbeheer.exceptions.VerzuimApplicationException;
 import com.gieselaar.verzuimbeheer.exceptions.PermissionException;
+import com.gieselaar.verzuimbeheer.exceptions.ValidationException;
 import com.gieselaar.verzuimbeheer.facades.LoginSessionRemote;
 import com.gieselaar.verzuimbeheer.facades.WerkgeverFacade;
 import com.gieselaar.verzuimbeheer.facades.WerknemerFacade;
@@ -163,7 +164,7 @@ public class werknemerClass extends BackingBeanBase implements Serializable {
 				wi = werknemerFacade.getWerknemer(selectedWerknemer.getId());
 			else
 				return "";
-		} catch (PermissionException | VerzuimApplicationException e) {
+		} catch (PermissionException | VerzuimApplicationException | ValidationException e) {
 		}
 		context = FacesContext.getCurrentInstance();
 		context.getExternalContext().getSessionMap().put("werknemer", wi);
@@ -177,7 +178,7 @@ public class werknemerClass extends BackingBeanBase implements Serializable {
 				wi = werknemerFacade.getWerknemer(selectedWerknemer.getId());
 			else
 				return "";
-		} catch (PermissionException | VerzuimApplicationException e) {
+		} catch (PermissionException | VerzuimApplicationException | ValidationException e) {
 		}
 		context = FacesContext.getCurrentInstance();
 		context.getExternalContext().getSessionMap().put("werknemer", wi);

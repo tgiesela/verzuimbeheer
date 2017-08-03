@@ -71,7 +71,7 @@ public class WerknemerModel extends AbstractModel {
 		}
 	}
 	
-	public WerknemerInfo getWerknemerDetails(int werknemerid) throws VerzuimApplicationException  {
+	public WerknemerInfo getWerknemerDetails(int werknemerid) throws VerzuimApplicationException, ValidationException  {
 		try {
 			return ServiceCaller.werknemerFacade(getSession()).getWerknemer(werknemerid);
 		} catch (PermissionException | ServiceLocatorException e) {
@@ -204,7 +204,7 @@ public class WerknemerModel extends AbstractModel {
 	public List<WerknemerInfo> getByBSN(Integer werkgeverid, String bsn) throws VerzuimApplicationException {
 		try {
 			return ServiceCaller.werknemerFacade(getSession()).getByBSN(werkgeverid, bsn);
-		} catch (PermissionException  | ServiceLocatorException e) {
+		} catch (PermissionException  | ServiceLocatorException | ValidationException e) {
 			throw new VerzuimApplicationException(e, e.getMessage());
 		}
 	}
@@ -212,7 +212,7 @@ public class WerknemerModel extends AbstractModel {
 	public List<WerknemerInfo> getByBSN(String bsn) throws VerzuimApplicationException {
 		try {
 			return ServiceCaller.werknemerFacade(getSession()).getByBSN(bsn);
-		} catch (PermissionException  | ServiceLocatorException e) {
+		} catch (PermissionException  | ServiceLocatorException | ValidationException e) {
 			throw new VerzuimApplicationException(e, e.getMessage());
 		}
 	}

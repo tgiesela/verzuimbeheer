@@ -53,13 +53,13 @@
     <jdbc-connection-pool driver-classname="com.mysql.jdbc.Driver" name="verzuimDB" res-type="java.sql.Driver">
       <property name="password" value="Pinocchio_01"></property>
       <property name="user" value="root"></property>
-      <property name="URL" value="jdbc:mysql://ubuntuglassfish.thuis.local:3306/verzuim"></property>
+      <property name="URL" value="jdbc:mysql://dockerhost.thuis.local:3306/verzuim"></property>
     </jdbc-connection-pool>
     <jdbc-resource pool-name="verzuimDB" jndi-name="jdbc/verzuim"></jdbc-resource>
     <jdbc-connection-pool driver-classname="com.mysql.jdbc.Driver" name="testverzuimDB" res-type="java.sql.Driver">
       <property name="password" value="Pinocchio_01"></property>
       <property name="user" value="root"></property>
-      <property name="URL" value="jdbc:mysql://ubuntuglassfish.thuis.local:3306/testverzuim"></property>
+      <property name="URL" value="jdbc:mysql://dockerhost.thuis.local:3306/testverzuim"></property>
     </jdbc-connection-pool>
     <jdbc-resource pool-name="testverzuimDB" jndi-name="jdbc/testverzuim"></jdbc-resource>
   </resources>

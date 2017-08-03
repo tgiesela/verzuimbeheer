@@ -159,6 +159,9 @@ public class WordDocument {
 		} catch (VerzuimApplicationException e) {
 			ExceptionLogger.ProcessException(e, thisform);
 			return null;
+		} catch (ValidationException e) {
+			JOptionPane.showMessageDialog(thisform, e.getMessage());
+			return null;
 		}
 		AfdelingHasWerknemerInfo afd = null;
 		if (wnr.getAfdelingen() != null)

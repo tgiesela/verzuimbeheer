@@ -135,7 +135,10 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	</profile>
 	<profile>
 	    <id>arquillian-glassfish-embedded</id>
-	    <dependencies>
+ 		<activation>
+       		<activeByDefault>true</activeByDefault>
+ 		</activation>	    
+ 		<dependencies>
 	        <dependency>
 	            <groupId>org.jboss.arquillian.container</groupId>
 	            <artifactId>arquillian-glassfish-embedded-3.1</artifactId>

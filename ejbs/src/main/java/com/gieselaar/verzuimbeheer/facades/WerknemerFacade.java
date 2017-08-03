@@ -119,7 +119,7 @@ public class WerknemerFacade extends FacadeBase implements WerknemerFacadeRemote
 	}
 
 	@Override
-	public WerknemerInfo getWerknemer(int werknemerid) throws PermissionException, VerzuimApplicationException {
+	public WerknemerInfo getWerknemer(int werknemerid) throws PermissionException, VerzuimApplicationException, ValidationException {
 		setCurrentuser();
 		checkPermission(__applicatiefunctie.RAADPLEGENWERKNEMER);
 		return werknemerEJB.getById(werknemerid);
@@ -133,13 +133,13 @@ public class WerknemerFacade extends FacadeBase implements WerknemerFacadeRemote
 		return werknemerEJB.addWerknemer(werknemer);
 	}
 	@Override
-	public List<WerknemerInfo> getByBSN(Integer werkgever, String BSN) throws PermissionException, VerzuimApplicationException{
+	public List<WerknemerInfo> getByBSN(Integer werkgever, String BSN) throws PermissionException, VerzuimApplicationException, ValidationException{
 		setCurrentuser();
 		checkPermission(__applicatiefunctie.BEHEERWERKNEMER);
 		return werknemerEJB.getByBSN(werkgever, BSN);
 	}
 	@Override
-	public List<WerknemerInfo> getByBSN(String BSN) throws PermissionException, VerzuimApplicationException{
+	public List<WerknemerInfo> getByBSN(String BSN) throws PermissionException, VerzuimApplicationException, ValidationException{
 		setCurrentuser();
 		checkPermission(__applicatiefunctie.BEHEERWERKNEMER);
 		return werknemerEJB.getByBSN(BSN);

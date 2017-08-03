@@ -263,7 +263,7 @@ public class DienstverbandController extends AbstractController {
 					}
 					 model.saveWerknemer(selectedWerknemer);
 					 model.getWerknemerDetails(selectedWerknemer.getId());
-				} catch (VerzuimApplicationException e2) {
+				} catch (VerzuimApplicationException | ValidationException e2) {
 		        	ExceptionLogger.ProcessException(e2,null);
 				}
 				return true;
@@ -280,7 +280,7 @@ public class DienstverbandController extends AbstractController {
 			model.getWerknemerDetails(wnrf.getId());
 						
 			return confirmDelete((DienstverbandInfo)data);
-		} catch (VerzuimApplicationException e) {
+		} catch (VerzuimApplicationException | ValidationException e) {
 			ExceptionLogger.ProcessException(e, this.getActiveForm());
 		}
 		return false;

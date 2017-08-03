@@ -183,7 +183,7 @@ public class WerknemerController extends AbstractController {
 		try {
 			selectedWerknemer = model.getWerknemerDetails(werknemerid); 
 			return selectedWerknemer;
-		} catch (VerzuimApplicationException e) {
+		} catch (VerzuimApplicationException | ValidationException e) {
 			ExceptionLogger.ProcessException(e, this.getActiveForm());
 		}
 		return null;
@@ -216,7 +216,7 @@ public class WerknemerController extends AbstractController {
 		try {
 			selectedWerknemer = model.getWerknemerDetails(selectedWerknemer.getId());
 //			this.getDetailform().setData(selectedWerknemer);
-		} catch (VerzuimApplicationException e) {
+		} catch (VerzuimApplicationException | ValidationException e) {
 			ExceptionLogger.ProcessException(e, this.getActiveForm());
 		}
 		for (ControllerEventListener l: views){
@@ -487,7 +487,7 @@ public class WerknemerController extends AbstractController {
 		try {
 			wnr = model.getWerknemerDetails(wnrf.getId());
 			return confirmDelete(wnr, wnrf);
-		} catch (VerzuimApplicationException e) {
+		} catch (VerzuimApplicationException | ValidationException e) {
 			ExceptionLogger.ProcessException(e, this.getActiveForm());
 		}
 		return false;

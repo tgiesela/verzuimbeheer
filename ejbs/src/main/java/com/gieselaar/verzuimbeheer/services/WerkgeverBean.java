@@ -1159,7 +1159,7 @@ public class WerkgeverBean extends BeanBase{
 		lines.add(iwi);
 		iwi.setSequencenr(lines.size());
 	}
-	private void processLineWerknemer(ImportWerknemerInfo line, WerkgeverInfo wgr) throws VerzuimApplicationException {
+	private void processLineWerknemer(ImportWerknemerInfo line, WerkgeverInfo wgr) throws VerzuimApplicationException, ValidationException {
 		boolean afdelingfound;
 		WerknemerInfo wnr;
 		// Break comma separated line using the separator in the calling parameters
