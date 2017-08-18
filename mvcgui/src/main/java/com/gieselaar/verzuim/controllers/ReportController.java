@@ -798,7 +798,7 @@ public class ReportController extends AbstractController {
 	private List<FactuurTotaalInfo> getsomfacturen(Date startdate, Date enddate){
 		List<FactuurTotaalInfo> allfacturen;
 		try {
-			factuurmodel.selectFacturen(startdate, startdate);
+			factuurmodel.selectFacturen(startdate, enddate);
 			allfacturen = factuurmodel.getFacturenList(); 
 		} catch (VerzuimApplicationException e2) {
 			ExceptionLogger.ProcessException(e2, null);

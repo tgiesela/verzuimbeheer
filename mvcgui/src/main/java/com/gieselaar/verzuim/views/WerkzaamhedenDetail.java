@@ -104,17 +104,17 @@ public class WerkzaamhedenDetail extends AbstractDetail {
 
 		activiteitModel.setId(werkzaamheid.getSoortwerkzaamheden().getValue());
 		if (this.getFormmode() != __formmode.NEW) {
-			getTariefsoortHuisbezoek(werkzaamheid.getDatum(), werkzaamheid.getHoldingid(), werkzaamheid.getWerkgeverid());
+			try {
+				getTariefsoortHuisbezoek(werkzaamheid.getDatum(), werkzaamheid.getHoldingid(), werkzaamheid.getWerkgeverid());
+			} catch (VerzuimApplicationException e) {
+				ExceptionLogger.ProcessException(e, this);
+			} 
 		}
 		displayWerkzaamheid();
 	}
-	private void getTariefsoortHuisbezoek(Date peildatum,  Integer holdingid, Integer werkgeverid){
+	private void getTariefsoortHuisbezoek(Date peildatum,  Integer holdingid, Integer werkgeverid) throws VerzuimApplicationException{
 		vasttariefhuisbezoeken = true;
-		try {
 			vasttariefhuisbezoeken = werkzaamhedencontroller.isVasttariefHuisbezoeken(peildatum, holdingid, werkgeverid);
-		} catch (VerzuimApplicationException e) {
-			ExceptionLogger.ProcessException(e, this);
-		} 
 	}
 
 	private void initialize() {
@@ -286,11 +286,14 @@ public class WerkzaamhedenDetail extends AbstractDetail {
 			public boolean werkgeverSelected(Integer werkgeverid) {
 				Date peildatum = new Date();
 				werkzaamheid.setWerkgeverid(werkgeverid);
-
 				populateFilialen();
 				if (dtpDatum.getDate() != null)
 					peildatum = dtpDatum.getDate();
-				getTariefsoortHuisbezoek(peildatum, werkgeverSelection.getHoldingId(), werkgeverid);
+				try {
+					getTariefsoortHuisbezoek(peildatum, werkgeverSelection.getHoldingId(), werkzaamheid.getWerkgeverid());
+				} catch (VerzuimApplicationException e) {
+					ExceptionLogger.ProcessException(e, thisform);
+				} 
 
 				EnableDisableFields();
 				return false;

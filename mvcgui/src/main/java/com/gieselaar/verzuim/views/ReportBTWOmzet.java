@@ -39,6 +39,7 @@ public class ReportBTWOmzet extends AbstractDetail {
 	 */
 	@Override
 	public void setData(InfoBase info){
+		/* data is not used on this form */
 	}
 
 	private void initialize() {
@@ -85,18 +86,18 @@ public class ReportBTWOmzet extends AbstractDetail {
 	}
 
 	protected void btnExporterenClicked(ActionEvent e) {
-		if (!FormChecksOk())
+		if (!formChecksOk())
 			return;
 		reportcontroller.exportBTWenOmzet(dtpStartdatum.getDate(), dtpEinddatum.getDate());
 	}
 
 	protected void afdrukkenClicked(ActionEvent e) {
-		if (!FormChecksOk())
+		if (!formChecksOk())
 			return;
 		reportcontroller.printBTWenOmzetOverzicht(dtpStartdatum.getDate(), dtpEinddatum.getDate());
 	}
 
-	private boolean FormChecksOk() {
+	private boolean formChecksOk() {
 
 		if (dtpEinddatum.getDate().before(dtpStartdatum.getDate())) {
 			JOptionPane.showMessageDialog(this, "Einddatum ligt voor de startdatum!");

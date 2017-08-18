@@ -360,6 +360,7 @@ public class WerknemerWizard extends AbstractWizard {
 		
 		dtpIngangsdatum = new DatePicker();
 		dtpIngangsdatum.setBounds(141, 21, 89, 21);
+		dtpGeboortedatum.setDateFormat(new SimpleDateFormat("dd-MM-yyyy"));
 		panel.add(dtpIngangsdatum);
 		
 		JLabel label_12 = new JLabel("Personeelsnummer");

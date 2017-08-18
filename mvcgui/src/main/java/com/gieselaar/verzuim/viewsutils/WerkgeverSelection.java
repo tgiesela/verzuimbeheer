@@ -149,14 +149,19 @@ public class WerkgeverSelection extends JPanel{
 					private void WerkgeverSelected() {
 						Integer werkgever = ((VerzuimComboBoxModel)cmbWerkgever.getModel()).getId();
 						Integer savedwerkgever = selectedWerkgever;
+						Integer savedholding = selectedHolding;
 						setWerkgeverId(werkgever);
-						if (!werkgever.equals(savedwerkgever) &&
-							eventNotifier != null && eventNotifier.werkgeverSelected(werkgever)){
-							setWerkgeverId(savedwerkgever);
-							return;
-						}
 						if (selectedWerkgever != -1){
 							if (selectionmode == __WerkgeverSelectionMode.SelectBoth){
+								for (WerkgeverInfo wg: werkgevers){
+									if (wg.getId().equals(selectedWerkgever)){
+										if (wg.getHoldingId() != null){
+											setHoldingId(wg.getHoldingId());
+											holdingModel.setId(wg.getHoldingId());
+											break;
+										}
+									}
+								}
 							}else{
 								/*
 								 * Werkgever selected. cmbHolding moet op nvt([]) worden gezet.
@@ -164,7 +169,7 @@ public class WerkgeverSelection extends JPanel{
 								holdingModel = (VerzuimComboBoxModel)cmbHolding.getModel();
 								for (int i=0;i<holdingModel.getSize();i++)
 								{
-									TypeEntry holdingtype = (TypeEntry) holdingModel.getElementAt(i);
+									TypeEntry holdingtype = holdingModel.getElementAt(i);
 									if (holdingtype.getValue() == -1) {
 										setHoldingId(selectedHolding);
 										holdingModel.setSelectedItem(holdingtype);
@@ -172,6 +177,17 @@ public class WerkgeverSelection extends JPanel{
 									}
 								}
 							}
+						}
+						/*
+						 * Notify form that item has changed. If not allowed, all values will be reset to
+						 * original settings
+						 */
+						if (!werkgever.equals(savedwerkgever) &&
+							eventNotifier != null && 
+							eventNotifier.werkgeverSelected(werkgever)){
+							setWerkgeverId(savedwerkgever);
+							setHoldingId(savedholding);
+							return;
 						}
 					}
 				});
