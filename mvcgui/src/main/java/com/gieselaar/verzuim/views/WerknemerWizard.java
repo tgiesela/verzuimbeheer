@@ -572,14 +572,16 @@ public class WerknemerWizard extends AbstractWizard {
 		((VerzuimComboBoxModel)cmbAfdeling.getModel()).setId(getField("Afdeling",array).asInt());
 		((VerzuimComboBoxModel)cmbGeslacht.getModel()).setId(getField("Geslacht",array).asInt());
 		((VerzuimComboBoxModel)cmbBurgerlijkestaat.getModel()).setId(getField("Burgerlijkestaat",array).asInt());
-		if (adresPanel.getAdres() == null){
-			adresPanel.setAdres(new AdresInfo());
+		AdresInfo adres = adresPanel.getAdres();
+		if (adres == null){
+			adres = new AdresInfo();
 		}
-		adresPanel.getAdres().setStraat(getField("Straat",array).textValue() );
-		adresPanel.getAdres().setPlaats(getField("Plaats",array).textValue());
-		adresPanel.getAdres().setHuisnummer(getField("Huisnummer",array).textValue());
-		adresPanel.getAdres().setHuisnummertoevoeging(getField("Huisnummer toevoeging", array).textValue());
-		adresPanel.getAdres().setPostcode(getField("Postcode", array).textValue());
-		adresPanel.getAdres().setLand(getField("Land",array).textValue());
+		adres.setStraat(getField("Straat",array).textValue() );
+		adres.setPlaats(getField("Plaats",array).textValue());
+		adres.setHuisnummer(getField("Huisnummer",array).textValue());
+		adres.setHuisnummertoevoeging(getField("Huisnummer toevoeging", array).textValue());
+		adres.setPostcode(getField("Postcode", array).textValue());
+		adres.setLand(getField("Land",array).textValue());
+		adresPanel.setAdres(adres);
 	}
 }

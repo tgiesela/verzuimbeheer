@@ -145,6 +145,9 @@ public class BeanBase implements Serializable{
 	public void setCurrentuser(Integer currentuser) {
 		this.currentuser = currentuser;
 	}
+	protected EJBContext getContext(){
+		return context;
+	}
 	@PrePassivate
 	public void passivate(){
 		log.info("BeanBase beeing passivated: " + this.getClass().getName() + " " + this.getClass().hashCode());

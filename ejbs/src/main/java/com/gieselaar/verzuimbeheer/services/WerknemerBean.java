@@ -398,10 +398,10 @@ public class WerknemerBean extends BeanBase {
 		try {
 			info.validate();
 		} catch (ValidationException e) {
-			throw e;
+			throw applicationException(e);
 		}
 		if (!getByBSN(info.getWerkgeverid(), info.getBurgerservicenummer()).isEmpty())
-			throw new ValidationException("BSN komt al voor bij deze werkgever!");
+			throw applicationException(new ValidationException("BSN komt al voor bij deze werkgever!"));
 		if (info.getDienstVerbanden() == null || info.getDienstVerbanden().isEmpty())
 			throw applicationException(new ValidationException("Dienstverband ontbreekt"));
 
@@ -416,9 +416,14 @@ public class WerknemerBean extends BeanBase {
 		for (DienstverbandInfo d: info.getDienstVerbanden()){
 			d.setWerknemerId(this.werknemer.getId());
 		}
-		updateDienstverbanden(info.getDienstVerbanden());
-		updateAfdelingen(info.getAfdelingen(),null);
-		updateWiaPercentages(info.getWiaPercentages());
+		try{
+			updateDienstverbanden(info.getDienstVerbanden());
+			updateAfdelingen(info.getAfdelingen(),null);
+			updateWiaPercentages(info.getWiaPercentages());
+		} catch (ValidationException e){
+			this.getContext().setRollbackOnly();
+			throw applicationException(e);
+		}
 
 		return this.getById(this.werknemer.getId());
 	}
@@ -531,7 +536,7 @@ public class WerknemerBean extends BeanBase {
 		try {
 			info.validate();
 		} catch (ValidationException e) {
-			throw e;
+			throw applicationException(e);
 		}
 		if (info.getLaatsteDienstverband().getEinddatumcontract() != null) {
 			for (AfdelingHasWerknemerInfo afd : info.getAfdelingen()) {
@@ -558,17 +563,17 @@ public class WerknemerBean extends BeanBase {
 									vzmi.getStartdatumverzuim())) {
 								/* Niets te doen */
 							} else {
-								throw new ValidationException("Startdatum open verzuim ligt na einde dienstverband!");
+								throw applicationException(new ValidationException("Startdatum open verzuim ligt na einde dienstverband!"));
 							}
 						} else {
-							throw new ValidationException(
-									"Kan dienstverband niet afsluiten. Er is nog een open verzuim");
+							throw applicationException(new ValidationException(
+									"Kan dienstverband niet afsluiten. Er is nog een open verzuim"));
 						}
 					} else {
 						if (DateOnly.before(info.getLaatsteDienstverband().getEinddatumcontract(),
 								vzmi.getEinddatumverzuim())) {
-							throw new ValidationException(
-									"Einddatum dienstverband ligt voor einddatum (laatste) verzuim!");
+							throw applicationException(new ValidationException(
+									"Einddatum dienstverband ligt voor einddatum (laatste) verzuim!"));
 						}
 					}
 				}
@@ -576,12 +581,15 @@ public class WerknemerBean extends BeanBase {
 		}
 
 		this.werknemer = converter.toEntity(info, this.getCurrentuser());
-		updateDienstverbanden(info.getDienstVerbanden());
-		this.updateEntity(this.werknemer);
-		WerknemerInfo updatedWnr = this.getById(this.werknemer.getId());
-		updateAfdelingen(info.getAfdelingen(), updatedWnr.getAfdelingen());
-		updateWiaPercentages(info.getWiaPercentages());
-
+		try{
+			updateDienstverbanden(info.getDienstVerbanden());
+			this.updateEntity(this.werknemer);
+			WerknemerInfo updatedWnr = this.getById(this.werknemer.getId());
+			updateAfdelingen(info.getAfdelingen(), updatedWnr.getAfdelingen());
+			updateWiaPercentages(info.getWiaPercentages());
+		} catch (ValidationException e){
+			throw applicationException(e);
+		}
 		return true;
 	}
 

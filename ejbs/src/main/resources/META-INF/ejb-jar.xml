@@ -6,19 +6,23 @@
       <role-name>javaee</role-name>
     </security-role>
     <application-exception>
-      <exception-class>com.gieselaar.verzuimbeheer.exceptions.permissionException</exception-class>
+      <exception-class>com.gieselaar.verzuimbeheer.exceptions.PermissionException</exception-class>
       <rollback>true</rollback>
     </application-exception>
     <application-exception>
-      <exception-class>com.gieselaar.verzuimbeheer.exceptions.authenticationException</exception-class>
+      <exception-class>com.gieselaar.verzuimbeheer.exceptions.VerzuimAuthenticationException</exception-class>
       <rollback>true</rollback>
     </application-exception>
     <application-exception>
-      <exception-class>com.gieselaar.verzuimbeheer.exceptions.validationException</exception-class>
+      <exception-class>com.gieselaar.verzuimbeheer.exceptions.ValidationException</exception-class>
       <rollback>true</rollback>
     </application-exception>
     <application-exception>
       <exception-class>com.gieselaar.verzuimbeheer.exceptions.VerzuimApplicationException</exception-class>
+      <rollback>true</rollback>
+    </application-exception>
+    <application-exception>
+      <exception-class>com.gieselaar.verzuimbeheer.exceptions.VerzuimRuntimeException</exception-class>
       <rollback>true</rollback>
     </application-exception>
   </assembly-descriptor>
