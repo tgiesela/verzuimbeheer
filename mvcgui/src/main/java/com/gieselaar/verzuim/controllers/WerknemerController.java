@@ -2,12 +2,33 @@ package com.gieselaar.verzuim.controllers;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRichTextString;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+import com.gieselaar.verzuim.controllers.AbstractController.__filedialogtype;
+import com.gieselaar.verzuim.controllers.AbstractController.__selectfileoption;
 import com.gieselaar.verzuim.interfaces.ControllerEventListener;
 import com.gieselaar.verzuim.models.WerkgeverModel;
 import com.gieselaar.verzuim.models.WerknemerModel;
@@ -59,7 +80,7 @@ public class WerknemerController extends AbstractController {
 		}
 	}
 	public enum __werknemercommands {
-		UNKNOWN(-1), WERKNEMERALLEENOPENVERZUIMEN(1), WERKNEMERUITDIENSTTONEN(2), GENEREERDOCUMENT(3);
+		UNKNOWN(-1), WERKNEMERALLEENOPENVERZUIMEN(1), WERKNEMERUITDIENSTTONEN(2), GENEREERDOCUMENT(3), WERKNEMEREXPORTEREN(4);
 		private int value;
 
 		__werknemercommands(int value) {
@@ -145,6 +166,9 @@ public class WerknemerController extends AbstractController {
 					l.refreshTable();
 				}
 				break;
+			case WERKNEMEREXPORTEREN:
+				this.exportToExcel();
+				break;
 			case UNKNOWN:
 				super.actionPerformed(e);
 			default:
@@ -153,6 +177,151 @@ public class WerknemerController extends AbstractController {
 		}else{
 			super.actionPerformed(e);
 		}
+	}
+	private void addCSVColumn(String val, StringBuilder sb){
+		if (val == null){
+			sb.append("");
+		}else{
+			sb.append(val);
+		}
+		sb.append(";");
+	}
+	private void exportToExcel(){
+		DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		// Vraag om naam excel bestand
+		String documentname = "export.csv";
+		String headerLabel;
+
+		File selectedFile = null;
+
+		selectedFile = selectFilename(__selectfileoption.FILEONLY,__filedialogtype.SAVE,"",".csv");
+		if (selectedFile == null)
+			return;
+		else {
+			if (selectedFile.exists()){
+				if (JOptionPane.showConfirmDialog(null, "Bestand "
+						+ selectedFile.getAbsolutePath()
+						+ " bestaat al. Wilt u het verwijderen?", "Verwijderen",
+						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+					if (!selectedFile.delete()){
+						JOptionPane.showMessageDialog(null, "Kan bestand niet verwijderen.");
+						return;
+					}
+				}
+				else
+					return;
+			}
+			documentname = selectedFile.getAbsolutePath();
+		}
+		
+		List<WerknemerFastInfo> werknemers = model.getAllWerknemersFast();
+		
+		PrintWriter pw;
+		try{
+			pw = new PrintWriter(new File(documentname));
+		} catch (FileNotFoundException e){
+			return;
+		}
+		StringBuilder sb = new StringBuilder();
+        addCSVColumn("Organisatiecode",sb);
+        addCSVColumn("Volgnr.dvb",sb);	
+        addCSVColumn("Persoonsnr.",sb);
+        addCSVColumn("Startdat.Contract",sb);
+        addCSVColumn("Einddat.Contract",sb);
+        addCSVColumn("Ingangsdat.",sb);
+        addCSVColumn("Bruto jaarsalaris",sb);
+        addCSVColumn("fte",sb);
+        addCSVColumn("NVT",sb);
+        addCSVColumn("Achternaam",sb);
+        addCSVColumn("Voornaam",sb);
+        addCSVColumn("Tussenvoegsel",sb);
+        addCSVColumn("Voorletters",sb);
+        addCSVColumn("Geslacht",sb);
+        addCSVColumn("Meisjesnaam",sb);
+        addCSVColumn("Geb.dat.",sb);
+        addCSVColumn("Straat woonadres",sb);
+        addCSVColumn("Huisnr.woonadres",sb);
+        addCSVColumn("Postcode woonadres",sb);
+        addCSVColumn("Plaats woonadres",sb);
+        addCSVColumn("Landnaam",sb);
+        addCSVColumn("Tel.nr.woonadres",sb);
+        addCSVColumn("Tel.nr.mobiel",sb);
+        addCSVColumn("Zakelijk Emailadres",sb);
+        addCSVColumn("Prive Emailadres",sb);
+        addCSVColumn("Oms functie",sb);
+        addCSVColumn("Startdatum SFB / AGH",sb);
+        addCSVColumn("Einddatum SFB / Agh",sb);
+        addCSVColumn("WIA / WGA percentage",sb);
+        addCSVColumn("Status SFB / AGH",sb);
+        addCSVColumn("Oms SFB / AGH",sb);
+        sb.append('\n');
+		pw.write(sb.toString());
+		WerkgeverInfo wgi = null;
+		int currentWerkgever = -1;
+		for (WerknemerFastInfo wi: werknemers){
+			WerknemerInfo wfi;
+			try {
+				wfi= model.getWerknemerDetails(wi.getId());
+				if (wfi.getActiefDienstverband().getWerkgeverId() != currentWerkgever){
+					wgi = werkgevermodel.getWerkgeverDetails(wfi.getActiefDienstverband().getWerkgeverId());
+					currentWerkgever = wgi.getId();
+				}
+			} catch (Exception e){
+				ExceptionLogger.ProcessException(e, this.getActiveForm());
+				pw.close();
+				return;
+			}
+			sb = new StringBuilder();
+	        addCSVColumn(wfi.getActiefDienstverband().getWerkgeverId().toString(), sb);
+	        addCSVColumn(wfi.getActiefDienstverband().getId().toString(), sb);
+	        if (wfi.getActiefDienstverband().getPersoneelsnummer() == null || wfi.getActiefDienstverband().getPersoneelsnummer().isEmpty()){
+		        addCSVColumn(wfi.getActiefDienstverband().getId().toString(), sb);
+	        }else{
+	        	addCSVColumn(wfi.getActiefDienstverband().getPersoneelsnummer(), sb);
+	        }
+	        addCSVColumn(formatter.format(wfi.getActiefDienstverband().getStartdatumcontract()), sb);
+	        addCSVColumn("", sb);
+	        addCSVColumn(formatter.format(wfi.getActiefDienstverband().getStartdatumcontract()), sb);
+	        addCSVColumn("", sb);
+	        BigDecimal fte = wfi.getActiefDienstverband().getWerkweek().divide(wgi.getWerkweek()).setScale(2, BigDecimal.ROUND_HALF_UP);
+	        addCSVColumn(fte.toPlainString(), sb); /* FTE berekenen: werkg uren <> dvb uren */
+	        addCSVColumn("", sb);
+	        addCSVColumn(wfi.getAchternaam(), sb);
+	        addCSVColumn(wfi.getVoornaam(), sb);
+	        addCSVColumn(wfi.getVoorvoegsel(), sb);
+	        addCSVColumn(wfi.getVoorletters(), sb);
+	        switch (wfi.getGeslacht()){
+	        case MAN: addCSVColumn("M", sb); break;
+	        case VROUW: addCSVColumn("V", sb); break;
+	        case ONBEKEND: addCSVColumn("M", sb);
+	        }
+	        addCSVColumn("", sb);
+	        addCSVColumn(formatter.format(wfi.getGeboortedatum()),sb);
+	        addCSVColumn(wfi.getAdres().getStraat(),sb);
+	        addCSVColumn(wfi.getAdres().getHuisnummer() + " " + wfi.getAdres().getHuisnummertoevoeging(),sb);
+	        addCSVColumn(wfi.getAdres().getPostcode(),sb);
+	        addCSVColumn(wfi.getAdres().getPlaats(),sb);
+	        addCSVColumn(wfi.getAdres().getLand(),sb);
+	        addCSVColumn(wfi.getTelefoonPrive(),sb);
+	        addCSVColumn(wfi.getMobiel(),sb);
+	        addCSVColumn(wfi.getEmail(),sb);
+	        addCSVColumn("",sb);
+	        if (wfi.getActiefDienstverband().getFunctie() == null || wfi.getActiefDienstverband().getFunctie().isEmpty()){
+		        addCSVColumn("Onbekend",sb);
+	        }else{
+		        addCSVColumn(wfi.getActiefDienstverband().getFunctie(),sb);
+	        }
+	        addCSVColumn("",sb);
+	        addCSVColumn("",sb);
+	        addCSVColumn("",sb);
+	        addCSVColumn("",sb);
+	        addCSVColumn("",sb);
+	        sb.append('\n');
+	        
+	        pw.write(sb.toString());
+	    }
+        pw.close();
+	
 	}
 
 	public void selectWerknemers() {

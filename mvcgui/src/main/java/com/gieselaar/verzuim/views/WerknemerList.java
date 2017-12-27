@@ -12,6 +12,7 @@ import com.gieselaar.verzuim.viewsutils.CursorController;
 import com.gieselaar.verzuimbeheer.services.WerknemerFastInfo;
 
 import javax.swing.JCheckBox;
+import javax.swing.JButton;
 
 public class WerknemerList extends AbstractList {
 
@@ -56,6 +57,12 @@ public class WerknemerList extends AbstractList {
 		cbAlleenOpenverzuimen.setActionCommand(__werknemercommands.WERKNEMERALLEENOPENVERZUIMEN.toString());
 		cbAlleenOpenverzuimen.addActionListener(CursorController.createListener(this,controller));
 		super.getDatatable().getPanelAction().add(cbAlleenOpenverzuimen);
+
+		JButton btnExport = new JButton("Export...");
+		btnExport.setBounds(537, 499, 89, 23);
+		btnExport.setActionCommand(__werknemercommands.WERKNEMEREXPORTEREN.toString());
+		btnExport.addActionListener(CursorController.createListener(this,controller));
+		super.getDatatable().getPanelAction().add(btnExport);
 	}
 	@Override
 	public void refreshTable() {

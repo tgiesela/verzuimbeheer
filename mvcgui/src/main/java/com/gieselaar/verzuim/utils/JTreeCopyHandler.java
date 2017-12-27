@@ -22,9 +22,13 @@ public class JTreeCopyHandler extends TransferHandler {
     }
     public void exportAllToClipboard(JComponent comp, Clipboard clip, int action) {
         JTree tree = (JTree)comp;
-        TreePath path = tree.getSelectionPath();
-        if(path != null) {
-            clip.setContents(new StringSelection(path.toString()), null);
+        TreePath[] pathes = tree.getSelectionPaths();
+        StringBuilder completeText = new StringBuilder();
+        for (TreePath p:pathes){
+            if(p != null) {
+            	completeText.append(p.getLastPathComponent().toString() + "\n");
+            }
         }
+        clip.setContents(new StringSelection(completeText.toString()), null);
     }
 }

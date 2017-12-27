@@ -161,6 +161,24 @@ public class VerzuimMedischeKaartList extends AbstractDetail {
 			}
 		});
 		popupMenu.add(mntmCopy);
+		JMenuItem mntmCopyAll = new JMenuItem("Copy All");
+		mntmCopyAll.setIcon(null);
+		mntmCopyAll.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+				TreeSelectionModel model =  treeMK.getSelectionModel();
+				int mode = model.getSelectionMode();
+				model.setSelectionMode(TreeSelectionModel.CONTIGUOUS_TREE_SELECTION);
+				int nrofrows = treeMK.getRowCount();
+				int[] rows = new int[nrofrows];
+				for (int i = 0;i<nrofrows;i++){rows[i] = i;}
+				treeMK.setSelectionRows(rows);
+				((JTreeCopyHandler)treeMK.getTransferHandler()).exportAllToClipboard(treeMK, clipboard, TransferHandler.COPY);
+				model.setSelectionMode(mode);
+			}
+		});
+		popupMenu.add(mntmCopyAll);
 		JMenuItem mntmPaste = new JMenuItem("Paste");
 		mntmPaste.setIcon(null);
 		mntmPaste.addActionListener(new ActionListener() {
