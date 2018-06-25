@@ -283,7 +283,7 @@ public class WerknemerController extends AbstractController {
 	        addCSVColumn("", sb);
 	        addCSVColumn(formatter.format(wfi.getActiefDienstverband().getStartdatumcontract()), sb);
 	        addCSVColumn("", sb);
-	        BigDecimal fte = wfi.getActiefDienstverband().getWerkweek().divide(wgi.getWerkweek()).setScale(2, BigDecimal.ROUND_HALF_UP);
+	        BigDecimal fte = wfi.getActiefDienstverband().getWerkweek().divide(wgi.getWerkweek(),BigDecimal.ROUND_HALF_UP).setScale(2, BigDecimal.ROUND_HALF_UP);
 	        addCSVColumn(fte.toPlainString(), sb); /* FTE berekenen: werkg uren <> dvb uren */
 	        addCSVColumn("", sb);
 	        addCSVColumn(wfi.getAchternaam(), sb);
